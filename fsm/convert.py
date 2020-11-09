@@ -1,10 +1,10 @@
 import myhdl
-from myhdl import block, always, instance, Signal, ResetSignal, delay
+from myhdl import block, always, instance, Signal, ResetSignal, delay, enum
 from fsm import framer_ctrl, t_state
 
 ACTIVE_LOW = 0
 
-@block
+
 def convert_fsm(hdl):
 	sof = Signal(bool(0))
 	sync_flag = Signal(bool(0))

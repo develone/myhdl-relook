@@ -1,0 +1,17 @@
+testing AXI https://github.com/alexforencich/verilog-axi.git
+@alexforencich On Raspberry Pi 4 "sudo cp myhdl.vpi /usr/lib/arm-linux-gnueabihf/ivl/" 
+"git checkout test_axi_fifo.py" "python test_axi_fifo.py" no errors.  How do you use test_axi_fifo.vvp?
+./test_axi_fifo.vvp $from_myhdl() is not defined $to_myhdl() is not defined
+
+export VPI_MODULE_PATH=/usr/lib/arm-linux-gnueabihf/ivl/
+
+Icarus Verilog version 10.2 (stable) ()
+MyHDL 0.11
+cd06f0b7dc Oct 19,2020
+
+@alexforencich what is the purpose of vvp files.  Not every test creates a vvp file ie. python test_axi.py. 
+These are a few tests that create vvp files (test_axi_dp_ram.vvp, test_axi_fifo.vvp, test_axi_register.vvp). 
+My iverilog is 10.2 and MyHDL 0.11.
+
+gtkwave test_axi_register.lxt instead of vcd.
+@alexforencich I was expecting a vcd file, my mistake. Your tests create lxt files.

@@ -1,0 +1,881 @@
+
+ /----------------------------------------------------------------------------\
+ |                                                                            |
+ |  yosys -- Yosys Open SYnthesis Suite                                       |
+ |                                                                            |
+ |  Copyright (C) 2012 - 2019  Clifford Wolf <clifford@clifford.at>           |
+ |                                                                            |
+ |  Permission to use, copy, modify, and/or distribute this software for any  |
+ |  purpose with or without fee is hereby granted, provided that the above    |
+ |  copyright notice and this permission notice appear in all copies.         |
+ |                                                                            |
+ |  THE SOFTWARE IS PROVIDED "AS IS" AND THE AUTHOR DISCLAIMS ALL WARRANTIES  |
+ |  WITH REGARD TO THIS SOFTWARE INCLUDING ALL IMPLIED WARRANTIES OF          |
+ |  MERCHANTABILITY AND FITNESS. IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR   |
+ |  ANY SPECIAL, DIRECT, INDIRECT, OR CONSEQUENTIAL DAMAGES OR ANY DAMAGES    |
+ |  WHATSOEVER RESULTING FROM LOSS OF USE, DATA OR PROFITS, WHETHER IN AN     |
+ |  ACTION OF CONTRACT, NEGLIGENCE OR OTHER TORTIOUS ACTION, ARISING OUT OF   |
+ |  OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.            |
+ |                                                                            |
+ \----------------------------------------------------------------------------/
+
+ Yosys 0.9+1706 (git sha1 7cc9d487, clang 7.0.1-8+rpi3+deb10u2 -fPIC -Os)
+
+
+-- Parsing `lift_step.v' using frontend `verilog' --
+
+1. Executing Verilog-2005 frontend: lift_step.v
+Parsing Verilog input from `lift_step.v' to AST representation.
+Generating RTLIL representation for module `\lift_step'.
+Successfully finished Verilog frontend.
+
+-- Running command `synth_ice40 -blif lift_step.blif -json lift_step.json' --
+
+2. Executing SYNTH_ICE40 pass.
+
+2.1. Executing Verilog-2005 frontend: /usr/local/bin/../share/yosys/ice40/cells_sim.v
+Parsing Verilog input from `/usr/local/bin/../share/yosys/ice40/cells_sim.v' to AST representation.
+Generating RTLIL representation for module `\SB_IO'.
+Generating RTLIL representation for module `\SB_GB_IO'.
+Generating RTLIL representation for module `\SB_GB'.
+Generating RTLIL representation for module `\SB_LUT4'.
+Generating RTLIL representation for module `\SB_CARRY'.
+Generating RTLIL representation for module `\SB_DFF'.
+Generating RTLIL representation for module `\SB_DFFE'.
+Generating RTLIL representation for module `\SB_DFFSR'.
+Generating RTLIL representation for module `\SB_DFFR'.
+Generating RTLIL representation for module `\SB_DFFSS'.
+Generating RTLIL representation for module `\SB_DFFS'.
+Generating RTLIL representation for module `\SB_DFFESR'.
+Generating RTLIL representation for module `\SB_DFFER'.
+Generating RTLIL representation for module `\SB_DFFESS'.
+Generating RTLIL representation for module `\SB_DFFES'.
+Generating RTLIL representation for module `\SB_DFFN'.
+Generating RTLIL representation for module `\SB_DFFNE'.
+Generating RTLIL representation for module `\SB_DFFNSR'.
+Generating RTLIL representation for module `\SB_DFFNR'.
+Generating RTLIL representation for module `\SB_DFFNSS'.
+Generating RTLIL representation for module `\SB_DFFNS'.
+Generating RTLIL representation for module `\SB_DFFNESR'.
+Generating RTLIL representation for module `\SB_DFFNER'.
+Generating RTLIL representation for module `\SB_DFFNESS'.
+Generating RTLIL representation for module `\SB_DFFNES'.
+Generating RTLIL representation for module `\SB_RAM40_4K'.
+Generating RTLIL representation for module `\SB_RAM40_4KNR'.
+Generating RTLIL representation for module `\SB_RAM40_4KNW'.
+Generating RTLIL representation for module `\SB_RAM40_4KNRNW'.
+Generating RTLIL representation for module `\ICESTORM_LC'.
+Generating RTLIL representation for module `\SB_PLL40_CORE'.
+Generating RTLIL representation for module `\SB_PLL40_PAD'.
+Generating RTLIL representation for module `\SB_PLL40_2_PAD'.
+Generating RTLIL representation for module `\SB_PLL40_2F_CORE'.
+Generating RTLIL representation for module `\SB_PLL40_2F_PAD'.
+Generating RTLIL representation for module `\SB_WARMBOOT'.
+Generating RTLIL representation for module `\SB_SPRAM256KA'.
+Generating RTLIL representation for module `\SB_HFOSC'.
+Generating RTLIL representation for module `\SB_LFOSC'.
+Generating RTLIL representation for module `\SB_RGBA_DRV'.
+Generating RTLIL representation for module `\SB_LED_DRV_CUR'.
+Generating RTLIL representation for module `\SB_RGB_DRV'.
+Generating RTLIL representation for module `\SB_I2C'.
+Generating RTLIL representation for module `\SB_SPI'.
+Generating RTLIL representation for module `\SB_LEDDA_IP'.
+Generating RTLIL representation for module `\SB_FILTER_50NS'.
+Generating RTLIL representation for module `\SB_IO_I3C'.
+Generating RTLIL representation for module `\SB_IO_OD'.
+Generating RTLIL representation for module `\SB_MAC16'.
+Generating RTLIL representation for module `\ICESTORM_RAM'.
+Successfully finished Verilog frontend.
+
+2.2. Executing HIERARCHY pass (managing design hierarchy).
+
+2.2.1. Finding top of design hierarchy..
+root of   0 design levels: lift_step           
+Automatically selected lift_step as design top module.
+
+2.2.2. Analyzing design hierarchy..
+Top module:  \lift_step
+
+2.2.3. Analyzing design hierarchy..
+Top module:  \lift_step
+Removed 0 unused modules.
+
+2.3. Executing PROC pass (convert processes to netlists).
+
+2.3.1. Executing PROC_CLEAN pass (remove empty switches from decision trees).
+Cleaned up 0 empty switches.
+
+2.3.2. Executing PROC_RMDEAD pass (remove dead branches from decision trees).
+Marked 1 switch rules as full_case in process $proc$lift_step.v:34$1 in module lift_step.
+Removed a total of 0 dead cases.
+
+2.3.3. Executing PROC_PRUNE pass (remove redundant assignments in processes).
+Removed 1 redundant assignment.
+Promoted 0 assignments to connections.
+
+2.3.4. Executing PROC_INIT pass (extract init attributes).
+
+2.3.5. Executing PROC_ARST pass (detect async resets in processes).
+
+2.3.6. Executing PROC_MUX pass (convert decision trees to multiplexers).
+Creating decoders for process `\lift_step.$proc$lift_step.v:34$1'.
+     1/2: $0\update_o[0:0]
+     2/2: $0\res_o[15:0]
+
+2.3.7. Executing PROC_DLATCH pass (convert process syncs to latches).
+
+2.3.8. Executing PROC_DFF pass (convert process syncs to FFs).
+Creating register for signal `\lift_step.\res_o' using process `\lift_step.$proc$lift_step.v:34$1'.
+  created $dff cell `$procdff$158' with positive edge clock.
+Creating register for signal `\lift_step.\update_o' using process `\lift_step.$proc$lift_step.v:34$1'.
+  created $dff cell `$procdff$159' with positive edge clock.
+
+2.3.9. Executing PROC_CLEAN pass (remove empty switches from decision trees).
+Found and cleaned up 2 empty switches in `\lift_step.$proc$lift_step.v:34$1'.
+Removing empty process `lift_step.$proc$lift_step.v:34$1'.
+Cleaned up 2 empty switches.
+
+2.4. Executing FLATTEN pass (flatten design).
+No more expansions possible.
+
+2.5. Executing TRIBUF pass.
+
+2.6. Executing DEMINOUT pass (demote inout ports to input or output).
+
+2.7. Executing OPT_EXPR pass (perform const folding).
+Optimizing module lift_step.
+<suppressed ~7 debug messages>
+
+2.8. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \lift_step..
+Removed 0 unused cells and 11 unused wires.
+<suppressed ~1 debug messages>
+
+2.9. Executing CHECK pass (checking for obvious problems).
+checking module lift_step..
+found and reported 0 problems.
+
+2.10. Executing OPT pass (performing simple optimizations).
+
+2.10.1. Executing OPT_EXPR pass (perform const folding).
+Optimizing module lift_step.
+
+2.10.2. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\lift_step'.
+<suppressed ~9 debug messages>
+Removed a total of 3 cells.
+
+2.10.3. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module \lift_step..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Removed 0 multiplexer ports.
+<suppressed ~2 debug messages>
+
+2.10.4. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module \lift_step.
+Performed a total of 0 changes.
+
+2.10.5. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\lift_step'.
+Removed a total of 0 cells.
+
+2.10.6. Executing OPT_RMDFF pass (remove dff with constant values).
+
+2.10.7. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \lift_step..
+Removed 0 unused cells and 3 unused wires.
+<suppressed ~1 debug messages>
+
+2.10.8. Executing OPT_EXPR pass (perform const folding).
+Optimizing module lift_step.
+
+2.10.9. Finished OPT passes. (There is nothing left to do.)
+
+2.11. Executing WREDUCE pass (reducing word size of cells).
+Removed top 2 bits (of 16) from port A of cell lift_step.$add$lift_step.v:39$5 ($add).
+Removed top 2 bits (of 16) from port B of cell lift_step.$add$lift_step.v:39$5 ($add).
+Removed top 1 bits (of 16) from port Y of cell lift_step.$add$lift_step.v:39$5 ($add).
+Removed top 1 bits (of 16) from port A of cell lift_step.$sub$lift_step.v:39$6 ($sub).
+Removed top 1 bits (of 16) from port B of cell lift_step.$sub$lift_step.v:39$6 ($sub).
+Removed top 1 bits (of 16) from port A of cell lift_step.$add$lift_step.v:42$10 ($add).
+Removed top 1 bits (of 16) from port B of cell lift_step.$add$lift_step.v:42$10 ($add).
+Removed top 17 bits (of 32) from port A of cell lift_step.$add$lift_step.v:45$11 ($add).
+Removed top 17 bits (of 32) from port B of cell lift_step.$add$lift_step.v:45$11 ($add).
+Removed top 16 bits (of 32) from port Y of cell lift_step.$add$lift_step.v:45$11 ($add).
+Removed top 16 bits (of 32) from port A of cell lift_step.$add$lift_step.v:45$12 ($add).
+Removed top 29 bits (of 32) from port B of cell lift_step.$add$lift_step.v:45$12 ($add).
+Removed top 15 bits (of 32) from port Y of cell lift_step.$add$lift_step.v:45$12 ($add).
+Removed top 17 bits (of 32) from port A of cell lift_step.$add$lift_step.v:45$14 ($add).
+Removed top 17 bits (of 32) from port B of cell lift_step.$add$lift_step.v:45$14 ($add).
+Removed top 16 bits (of 32) from port Y of cell lift_step.$add$lift_step.v:45$14 ($add).
+Removed top 17 bits (of 32) from port A of cell lift_step.$sub$lift_step.v:48$18 ($sub).
+Removed top 17 bits (of 32) from port B of cell lift_step.$sub$lift_step.v:48$18 ($sub).
+Removed top 16 bits (of 32) from port Y of cell lift_step.$sub$lift_step.v:48$18 ($sub).
+Removed top 1 bits (of 4) from port B of cell lift_step.$procmux$152_CMP0 ($eq).
+Removed top 1 bits (of 4) from port B of cell lift_step.$procmux$153_CMP0 ($eq).
+Removed top 1 bits (of 4) from port B of cell lift_step.$procmux$154_CMP0 ($eq).
+Removed top 1 bits (of 4) from port B of cell lift_step.$procmux$155_CMP0 ($eq).
+Removed top 16 bits (of 32) from wire lift_step.$add$lift_step.v:45$14_Y.
+Removed top 16 bits (of 32) from wire lift_step.$sub$lift_step.v:48$18_Y.
+
+2.12. Executing PEEPOPT pass (run peephole optimizers).
+
+2.13. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \lift_step..
+Removed 0 unused cells and 2 unused wires.
+<suppressed ~1 debug messages>
+
+2.14. Executing SHARE pass (SAT-based resource sharing).
+
+2.15. Executing TECHMAP pass (map to technology primitives).
+
+2.15.1. Executing Verilog-2005 frontend: /usr/local/bin/../share/yosys/cmp2lut.v
+Parsing Verilog input from `/usr/local/bin/../share/yosys/cmp2lut.v' to AST representation.
+Generating RTLIL representation for module `\_90_lut_cmp_'.
+Successfully finished Verilog frontend.
+
+2.15.2. Continuing TECHMAP pass.
+No more expansions possible.
+
+2.16. Executing OPT_EXPR pass (perform const folding).
+Optimizing module lift_step.
+
+2.17. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \lift_step..
+
+2.18. Executing ALUMACC pass (create $alu and $macc cells).
+Extracting $alu and $macc cells in module lift_step:
+  creating $macc model for $add$lift_step.v:39$5 ($add).
+  creating $macc model for $add$lift_step.v:42$10 ($add).
+  creating $macc model for $add$lift_step.v:45$11 ($add).
+  creating $macc model for $add$lift_step.v:45$12 ($add).
+  creating $macc model for $add$lift_step.v:45$14 ($add).
+  creating $macc model for $sub$lift_step.v:39$6 ($sub).
+  creating $macc model for $sub$lift_step.v:48$18 ($sub).
+  merging $macc model for $add$lift_step.v:45$11 into $add$lift_step.v:45$12.
+  creating $alu model for $macc $sub$lift_step.v:39$6.
+  creating $alu model for $macc $add$lift_step.v:45$14.
+  creating $alu model for $macc $sub$lift_step.v:48$18.
+  creating $alu model for $macc $add$lift_step.v:42$10.
+  creating $alu model for $macc $add$lift_step.v:39$5.
+  creating $macc cell for $add$lift_step.v:45$12: $auto$alumacc.cc:365:replace_macc$162
+  creating $alu cell for $add$lift_step.v:39$5: $auto$alumacc.cc:485:replace_alu$163
+  creating $alu cell for $sub$lift_step.v:48$18: $auto$alumacc.cc:485:replace_alu$166
+  creating $alu cell for $add$lift_step.v:45$14: $auto$alumacc.cc:485:replace_alu$169
+  creating $alu cell for $add$lift_step.v:42$10: $auto$alumacc.cc:485:replace_alu$172
+  creating $alu cell for $sub$lift_step.v:39$6: $auto$alumacc.cc:485:replace_alu$175
+  created 5 $alu and 1 $macc cells.
+
+2.19. Executing OPT pass (performing simple optimizations).
+
+2.19.1. Executing OPT_EXPR pass (perform const folding).
+Optimizing module lift_step.
+
+2.19.2. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\lift_step'.
+Removed a total of 0 cells.
+
+2.19.3. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module \lift_step..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Removed 0 multiplexer ports.
+<suppressed ~2 debug messages>
+
+2.19.4. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module \lift_step.
+Performed a total of 0 changes.
+
+2.19.5. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\lift_step'.
+Removed a total of 0 cells.
+
+2.19.6. Executing OPT_RMDFF pass (remove dff with constant values).
+
+2.19.7. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \lift_step..
+Removed 1 unused cells and 1 unused wires.
+<suppressed ~2 debug messages>
+
+2.19.8. Executing OPT_EXPR pass (perform const folding).
+Optimizing module lift_step.
+
+2.19.9. Rerunning OPT passes. (Maybe there is more to do..)
+
+2.19.10. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module \lift_step..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Removed 0 multiplexer ports.
+<suppressed ~2 debug messages>
+
+2.19.11. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module \lift_step.
+Performed a total of 0 changes.
+
+2.19.12. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\lift_step'.
+Removed a total of 0 cells.
+
+2.19.13. Executing OPT_RMDFF pass (remove dff with constant values).
+
+2.19.14. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \lift_step..
+
+2.19.15. Executing OPT_EXPR pass (perform const folding).
+Optimizing module lift_step.
+
+2.19.16. Finished OPT passes. (There is nothing left to do.)
+
+2.20. Executing FSM pass (extract and optimize FSM).
+
+2.20.1. Executing FSM_DETECT pass (finding FSMs in design).
+
+2.20.2. Executing FSM_EXTRACT pass (extracting FSM from design).
+
+2.20.3. Executing FSM_OPT pass (simple optimizations of FSMs).
+
+2.20.4. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \lift_step..
+
+2.20.5. Executing FSM_OPT pass (simple optimizations of FSMs).
+
+2.20.6. Executing FSM_RECODE pass (re-assigning FSM state encoding).
+
+2.20.7. Executing FSM_INFO pass (dumping all available information on FSM cells).
+
+2.20.8. Executing FSM_MAP pass (mapping FSMs to basic logic).
+
+2.21. Executing OPT pass (performing simple optimizations).
+
+2.21.1. Executing OPT_EXPR pass (perform const folding).
+Optimizing module lift_step.
+
+2.21.2. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\lift_step'.
+Removed a total of 0 cells.
+
+2.21.3. Executing OPT_RMDFF pass (remove dff with constant values).
+
+2.21.4. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \lift_step..
+
+2.21.5. Finished fast OPT passes.
+
+2.22. Executing MEMORY pass.
+
+2.22.1. Executing OPT_MEM pass (optimize memories).
+Performed a total of 0 transformations.
+
+2.22.2. Executing MEMORY_DFF pass (merging $dff cells to $memrd and $memwr).
+
+2.22.3. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \lift_step..
+
+2.22.4. Executing MEMORY_SHARE pass (consolidating $memrd/$memwr cells).
+
+2.22.5. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \lift_step..
+
+2.22.6. Executing MEMORY_COLLECT pass (generating $mem cells).
+
+2.23. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \lift_step..
+
+2.24. Executing MEMORY_BRAM pass (mapping $mem cells to block memories).
+
+2.25. Executing TECHMAP pass (map to technology primitives).
+
+2.25.1. Executing Verilog-2005 frontend: /usr/local/bin/../share/yosys/ice40/brams_map.v
+Parsing Verilog input from `/usr/local/bin/../share/yosys/ice40/brams_map.v' to AST representation.
+Generating RTLIL representation for module `\$__ICE40_RAM4K'.
+Generating RTLIL representation for module `\$__ICE40_RAM4K_M0'.
+Generating RTLIL representation for module `\$__ICE40_RAM4K_M123'.
+Successfully finished Verilog frontend.
+
+2.25.2. Continuing TECHMAP pass.
+No more expansions possible.
+
+2.26. Executing ICE40_BRAMINIT pass.
+
+2.27. Executing OPT pass (performing simple optimizations).
+
+2.27.1. Executing OPT_EXPR pass (perform const folding).
+Optimizing module lift_step.
+
+2.27.2. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\lift_step'.
+Removed a total of 0 cells.
+
+2.27.3. Executing OPT_RMDFF pass (remove dff with constant values).
+
+2.27.4. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \lift_step..
+
+2.27.5. Finished fast OPT passes.
+
+2.28. Executing MEMORY_MAP pass (converting $mem cells to logic and flip-flops).
+
+2.29. Executing OPT pass (performing simple optimizations).
+
+2.29.1. Executing OPT_EXPR pass (perform const folding).
+Optimizing module lift_step.
+
+2.29.2. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\lift_step'.
+Removed a total of 0 cells.
+
+2.29.3. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module \lift_step..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Removed 0 multiplexer ports.
+<suppressed ~2 debug messages>
+
+2.29.4. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module \lift_step.
+Performed a total of 0 changes.
+
+2.29.5. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\lift_step'.
+Removed a total of 0 cells.
+
+2.29.6. Executing OPT_RMDFF pass (remove dff with constant values).
+
+2.29.7. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \lift_step..
+
+2.29.8. Executing OPT_EXPR pass (perform const folding).
+Optimizing module lift_step.
+
+2.29.9. Finished OPT passes. (There is nothing left to do.)
+
+2.30. Executing ICE40_WRAPCARRY pass (wrap carries).
+
+2.31. Executing TECHMAP pass (map to technology primitives).
+
+2.31.1. Executing Verilog-2005 frontend: /usr/local/bin/../share/yosys/techmap.v
+Parsing Verilog input from `/usr/local/bin/../share/yosys/techmap.v' to AST representation.
+Generating RTLIL representation for module `\_90_simplemap_bool_ops'.
+Generating RTLIL representation for module `\_90_simplemap_reduce_ops'.
+Generating RTLIL representation for module `\_90_simplemap_logic_ops'.
+Generating RTLIL representation for module `\_90_simplemap_compare_ops'.
+Generating RTLIL representation for module `\_90_simplemap_various'.
+Generating RTLIL representation for module `\_90_simplemap_registers'.
+Generating RTLIL representation for module `\_90_shift_ops_shr_shl_sshl_sshr'.
+Generating RTLIL representation for module `\_90_shift_shiftx'.
+Generating RTLIL representation for module `\_90_fa'.
+Generating RTLIL representation for module `\_90_lcu'.
+Generating RTLIL representation for module `\_90_alu'.
+Generating RTLIL representation for module `\_90_macc'.
+Generating RTLIL representation for module `\_90_alumacc'.
+Generating RTLIL representation for module `\$__div_mod_u'.
+Generating RTLIL representation for module `\$__div_mod'.
+Generating RTLIL representation for module `\_90_div'.
+Generating RTLIL representation for module `\_90_mod'.
+Generating RTLIL representation for module `\_90_pow'.
+Generating RTLIL representation for module `\_90_pmux'.
+Generating RTLIL representation for module `\_90_lut'.
+Successfully finished Verilog frontend.
+
+2.31.2. Executing Verilog-2005 frontend: /usr/local/bin/../share/yosys/ice40/arith_map.v
+Parsing Verilog input from `/usr/local/bin/../share/yosys/ice40/arith_map.v' to AST representation.
+Generating RTLIL representation for module `\_80_ice40_alu'.
+Successfully finished Verilog frontend.
+
+2.31.3. Continuing TECHMAP pass.
+Using template $paramod\_80_ice40_alu\A_SIGNED=1\B_SIGNED=1\A_WIDTH=15\B_WIDTH=15\Y_WIDTH=16 for cells of type $alu.
+Using template $paramod\_80_ice40_alu\A_SIGNED=1\B_SIGNED=1\A_WIDTH=14\B_WIDTH=14\Y_WIDTH=15 for cells of type $alu.
+Using extmapper maccmap for cells of type $macc.
+  add \left_i (15 bits, signed)
+  add \right_i (15 bits, signed)
+  add 17'00000000000000010 (17 bits, unsigned)
+Using extmapper simplemap for cells of type $mux.
+Using extmapper simplemap for cells of type $eq.
+Using template $paramod\_90_pmux\WIDTH=16\S_WIDTH=4 for cells of type $pmux.
+Using extmapper simplemap for cells of type $dff.
+Using extmapper simplemap for cells of type $xor.
+Using extmapper simplemap for cells of type $not.
+Using extmapper simplemap for cells of type $pos.
+Using template $paramod\_90_fa\WIDTH=17 for cells of type $fa.
+Using template $paramod\_80_ice40_alu\A_SIGNED=0\B_SIGNED=0\A_WIDTH=17\B_WIDTH=17\Y_WIDTH=17 for cells of type $alu.
+Using extmapper simplemap for cells of type $reduce_or.
+Using extmapper simplemap for cells of type $and.
+Using extmapper simplemap for cells of type $or.
+No more expansions possible.
+<suppressed ~155 debug messages>
+
+2.32. Executing OPT pass (performing simple optimizations).
+
+2.32.1. Executing OPT_EXPR pass (perform const folding).
+Optimizing module lift_step.
+<suppressed ~155 debug messages>
+
+2.32.2. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\lift_step'.
+<suppressed ~201 debug messages>
+Removed a total of 67 cells.
+
+2.32.3. Executing OPT_RMDFF pass (remove dff with constant values).
+
+2.32.4. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \lift_step..
+Removed 105 unused cells and 168 unused wires.
+<suppressed ~106 debug messages>
+
+2.32.5. Finished fast OPT passes.
+
+2.33. Executing ICE40_OPT pass (performing simple optimizations).
+
+2.33.1. Running ICE40 specific optimizations.
+Optimized $__ICE40_CARRY_WRAPPER cell back to logic (without SB_CARRY) lift_step.$auto$maccmap.cc:240:synth$237.slice[0].carry: CO=1'0
+
+2.33.2. Executing OPT_EXPR pass (perform const folding).
+Optimizing module lift_step.
+
+2.33.3. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\lift_step'.
+Removed a total of 0 cells.
+
+2.33.4. Executing OPT_RMDFF pass (remove dff with constant values).
+
+2.33.5. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \lift_step..
+Removed 2 unused cells and 0 unused wires.
+<suppressed ~2 debug messages>
+
+2.33.6. Rerunning OPT passes. (Removed registers in this run.)
+
+2.33.7. Running ICE40 specific optimizations.
+
+2.33.8. Executing OPT_EXPR pass (perform const folding).
+Optimizing module lift_step.
+
+2.33.9. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\lift_step'.
+Removed a total of 0 cells.
+
+2.33.10. Executing OPT_RMDFF pass (remove dff with constant values).
+
+2.33.11. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \lift_step..
+
+2.33.12. Finished OPT passes. (There is nothing left to do.)
+
+2.34. Executing DFFSR2DFF pass (mapping DFFSR cells to simpler FFs).
+
+2.35. Executing DFF2DFFE pass (transform $dff to $dffe where applicable).
+Selected cell types for direct conversion:
+  $_DFF_PP1_ -> $__DFFE_PP1
+  $_DFF_PP0_ -> $__DFFE_PP0
+  $_DFF_PN1_ -> $__DFFE_PN1
+  $_DFF_PN0_ -> $__DFFE_PN0
+  $_DFF_NP1_ -> $__DFFE_NP1
+  $_DFF_NP0_ -> $__DFFE_NP0
+  $_DFF_NN1_ -> $__DFFE_NN1
+  $_DFF_NN0_ -> $__DFFE_NN0
+  $_DFF_N_ -> $_DFFE_NP_
+  $_DFF_P_ -> $_DFFE_PP_
+Transforming FF to FF+Enable cells in module lift_step:
+  converting $_DFF_P_ cell $auto$simplemap.cc:420:simplemap_dff$340 to $_DFFE_PP_ for $0\res_o[15:0] [0] -> \res_o [0].
+  converting $_DFF_P_ cell $auto$simplemap.cc:420:simplemap_dff$341 to $_DFFE_PP_ for $0\res_o[15:0] [1] -> \res_o [1].
+  converting $_DFF_P_ cell $auto$simplemap.cc:420:simplemap_dff$342 to $_DFFE_PP_ for $0\res_o[15:0] [2] -> \res_o [2].
+  converting $_DFF_P_ cell $auto$simplemap.cc:420:simplemap_dff$343 to $_DFFE_PP_ for $0\res_o[15:0] [3] -> \res_o [3].
+  converting $_DFF_P_ cell $auto$simplemap.cc:420:simplemap_dff$344 to $_DFFE_PP_ for $0\res_o[15:0] [4] -> \res_o [4].
+  converting $_DFF_P_ cell $auto$simplemap.cc:420:simplemap_dff$345 to $_DFFE_PP_ for $0\res_o[15:0] [5] -> \res_o [5].
+  converting $_DFF_P_ cell $auto$simplemap.cc:420:simplemap_dff$346 to $_DFFE_PP_ for $0\res_o[15:0] [6] -> \res_o [6].
+  converting $_DFF_P_ cell $auto$simplemap.cc:420:simplemap_dff$347 to $_DFFE_PP_ for $0\res_o[15:0] [7] -> \res_o [7].
+  converting $_DFF_P_ cell $auto$simplemap.cc:420:simplemap_dff$348 to $_DFFE_PP_ for $0\res_o[15:0] [8] -> \res_o [8].
+  converting $_DFF_P_ cell $auto$simplemap.cc:420:simplemap_dff$349 to $_DFFE_PP_ for $0\res_o[15:0] [9] -> \res_o [9].
+  converting $_DFF_P_ cell $auto$simplemap.cc:420:simplemap_dff$350 to $_DFFE_PP_ for $0\res_o[15:0] [10] -> \res_o [10].
+  converting $_DFF_P_ cell $auto$simplemap.cc:420:simplemap_dff$351 to $_DFFE_PP_ for $0\res_o[15:0] [11] -> \res_o [11].
+  converting $_DFF_P_ cell $auto$simplemap.cc:420:simplemap_dff$352 to $_DFFE_PP_ for $0\res_o[15:0] [12] -> \res_o [12].
+  converting $_DFF_P_ cell $auto$simplemap.cc:420:simplemap_dff$353 to $_DFFE_PP_ for $0\res_o[15:0] [13] -> \res_o [13].
+  converting $_DFF_P_ cell $auto$simplemap.cc:420:simplemap_dff$354 to $_DFFE_PP_ for $0\res_o[15:0] [14] -> \res_o [14].
+  converting $_DFF_P_ cell $auto$simplemap.cc:420:simplemap_dff$355 to $_DFFE_PP_ for $0\res_o[15:0] [15] -> \res_o [15].
+
+2.36. Executing TECHMAP pass (map to technology primitives).
+
+2.36.1. Executing Verilog-2005 frontend: /usr/local/bin/../share/yosys/ice40/cells_map.v
+Parsing Verilog input from `/usr/local/bin/../share/yosys/ice40/cells_map.v' to AST representation.
+Generating RTLIL representation for module `\$_DFF_N_'.
+Generating RTLIL representation for module `\$_DFF_P_'.
+Generating RTLIL representation for module `\$_DFFE_NN_'.
+Generating RTLIL representation for module `\$_DFFE_PN_'.
+Generating RTLIL representation for module `\$_DFFE_NP_'.
+Generating RTLIL representation for module `\$_DFFE_PP_'.
+Generating RTLIL representation for module `\$_DFF_NN0_'.
+Generating RTLIL representation for module `\$_DFF_NN1_'.
+Generating RTLIL representation for module `\$_DFF_PN0_'.
+Generating RTLIL representation for module `\$_DFF_PN1_'.
+Generating RTLIL representation for module `\$_DFF_NP0_'.
+Generating RTLIL representation for module `\$_DFF_NP1_'.
+Generating RTLIL representation for module `\$_DFF_PP0_'.
+Generating RTLIL representation for module `\$_DFF_PP1_'.
+Generating RTLIL representation for module `\$__DFFE_NN0'.
+Generating RTLIL representation for module `\$__DFFE_NN1'.
+Generating RTLIL representation for module `\$__DFFE_PN0'.
+Generating RTLIL representation for module `\$__DFFE_PN1'.
+Generating RTLIL representation for module `\$__DFFE_NP0'.
+Generating RTLIL representation for module `\$__DFFE_NP1'.
+Generating RTLIL representation for module `\$__DFFE_PP0'.
+Generating RTLIL representation for module `\$__DFFE_PP1'.
+Successfully finished Verilog frontend.
+
+2.36.2. Continuing TECHMAP pass.
+Using template \$_DFFE_PP_ for cells of type $_DFFE_PP_.
+Using template \$_DFF_P_ for cells of type $_DFF_P_.
+No more expansions possible.
+<suppressed ~17 debug messages>
+
+2.37. Executing OPT_EXPR pass (perform const folding).
+Optimizing module lift_step.
+<suppressed ~64 debug messages>
+
+2.38. Executing SIMPLEMAP pass (map simple cells to gate primitives).
+
+2.39. Executing ICE40_FFINIT pass (implement FF init values).
+Handling FF init values in lift_step.
+
+2.40. Executing ICE40_FFSSR pass (merge synchronous set/reset into FF cells).
+Merging set/reset $_MUX_ cells into SB_FFs in lift_step.
+
+2.41. Executing ICE40_OPT pass (performing simple optimizations).
+
+2.41.1. Running ICE40 specific optimizations.
+
+2.41.2. Executing OPT_EXPR pass (perform const folding).
+Optimizing module lift_step.
+
+2.41.3. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\lift_step'.
+<suppressed ~135 debug messages>
+Removed a total of 45 cells.
+
+2.41.4. Executing OPT_RMDFF pass (remove dff with constant values).
+
+2.41.5. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \lift_step..
+Removed 0 unused cells and 179 unused wires.
+<suppressed ~1 debug messages>
+
+2.41.6. Rerunning OPT passes. (Removed registers in this run.)
+
+2.41.7. Running ICE40 specific optimizations.
+
+2.41.8. Executing OPT_EXPR pass (perform const folding).
+Optimizing module lift_step.
+
+2.41.9. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\lift_step'.
+Removed a total of 0 cells.
+
+2.41.10. Executing OPT_RMDFF pass (remove dff with constant values).
+
+2.41.11. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \lift_step..
+
+2.41.12. Finished OPT passes. (There is nothing left to do.)
+
+2.42. Executing TECHMAP pass (map to technology primitives).
+
+2.42.1. Executing Verilog-2005 frontend: /usr/local/bin/../share/yosys/ice40/latches_map.v
+Parsing Verilog input from `/usr/local/bin/../share/yosys/ice40/latches_map.v' to AST representation.
+Generating RTLIL representation for module `\$_DLATCH_N_'.
+Generating RTLIL representation for module `\$_DLATCH_P_'.
+Successfully finished Verilog frontend.
+
+2.42.2. Continuing TECHMAP pass.
+No more expansions possible.
+
+2.43. Executing ABC pass (technology mapping using ABC).
+
+2.43.1. Extracting gate netlist of module `\lift_step' to `<abc-temp-dir>/input.blif'..
+Extracted 196 gates and 326 wires to a netlist network with 129 inputs and 77 outputs.
+
+2.43.1.1. Executing ABC.
+Running ABC command: <yosys-exe-dir>/yosys-abc -s -f <abc-temp-dir>/abc.script 2>&1
+ABC: ABC command line: "source <abc-temp-dir>/abc.script".
+ABC: 
+ABC: + read_blif <abc-temp-dir>/input.blif 
+ABC: + read_lut <abc-temp-dir>/lutdefs.txt 
+ABC: + strash 
+ABC: + ifraig 
+ABC: + scorr 
+ABC: Warning: The network is combinational (run "fraig" or "fraig_sweep").
+ABC: + dc2 
+ABC: + dretime 
+ABC: + strash 
+ABC: + dch -f 
+ABC: + if 
+ABC: + mfs2 
+ABC: + lutpack -S 1 
+ABC: + dress 
+ABC: Total number of equiv classes                =     102.
+ABC: Participating nodes from both networks       =     208.
+ABC: Participating nodes from the first network   =     101. (  88.60 % of nodes)
+ABC: Participating nodes from the second network  =     107. (  93.86 % of nodes)
+ABC: Node pairs (any polarity)                    =     101. (  88.60 % of names can be moved)
+ABC: Node pairs (same polarity)                   =      81. (  71.05 % of names can be moved)
+ABC: Total runtime =     0.01 sec
+ABC: + write_blif <abc-temp-dir>/output.blif 
+
+2.43.1.2. Re-integrating ABC results.
+ABC RESULTS:              $lut cells:      113
+ABC RESULTS:        internal signals:      120
+ABC RESULTS:           input signals:      129
+ABC RESULTS:          output signals:       77
+Removing temp directory.
+
+2.44. Executing ICE40_WRAPCARRY pass (wrap carries).
+
+2.45. Executing TECHMAP pass (map to technology primitives).
+
+2.45.1. Executing Verilog-2005 frontend: /usr/local/bin/../share/yosys/ice40/cells_map.v
+Parsing Verilog input from `/usr/local/bin/../share/yosys/ice40/cells_map.v' to AST representation.
+Generating RTLIL representation for module `\$_DFF_N_'.
+Generating RTLIL representation for module `\$_DFF_P_'.
+Generating RTLIL representation for module `\$_DFFE_NN_'.
+Generating RTLIL representation for module `\$_DFFE_PN_'.
+Generating RTLIL representation for module `\$_DFFE_NP_'.
+Generating RTLIL representation for module `\$_DFFE_PP_'.
+Generating RTLIL representation for module `\$_DFF_NN0_'.
+Generating RTLIL representation for module `\$_DFF_NN1_'.
+Generating RTLIL representation for module `\$_DFF_PN0_'.
+Generating RTLIL representation for module `\$_DFF_PN1_'.
+Generating RTLIL representation for module `\$_DFF_NP0_'.
+Generating RTLIL representation for module `\$_DFF_NP1_'.
+Generating RTLIL representation for module `\$_DFF_PP0_'.
+Generating RTLIL representation for module `\$_DFF_PP1_'.
+Generating RTLIL representation for module `\$__DFFE_NN0'.
+Generating RTLIL representation for module `\$__DFFE_NN1'.
+Generating RTLIL representation for module `\$__DFFE_PN0'.
+Generating RTLIL representation for module `\$__DFFE_PN1'.
+Generating RTLIL representation for module `\$__DFFE_NP0'.
+Generating RTLIL representation for module `\$__DFFE_NP1'.
+Generating RTLIL representation for module `\$__DFFE_PP0'.
+Generating RTLIL representation for module `\$__DFFE_PP1'.
+Successfully finished Verilog frontend.
+
+2.45.2. Continuing TECHMAP pass.
+No more expansions possible.
+Removed 7 unused cells and 107 unused wires.
+
+2.46. Executing OPT_LUT pass (optimize LUTs).
+Discovering LUTs.
+Number of LUTs:      207
+  1-LUT               31
+  2-LUT               50
+  3-LUT               90
+  4-LUT               36
+
+Eliminating LUTs.
+Number of LUTs:      207
+  1-LUT               31
+  2-LUT               50
+  3-LUT               90
+  4-LUT               36
+
+Combining LUTs.
+Number of LUTs:      207
+  1-LUT               31
+  2-LUT               50
+  3-LUT               90
+  4-LUT               36
+
+Eliminated 0 LUTs.
+Combined 0 LUTs.
+<suppressed ~1090 debug messages>
+
+2.47. Executing TECHMAP pass (map to technology primitives).
+
+2.47.1. Executing Verilog-2005 frontend: /usr/local/bin/../share/yosys/ice40/cells_map.v
+Parsing Verilog input from `/usr/local/bin/../share/yosys/ice40/cells_map.v' to AST representation.
+Generating RTLIL representation for module `\$_DFF_N_'.
+Generating RTLIL representation for module `\$_DFF_P_'.
+Generating RTLIL representation for module `\$_DFFE_NN_'.
+Generating RTLIL representation for module `\$_DFFE_PN_'.
+Generating RTLIL representation for module `\$_DFFE_NP_'.
+Generating RTLIL representation for module `\$_DFFE_PP_'.
+Generating RTLIL representation for module `\$_DFF_NN0_'.
+Generating RTLIL representation for module `\$_DFF_NN1_'.
+Generating RTLIL representation for module `\$_DFF_PN0_'.
+Generating RTLIL representation for module `\$_DFF_PN1_'.
+Generating RTLIL representation for module `\$_DFF_NP0_'.
+Generating RTLIL representation for module `\$_DFF_NP1_'.
+Generating RTLIL representation for module `\$_DFF_PP0_'.
+Generating RTLIL representation for module `\$_DFF_PP1_'.
+Generating RTLIL representation for module `\$__DFFE_NN0'.
+Generating RTLIL representation for module `\$__DFFE_NN1'.
+Generating RTLIL representation for module `\$__DFFE_PN0'.
+Generating RTLIL representation for module `\$__DFFE_PN1'.
+Generating RTLIL representation for module `\$__DFFE_NP0'.
+Generating RTLIL representation for module `\$__DFFE_NP1'.
+Generating RTLIL representation for module `\$__DFFE_PP0'.
+Generating RTLIL representation for module `\$__DFFE_PP1'.
+Generating RTLIL representation for module `\$lut'.
+Successfully finished Verilog frontend.
+
+2.47.2. Continuing TECHMAP pass.
+Using template $paramod\$lut\WIDTH=4\LUT=16'0001000000000000 for cells of type $lut.
+Using template $paramod\$lut\WIDTH=4\LUT=16'0000000100000000 for cells of type $lut.
+Using template $paramod\$lut\WIDTH=4\LUT=16'0110100110010110 for cells of type $lut.
+Using template $paramod\$lut\WIDTH=2\LUT=4'1000 for cells of type $lut.
+Using template $paramod\$lut\WIDTH=2\LUT=4'0110 for cells of type $lut.
+Using template $paramod\$lut\WIDTH=1\LUT=2'01 for cells of type $lut.
+Using template $paramod\$lut\WIDTH=4\LUT=16'0000011101110111 for cells of type $lut.
+Using template $paramod\$lut\WIDTH=4\LUT=16'0100000000000000 for cells of type $lut.
+Using template $paramod\$lut\WIDTH=2\LUT=4'0111 for cells of type $lut.
+Using template $paramod\$lut\WIDTH=3\LUT=8'01000000 for cells of type $lut.
+Using template $paramod\$lut\WIDTH=2\LUT=4'1110 for cells of type $lut.
+Using template $paramod\$lut\WIDTH=2\LUT=4'1001 for cells of type $lut.
+No more expansions possible.
+<suppressed ~363 debug messages>
+Removed 0 unused cells and 414 unused wires.
+
+2.48. Executing AUTONAME pass.
+Renamed 2528 objects in module lift_step (20 iterations).
+<suppressed ~511 debug messages>
+
+2.49. Executing HIERARCHY pass (managing design hierarchy).
+
+2.49.1. Analyzing design hierarchy..
+Top module:  \lift_step
+
+2.49.2. Analyzing design hierarchy..
+Top module:  \lift_step
+Removed 0 unused modules.
+
+2.50. Printing statistics.
+
+=== lift_step ===
+
+   Number of wires:                206
+   Number of wire bits:            371
+   Number of public wires:         206
+   Number of public wire bits:     371
+   Number of memories:               0
+   Number of memory bits:            0
+   Number of processes:              0
+   Number of cells:                313
+     SB_CARRY                       89
+     SB_DFF                          1
+     SB_DFFE                        16
+     SB_LUT4                       207
+
+2.51. Executing CHECK pass (checking for obvious problems).
+checking module lift_step..
+found and reported 0 problems.
+
+2.52. Executing BLIF backend.
+
+2.53. Executing JSON backend.
+
+End of script. Logfile hash: 678829bced, CPU: user 1.57s system 0.14s, MEM: 35.19 MB peak
+Yosys 0.9+1706 (git sha1 7cc9d487, clang 7.0.1-8+rpi3+deb10u2 -fPIC -Os)
+Time spent: 31% 11x read_verilog (0 sec), 10% 17x opt_expr (0 sec), ...

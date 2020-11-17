@@ -1,0 +1,15 @@
+yosys -l simple.log -p 'synth_ice40 -blif lift_step.blif -json lift_step.json' lift_step.v
+=== lift_step ===
+
+   Number of wires:                206
+   Number of wire bits:            371
+   Number of public wires:         206
+   Number of public wire bits:     371
+   Number of memories:               0
+   Number of memory bits:            0
+   Number of processes:              0
+   Number of cells:                313
+     SB_CARRY                       89
+     SB_DFF                          1
+     SB_DFFE                        16
+     SB_LUT4                       207

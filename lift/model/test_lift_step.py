@@ -10,7 +10,7 @@ from odd_even_fsm import *
 #from pc_read import pc_read
 
 from PIL import Image
-W0 = 9
+W0 = 15
 im = Image.open("lena_256.png")
 pix = im.load()
 w, h = im.size

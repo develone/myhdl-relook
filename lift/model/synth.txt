@@ -1,0 +1,83 @@
+yosys -l simple.log -p 'synth_ice40 -blif lift_step.blif -json lift_step.json' lift_step.v
+=== lift_step ===
+
+   Number of wires:                206
+   Number of wire bits:            371
+   Number of public wires:         206
+   Number of public wire bits:     371
+   Number of memories:               0
+   Number of memory bits:            0
+   Number of processes:              0
+   Number of cells:                313
+     SB_CARRY                       89
+     SB_DFF                          1
+     SB_DFFE                        16
+     SB_LUT4                       207
+
+yosys -l simple.log -p 'synth_ice40 -blif ram.blif -json ram.json' ram.v
+=== ram ===
+
+   Number of wires:               3781
+   Number of wire bits:           7400
+   Number of public wires:        3781
+   Number of public wire bits:    7400
+   Number of memories:               0
+   Number of memory bits:            0
+   Number of processes:              0
+   Number of cells:               7375
+     SB_DFFE                      3840
+     SB_LUT4                      3535
+yosys -l simple.log -p 'synth_ice40 -blif Odd_Even_Fsm.blif -json Odd_Even_Fsm.json' Odd_Even_Fsm.v
+=== Odd_Even_Fsm ===
+
+   Number of wires:                241
+   Number of wire bits:            514
+   Number of public wires:         241
+   Number of public wire bits:     514
+   Number of memories:               0
+   Number of memory bits:            0
+   Number of processes:              0
+   Number of cells:                445
+     SB_CARRY                       58
+     SB_DFFE                        52
+     SB_DFFER                       59
+     SB_DFFES                        5
+     SB_DFFESR                       8
+     SB_DFFESS                       1
+     SB_DFFR                         1
+     SB_DFFS                         1
+     SB_LUT4                       260
+-                                                            $finish;
++                                                            //$finish;
+
+yosys -l simple.log -p 'synth_ice40 -blif fifo.blif -json fifo.json' fifo.v
+=== fifo ===
+
+   Number of wires:                 46
+   Number of wire bits:            133
+   Number of public wires:          46
+   Number of public wire bits:     133
+   Number of memories:               0
+   Number of memory bits:            0
+   Number of processes:              0
+   Number of cells:                 77
+     SB_CARRY                       21
+     SB_DFF                          2
+     SB_DFFE                         4
+     SB_DFFESR                       8
+     SB_DFFSR                        8
+     SB_LUT4                        33
+     SB_RAM40_4K                     1
+
+yosys -l simple.log -p 'synth_ice40 -blif signed2twoscomplement.blif -json signed2twoscomplement.json' signed2twoscomplement.v
+=== signed2twoscomplement ===
+
+   Number of wires:                  3
+   Number of wire bits:             32
+   Number of public wires:           3
+   Number of public wire bits:      32
+   Number of memories:               0
+   Number of memory bits:            0
+   Number of processes:              0
+   Number of cells:                 15
+     SB_DFF                         15

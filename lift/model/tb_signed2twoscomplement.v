@@ -1,8 +1,8 @@
 module tb_signed2twoscomplement;
 
 reg clk;
-reg [15:0] x;
-wire [14:0] z;
+reg [9:0] x;
+wire [8:0] z;
 
 initial begin
     $from_myhdl(

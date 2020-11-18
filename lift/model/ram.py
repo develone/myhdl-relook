@@ -1,6 +1,6 @@
 import myhdl
 from myhdl import *
-W0 = 15
+W0 = 9
 @block
 def ram(dout, din, addr, we, clk, depth=256):
     """  Ram model """
@@ -26,8 +26,8 @@ we = Signal(bool(0))
 clk = Signal(bool(0))
 
 def convert_ram(hdl):
-	ram_1 = ram(dout, din, addr, we, clk, depth=256)
+    ram_1 = ram(dout, din, addr, we, clk, depth=256)
 
-	ram_1.convert(hdl=hdl)
+    ram_1.convert(hdl=hdl)
 
 #convert_ram(hdl='Verilog')

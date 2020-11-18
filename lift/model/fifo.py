@@ -12,7 +12,7 @@ m = [m[i:i+im.size[0]] for i in range(0, len(m), im.size[0])]
 
 reset_dly_c = 10
 ASZ = 8
-DSZ = 15
+DSZ = 9
 NO = bool(0)
 YES = bool(1)
 
@@ -98,7 +98,7 @@ def testbench(clk, empty_r, full_r, enr_r, enw_r, dataout_r, datain_r):
         for j in range(1,255):
             k = 0
             if (full_r == 0):
-            	datain_r.next = m[j][k]
+                datain_r.next = m[j][k]
             print ("%d %d %d %d") % (now(), j, full_r, m[j][k])
             #print j, m[j][k]
             yield clk.posedge
@@ -125,7 +125,7 @@ def testbench(clk, empty_r, full_r, enr_r, enw_r, dataout_r, datain_r):
         for j in range(1,255):
             k = 0
             if (full_r == 0):
-            	datain_r.next = m[j][k]
+                datain_r.next = m[j][k]
             print ("%d %d %d %d") % (now(), j, full_r, m[j][k])
             #print j, m[j][k]
             yield clk.posedge
@@ -138,10 +138,10 @@ def testbench(clk, empty_r, full_r, enr_r, enw_r, dataout_r, datain_r):
 
 
 def convert_fifo(hdl):
-	fifo_1 = fifo(clk, empty_r, full_r, enr_r, enw_r, dataout_r, datain_r )
-	fifo_1.convert(hdl=hdl)
+    fifo_1 = fifo(clk, empty_r, full_r, enr_r, enw_r, dataout_r, datain_r )
+    fifo_1.convert(hdl=hdl)
 
-#convert_fifo(hdl='Verilog')
+convert_fifo(hdl='Verilog')
 #tb = testbench(clk, empty_r, full_r, enr_r, enw_r, dataout_r, datain_r)
 #tb.config_sim(trace=True)
 #tb.run_sim()

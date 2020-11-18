@@ -10,7 +10,6 @@ from fifo import fifo
 from rd_pc import pc_read
 
 from PIL import Image
-W0 = 15
 im = Image.open("lena_256.png")
 pix = im.load()
 w, h = im.size

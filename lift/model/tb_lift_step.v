@@ -1,12 +1,12 @@
 module tb_lift_step;
 
-reg [14:0] left_i;
-reg [14:0] sam_i;
-reg [14:0] right_i;
+reg [8:0] left_i;
+reg [8:0] sam_i;
+reg [8:0] right_i;
 reg [3:0] flgs_i;
 reg update_i;
 reg clk;
-wire [15:0] res_o;
+wire [9:0] res_o;
 wire update_o;
 
 initial begin

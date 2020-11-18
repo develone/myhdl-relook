@@ -354,7 +354,7 @@ always @(posedge clk, negedge rst_fsm) begin: ODD_EVEN_FSM_FSM
                                                             state <= 28'b0000000000100000000000000000;
                                                         end
                                                         default: begin
-                                                            $finish;
+                                                            //$finish;
                                                         end
                                                     endcase
                                                 end

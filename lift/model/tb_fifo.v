@@ -5,8 +5,8 @@ wire empty_r;
 wire full_r;
 reg enr_r;
 reg enw_r;
-wire [14:0] dataout_r;
-reg [14:0] datain_r;
+wire [8:0] dataout_r;
+reg [8:0] datain_r;
 
 initial begin
     $from_myhdl(

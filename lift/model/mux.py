@@ -1,6 +1,7 @@
 import myhdl
 from myhdl import *
-W0 = 15
+W0 = 9
+zfifo = Signal(intbv(0)[W0:])
 we = Signal(bool(0))
 we_in = Signal(bool(0))
 addr = Signal(intbv(0)[8:])
@@ -18,30 +19,30 @@ addr_sam = Signal(intbv(0)[8:])
 addr_rht = Signal(intbv(0)[8:])
 @block
 def mux_data(z, din, data_in, we_1, we, we_in,  addr, addr_in, muxsel_i, muxaddrsel, addr_left, addr_sam, addr_rht,zfifo ):
-	@always_comb
-	def muxLogic():
-		'''If  muxsel_i eq 0 ram  writing disabled to pc_read'''
-		din.next = z
-		we.next = we_1
-		if (muxaddrsel == 0):
-			addr.next = addr_left
-		elif (muxaddrsel == 1):
-			addr.next = addr_sam
-		else:
-			if (muxaddrsel == 2):
-				addr.next = addr_rht
-		 
-		if (muxsel_i == 1):
-			din.next = zfifo
-			we.next =  we_in
-			addr.next = addr_in
-			
-	return muxLogic	
+    @always_comb
+    def muxLogic():
+        '''If  muxsel_i eq 0 ram  writing disabled to pc_read'''
+        din.next = z
+        we.next = we_1
+        if (muxaddrsel == 0):
+            addr.next = addr_left
+        elif (muxaddrsel == 1):
+            addr.next = addr_sam
+        else:
+            if (muxaddrsel == 2):
+                addr.next = addr_rht
+         
+        if (muxsel_i == 1):
+            din.next = zfifo
+            we.next =  we_in
+            addr.next = addr_in
+            
+    return muxLogic 
 def convert_mux_data(hdl):
-	mux_data_1 = mux_data(z, din, data_in, we_1, we, we_in, addr, addr_in, muxsel_i, muxaddrsel, addr_left, addr_sam, addr_rht,zfifo)
+    mux_data_1 = mux_data(z, din, data_in, we_1, we, we_in, addr, addr_in, muxsel_i, muxaddrsel, addr_left, addr_sam, addr_rht,zfifo)
 
-	mux_data_1.convert(hdl=hdl)
+    mux_data_1.convert(hdl=hdl)
 
-#convert_mux_data(hdl='Verilog')
-	
+convert_mux_data(hdl='Verilog')
+    
  

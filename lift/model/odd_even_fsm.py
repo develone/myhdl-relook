@@ -364,7 +364,7 @@ def top_odd_even(state, clk, rst_fsm, addr_left, muxsel_i, addr_sam, addr_rht,
     instance_pc_out = fifo(clk, empty_ro, full_ro, enr_ro, enw_ro, dataout_ro, datain_ro)
     #instance_pd_read = pc_read(clk, data_in, toLift_Step, we_in, addr_in, muxsel_i, datactn_in, datactn, pc_data_in, pc_data_rdy ) 
     return instances()
-
+@block
 def testbench(state, clk, rst_fsm, addr_left, muxsel_i, addr_sam, addr_rht,
  muxaddrsel, we_1, dout, left_i, sam_i, right_i, do_first, x, z,xfifo,
  zfifo, flgs_i, update_i, res_o, update_o, end_of_col, empty_r, full_r,
@@ -493,9 +493,13 @@ def iverilogtest(state, clk, rst_fsm, addr_left, muxsel_i, addr_sam, addr_rht,
 
         return dut, stim
 def main():
-    #tb = testbench()
-    #tb.config_sim(trace=True)
-    #tb.run_sim()
+    tb = testbench(state, clk, rst_fsm, addr_left, muxsel_i, addr_sam, addr_rht,
+ muxaddrsel, we_1, dout, left_i, sam_i, right_i, do_first, x, z,xfifo,
+ zfifo, flgs_i, update_i, res_o, update_o, end_of_col, empty_r, full_r,
+ enr_r, enw_r, dataout_r, datain_r, empty_ro, full_ro, enr_ro, enw_ro,
+ dataout_ro, datain_ro, addr_in, del_ctn)
+    tb.config_sim(trace=True)
+    tb.run_sim()
     convert_Odd_Even_Fsm(hdl='Verilog')
 
     

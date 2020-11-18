@@ -1,5 +1,5 @@
 
-import myhdl
+import myhdl 
 from myhdl import *
  
 from PIL import Image
@@ -74,7 +74,9 @@ def fifo(clk, empty_r, full_r, enr_r, enw_r, dataout_r, datain_r ):
 
          
     return rtl
-def tb(clk, empty_r, full_r, enr_r, enw_r, dataout_r, datain_r):
+    
+@block
+def testbench(clk, empty_r, full_r, enr_r, enw_r, dataout_r, datain_r):
     instance_pc_in = fifo(clk, empty_r, full_r, enr_r, enw_r, dataout_r, datain_r)
     @always(delay(10))
     def clkgen():
@@ -133,14 +135,13 @@ def tb(clk, empty_r, full_r, enr_r, enw_r, dataout_r, datain_r):
             yield clk.posedge
         raise StopSimulation
     return instances()
-#tbfsm = traceSignals(tb,clk, empty_r, full_r, enr_r, enw_r, dataout_r, datain_r)
 
-#sim = Simulation(tbfsm)
-#sim.run()
 
-#toVHDL(fifo,clk, empty_r, full_r, enr_r, enw_r, dataout_r, datain_r)
 def convert_fifo(hdl):
 	fifo_1 = fifo(clk, empty_r, full_r, enr_r, enw_r, dataout_r, datain_r )
 	fifo_1.convert(hdl=hdl)
 
 #convert_fifo(hdl='Verilog')
+#tb = testbench(clk, empty_r, full_r, enr_r, enw_r, dataout_r, datain_r)
+#tb.config_sim(trace=True)
+#tb.run_sim()

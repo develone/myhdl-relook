@@ -39,9 +39,9 @@ g = [g[i:i+img.size[0]] for i in range(0, len(g), img.size[0])]
 b = [b[i:i+img.size[0]] for i in range(0, len(b), img.size[0])]
 print len(r[0]),len(r[1])
 import waveletsim_53 as dwt
-r = dwt.fwt97_2d(r, 1)
-g = dwt.fwt97_2d(g, 1)
-b = dwt.fwt97_2d(b, 1)
+r = dwt.fwt97_2d(r, 3)
+g = dwt.fwt97_2d(g, 3)
+b = dwt.fwt97_2d(b, 3)
 print len(r)
 
 print r[0][0]
@@ -66,13 +66,13 @@ for row in range(127):
         for col in range(127):
             pix[row,col] = rgb[col + row*128]
 
-img.show()
+#img.show()
 """this is after fwd dwt"""
 print "after fwd  dwt", pix[0,0], rgb[0]
 print "after fwd  dwt", pix[0,1], rgb[1]
 #print rgb
-#dwt.seq_to_img(rgb, pix)
-#img.show()
+#dwt.seq_to_img(rgb, pix1)
+img.show()
 #im.save("test1_256_fwt.png")
 #img.show()
 """

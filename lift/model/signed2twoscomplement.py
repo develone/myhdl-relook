@@ -39,8 +39,8 @@ def testbench(clk, x, z):
                 #print ("%d ") % (((2**W0)+z.signed()) + 1)
         raise StopSimulation
     return instances()
-
+#convert_signed2twoscomplement(hdl='Verilog')
 #tb = testbench(clk, x, z)
 #tb.config_sim(trace=True)
 #tb.run_sim()
-convert_signed2twoscomplement(hdl='Verilog')
+

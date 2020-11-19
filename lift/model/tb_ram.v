@@ -1,7 +1,7 @@
 module tb_ram;
 
-wire [14:0] dout;
-reg [14:0] din;
+wire [8:0] dout;
+reg [8:0] din;
 reg [7:0] addr;
 reg we;
 reg clk;

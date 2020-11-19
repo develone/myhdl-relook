@@ -33,4 +33,4 @@ def convert_lift_step(hdl):
     lift_step_1 = lift_step(left_i, sam_i, right_i, flgs_i, update_i, clk, res_o, update_o)
     lift_step_1.convert(hdl=hdl)
 
-convert_lift_step(hdl='Verilog')
+#convert_lift_step(hdl='Verilog')

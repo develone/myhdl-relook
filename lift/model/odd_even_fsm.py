@@ -497,9 +497,10 @@ def main():
  zfifo, flgs_i, update_i, res_o, update_o, end_of_col, empty_r, full_r,
  enr_r, enw_r, dataout_r, datain_r, empty_ro, full_ro, enr_ro, enw_ro,
  dataout_ro, datain_ro, addr_in, del_ctn)
+    #convert_Odd_Even_Fsm(hdl='Verilog')
     tb.config_sim(trace=True)
     tb.run_sim()
-    convert_Odd_Even_Fsm(hdl='Verilog')
+    
 
     
 

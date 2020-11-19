@@ -43,6 +43,6 @@ def convert_mux_data(hdl):
 
     mux_data_1.convert(hdl=hdl)
 
-convert_mux_data(hdl='Verilog')
+#convert_mux_data(hdl='Verilog')
     
  

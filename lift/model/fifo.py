@@ -59,7 +59,7 @@ def fifo(clk, empty_r, full_r, enr_r, enw_r, dataout_r, datain_r ):
                 readptr.next = readptr + 1
         if (enw_r == YES):
             mem[int(writeptr)].next = datain_r
-            if (writeptr <=254):
+            if (writeptr <= (2**ASZ-1)):
                 writeptr.next = writeptr + 1
         if  (readptr == (2**ASZ-1)):
             readptr.next = 0

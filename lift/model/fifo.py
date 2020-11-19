@@ -142,7 +142,7 @@ def convert_fifo(hdl):
     fifo_1 = fifo(clk, empty_r, full_r, enr_r, enw_r, dataout_r, datain_r )
     fifo_1.convert(hdl=hdl)
 
-convert_fifo(hdl='Verilog')
+#convert_fifo(hdl='Verilog')
 #tb = testbench(clk, empty_r, full_r, enr_r, enw_r, dataout_r, datain_r)
 #tb.config_sim(trace=True)
 #tb.run_sim()

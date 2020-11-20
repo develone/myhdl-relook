@@ -76,7 +76,7 @@ state = Signal(t_State.INIT)
 
 reset_dly_c = 10
 ASZ = 8
-DSZ = 15
+DSZ = W0
 NO = bool(0)
 YES = bool(1)
 

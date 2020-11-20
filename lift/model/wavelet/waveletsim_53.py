@@ -170,12 +170,7 @@ def iwt97(s, width, height):
     return s
 
 
-def seq_to_img(m, pix):
-    ''' Copy matrix m to pixel buffer pix.
-    Assumes m has the same number of rows and cols as pix. '''
-    for row in range(len(m)):
-        for col in range(len(m[row])):
-            pix[col,row] = m[row][col]
+
 
 
 if __name__ == "__main__":
@@ -200,12 +195,12 @@ if __name__ == "__main__":
     # Perform a forward CDF 9/7 transform on the image:
     m = fwt97_2d(m, 1)
 
-    seq_to_img(m, pix) # Convert the list of lists matrix to an image.
+    #seq_to_img(m, pix) # Convert the list of lists matrix to an image.
     im.save("lena_256_fwt.png") # Save the transformed image.
 
     # Perform an inverse transform:
     m = iwt97_2d(m, 1)
 
-    seq_to_img(m, pix) # Convert the inverse list of lists matrix to an image.
+    #seq_to_img(m, pix) # Convert the inverse list of lists matrix to an image.
     im.save("lena_256_iwt.png") # Save the inverse transformation.
 

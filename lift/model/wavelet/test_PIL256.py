@@ -6,7 +6,7 @@ print "img", type(img), "pix", type(pix)
 img1 = Image.open("../lena_256.png")
 pix1 = img1.load()
 print "small256.png", img.size, "lena_256.png", img1.size
-w,h = img.size
+w,h = img1.size
 
 w1,h1 = img1.size
 #print "small256.png",  w,h, "lena_256.png", w1,h1
@@ -73,7 +73,7 @@ print "after fwd  dwt", pix[0,1], rgb[1]
 #print rgb
 #dwt.seq_to_img(rgb, pix1)
 img.show()
-#im.save("test1_256_fwt.png")
+img.save("test1_256_fwt.png")
 #img.show()
 """
 print len(rgb[0]), len(rgb[1]),len(m[0]), len(m[1])

@@ -131,14 +131,15 @@ void	singlelift(int rb, int w, int * const ibuf, int * const obuf) {
 			*op = ap; //op[0] is obuf[col][row]
 			printf("HP filter ** cp = %d b = %d d = %d ap = %d ip = 0x%x op = 0x%x opb = 0x%x row = %d col = %d\n",cp,b,d,ap,ip,op,opb,row,col); 
 			//LP filter in fwd dwt
-			*opb = b+((ap+cp+2)>>2);
-			printf("LP filter ** opb = %d \n",opb[0]);
-			printf("LP filter ** cp = %d b = %d d = %d ap = %d * opb = %d ip = 0x%x op = 0x%x opb = 0x%x row = %d col = %d\n",cp,b,d,ap, *opb, ip,op,opb,row,col);
 			s = b;  //1
 		    l = ap;  //0
 		    r = cp; //2
-		    ss = s + (l + r + 2)>>2;
+		    ss = s + ((l + r + 2)>>2);
 		    printf("LP filter **** l = %d s = %d r = %d ss = %d \n", l,s,r,ss);
+			*opb = b+((ap+cp+2)>>2);
+			printf("LP filter * opb = %d \n",opb[0]);
+			printf("LP filter ** cp = %d b = %d d = %d ap = %d * opb = %d ip = 0x%x op = 0x%x opb = 0x%x row = %d col = %d\n",cp,b,d,ap, *opb, ip,op,opb,row,col);
+			
 		    //printf("6 ss = %d l = %d r = %d \n",ss,l,r);
 
 			ip+=2;	// = ibuf + (row*rb)+2*col

@@ -48,11 +48,12 @@
  *s = cp sample 2
  *r = d  sample 3  
  * HP filter ** lifting
- * HP filter *** lift
- *LP filter * lifting 
- *l = ap  sample 1
- *s = b sample 2
- *r = cp  sample 3
+ * HP filter *** lift 7
+ *LP filter * lifting
+ * LP filter * lift 6 
+ *l = ap  sample 0
+ *s = b sample 1
+ *r = cp  sample 2
  */
 void	singlelift(int rb, int w, int * const ibuf, int * const obuf) {
 	int	col, row;
@@ -124,20 +125,20 @@ void	singlelift(int rb, int w, int * const ibuf, int * const obuf) {
 			s = cp;
 			r = d;
 			ss = s - ((l>>1) + (r>>1));
-			printf("HP filter **** l = %d s = %d r = %d ss = %d \n", l,s,r,ss); 			
+			printf("HP filter *** l = %d s = %d r = %d ss = %d \n", l,s,r,ss); 			
 			cp  = (cp-((b+d)>>1)); //op[0] is obuf[col][row]
  
 			*op = ap; //op[0] is obuf[col][row]
 			printf("HP filter ** cp = %d b = %d d = %d ap = %d ip = 0x%x op = 0x%x opb = 0x%x row = %d col = %d\n",cp,b,d,ap,ip,op,opb,row,col); 
 			//LP filter in fwd dwt
 			*opb = b+((ap+cp+2)>>2);
-			printf("LP filter * opb = %d \n",opb[0]);
+			printf("LP filter ** opb = %d \n",opb[0]);
 			printf("LP filter ** cp = %d b = %d d = %d ap = %d * opb = %d ip = 0x%x op = 0x%x opb = 0x%x row = %d col = %d\n",cp,b,d,ap, *opb, ip,op,opb,row,col);
 			s = b;  //1
 		    l = ap;  //0
 		    r = cp; //2
 		    ss = s + (l + r + 2)>>2;
-		    printf("**** l = %d s = %d r = %d ss = %d \n", l,s,r,ss);
+		    printf("LP filter **** l = %d s = %d r = %d ss = %d \n", l,s,r,ss);
 		    //printf("6 ss = %d l = %d r = %d \n",ss,l,r);
 
 			ip+=2;	// = ibuf + (row*rb)+2*col

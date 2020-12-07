@@ -58,6 +58,7 @@ print b[0][2]
 """this is before fwd dwt"""
 print "before fwd dwt", pix[0,0], rgb[0]
 rgb = []
+
 for row in range(128):
     for col in range(128):
         rgb.append((r[row][col],g[row][col],b[row][col]))
@@ -66,13 +67,13 @@ for row in range(127):
         for col in range(127):
             pix[row,col] = rgb[col + row*128]
 
-#img.show()
+img.show()
 """this is after fwd dwt"""
 print "after fwd  dwt", pix[0,0], rgb[0]
 print "after fwd  dwt", pix[0,1], rgb[1]
 #print rgb
 #dwt.seq_to_img(rgb, pix1)
-img.show()
+#img.show()
 img.save("test1_256_fwt.png")
 #img.show()
 """

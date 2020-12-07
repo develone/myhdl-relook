@@ -1,15 +1,33 @@
-l = 156
-s = 156
-r = 156
-a = l >>1
-b = r >>1 
-res = s - (a + b)
-print a,b,res
-ires = res + (a + b)
+l = 192
+s = 159
+r = 159
+ll = 160
+
+print "Even"
+e = l + r + 2
+f = e >>2 
+res = s + f
+
+print e,f,res
+ires = res - f
 print ires
-a = l + r + 2
-b = a >>2 
-res = s + b
-print a,b,res
-ires = res - b
+print "Odd"
+print "l    s    r"
+print l,s,r
+e = l >>1
+f = r >>1
+res = s - (e + f)
+print "l>>1    r>>1  res"
+print e,f,res
+ires = res + (e + f)
+print "ires"
 print ires
+ap = l
+b = s
+cp = r
+ap = ap - b
+d = ll
+cp = cp - ((b+d)>>1)
+print "ap b cp d"
+print ap,b,cp,d
+

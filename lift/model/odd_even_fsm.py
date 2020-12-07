@@ -14,6 +14,7 @@ im = Image.open("lena_256.png")
 pix = im.load()
 w, h = im.size
 m = list(im.getdata())
+im.show()
 #print m.__sizeof__()
 m = [m[i:i+im.size[0]] for i in range(0, len(m), im.size[0])]
 #print m

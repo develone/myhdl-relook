@@ -148,6 +148,7 @@ void	singlelift(int rb, int w, int * const ibuf, int * const obuf) {
 		op += rb; opb += rb;
 		*op  = cp;
 		*opb = d+((cp+1)>>3);
+		printf("End ***** d = %d cp = %d opb = %d \n", d,cp,*opb);
 	}
 }
 

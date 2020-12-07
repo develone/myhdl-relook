@@ -31,6 +31,7 @@ int main()
     img1++;
   }
   fwd_inv = (int *)malloc(1);
+  *fwd_inv = 0;
     buf_red = red_s_ptr;
 		wptr = buf_red;
 		alt = &buf_red[ncols*nrows];

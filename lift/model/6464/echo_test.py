@@ -9,15 +9,6 @@ A extremely simple example of co-simulation of MyHDL and Verilog code.
 import os
 from myhdl import Cosimulation, Simulation, Signal, delay, always, intbv, now
 
-
-def clk_driver(clk, period=10):
-    ''' Clock driver '''
-    @always(delay(period//2))
-    def driver():
-        clk.next = not clk
-
-    return driver
-
 def clk_driver(clk, period=10):
     ''' Clock driver '''
     @always(delay(period//2))

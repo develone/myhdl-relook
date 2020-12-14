@@ -108,7 +108,7 @@ void	singlelift(int rb, int w, int * const ibuf, int * const obuf) {
 		l = ap;
 		s = b;
 		r = cp;
-		ss = s + ((l=r+2)>>2);
+		ss = s + ((l+r+2)>>2);
 		printf("start ****LP filter l = %d s = %d r = %d ss = %d \n", l,s,r,ss);
 		opb[0]  = b+((ap+cp+2)>>2);
 		printf("start LP filter * opb = %d \n",opb[0]);

@@ -29,7 +29,7 @@ din = Signal(intbv(0, min=-(2**(W0)), max=(2**(W0))))
 addr = Signal(intbv(0)[AZ:])
 we = Signal(bool(0))
 douto = Signal(intbv(0, min=-(2**(W0)), max=(2**(W0))))
-dino = Signal(intbv(0, min=-(2**(W0)), max=(2**(W0))))
+dino = Signal(intbv(0, min= -(2**(W0)) ,max= (2**(W0))))
 addro = Signal(intbv(0)[AZ:])
 weo = Signal(bool(0))
 
@@ -75,7 +75,7 @@ def testbench(left_i, sam_i, right_i, flgs_i, update_i, clk, res_o, update_o, x,
 		yield clk.posedge
 		
 		print m[0][0:29]
-		for i in range(30):
+		for i in range(32):
 			din.next = m[0][i]
 			yield clk.posedge
 			
@@ -116,6 +116,18 @@ def testbench(left_i, sam_i, right_i, flgs_i, update_i, clk, res_o, update_o, x,
 
 		ap = (m[0][0] - m[0][1])
 		print ap
+		
+		addr.next = 0
+		yield clk.posedge
+		
+		we.next = 1
+		yield clk.posedge
+		
+		din.next = ap
+		yield clk.posedge
+		
+		we.next = 0
+		yield clk.posedge
 				
 		flgs_i.next = 7
 		yield clk.posedge
@@ -155,7 +167,7 @@ def testbench(left_i, sam_i, right_i, flgs_i, update_i, clk, res_o, update_o, x,
 		x.next = res_o
 		yield clk.posedge
 		
-		addro.next = 0
+		addro.next = 16
 		yield clk.posedge
 		
 		weo.next = 1
@@ -181,6 +193,19 @@ def testbench(left_i, sam_i, right_i, flgs_i, update_i, clk, res_o, update_o, x,
 		
 		ap = (m[0][4] - m[0][5])
 		print ap
+		
+		addr.next = 1
+		yield clk.posedge
+		
+		we.next = 1
+		yield clk.posedge
+		
+		din.next = ap
+		yield clk.posedge
+		
+		we.next = 0
+		yield clk.posedge
+		
 		
 		flgs_i.next = 7
 		yield clk.posedge
@@ -215,7 +240,7 @@ def testbench(left_i, sam_i, right_i, flgs_i, update_i, clk, res_o, update_o, x,
 		x.next = res_o
 		yield clk.posedge
 		
-		addro.next = 1
+		addro.next = 17
 		yield clk.posedge
 		
 		weo.next = 1

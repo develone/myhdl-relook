@@ -29,7 +29,7 @@ W0 = 15
 def ram(dout, din, addr, we, clk, depth=256):
     """  Ram model """
     
-    mem = [Signal(intbv(0)[W0:]) for i in range(depth)]
+    mem = [Signal(intbv(0, min=-(2**(W0)), max=(2**(W0)))) for i in range(depth)]
     
     @always(clk.posedge)
     def write():
@@ -74,7 +74,7 @@ def testbench(dout, din, addr, we, clk, depth=ramsize):
     return instances()
 
 
-#convert_ram(hdl='Verilog')
+convert_ram(hdl='Verilog')
 #tb = testbench(dout, din, addr, we, clk, depth=ramsize)
 #tb.config_sim(trace=True)
 #tb.run_sim()

@@ -43,7 +43,7 @@ int main()
  	    printf("Unle to open file!");
 	    return 1;
     }
-    fwrite(buf_red,sizeof( int),65536,outptr);
+    fwrite(buf_red,sizeof( int),1024,outptr);
 	   //fwrite(alt,sizeof( int),65536,outptr);
 	   fclose(outptr);
     

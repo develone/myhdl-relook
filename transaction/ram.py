@@ -21,8 +21,8 @@ m = list(im.getdata())
 m = [m[i:i+im.size[0]] for i in range(0, len(m), im.size[0])]
 #print m
 
-ramsize = 1024
-AZ = 10 
+ramsize = 32
+AZ = 5 
 W0 = 15
 
 @block
@@ -74,7 +74,7 @@ def testbench(dout, din, addr, we, clk, depth=ramsize):
     return instances()
 
 
-convert_ram(hdl='Verilog')
+#convert_ram(hdl='Verilog')
 #tb = testbench(dout, din, addr, we, clk, depth=ramsize)
 #tb.config_sim(trace=True)
 #tb.run_sim()

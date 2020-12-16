@@ -1,5 +1,14 @@
 import myhdl
 from myhdl import *
+from PIL import Image
+im = Image.open("red.pgm")
+pix = im.load()
+w, h = im.size
+m = list(im.getdata())
+m = [m[i:i+im.size[0]] for i in range(0, len(m), im.size[0])]
+#print m
+
+
 W0 = 9
 @block
 def ram(dout, din, addr, we, clk, depth=256):

@@ -10,6 +10,20 @@ ramsize = 1024
 AZ = 8
 
 yosys -l simple.log -p 'synth_ice40 -blif ram.blif -json ram.json' ram.v
+
+=== ram ===
+
+   Number of wires:                477
+   Number of wire bits:            991
+   Number of public wires:         477
+   Number of public wire bits:     991
+   Number of memories:               0
+   Number of memory bits:            0
+   Number of processes:              0
+   Number of cells:                968
+     SB_DFFE                       512
+     SB_LUT4                       456
+
 """
 import myhdl
 from myhdl import *

@@ -1409,7 +1409,7 @@ def Processor_TESTBENCH():
     #OSC=> %(clk_intern)s);"""
     
     #return logic
-
+ 
 def pyCPU_TOP(iClk,iRst,iISP_act,oISP_selected,PORTA_IN,PORTB_IN,PORTC_OUT,PORTD_OUT,iRX,oTX):
     global CPU_CLK_FREQ
     Clk_frequenz=CPU_CLK_FREQ
@@ -1498,7 +1498,7 @@ PORTC_OUT=Signal(intbv(0)[CPU_BITWIDTH:])
 PORTD_OUT=Signal(intbv(0)[CPU_BITWIDTH:])
 iRX=Signal(bool(1))
 oTX=Signal(bool(0))
-toVHDL(pyCPU_TOP,clk,rst,iISP_act,oISP_selected,PORTA_IN,PORTB_IN,PORTC_OUT,PORTD_OUT,iRX,oTX)
+toVerilog(pyCPU_TOP,clk,rst,iISP_act,oISP_selected,PORTA_IN,PORTB_IN,PORTC_OUT,PORTD_OUT,iRX,oTX)
 ##################### convert pico Board to VHDL###################
 
 #toVHDL(Processor,clk,rst,PORTA_IN,PORTB_IN,PORTC_OUT,PORTD_OUT,VAR_BITWIDTH=WORD_SZ)

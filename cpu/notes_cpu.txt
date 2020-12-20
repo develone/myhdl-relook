@@ -1,0 +1,51 @@
+http://old.myhdl.org/doku.php/projects:python_hardware_processor
+
+yosys -l simple.log -p 'synth_ice40 -blif pyCPU_TOP.blif -json pyCPU_TOP.json' pyCPU_TOP.v
+
+=== pyCPU_TOP ===
+
+   Number of wires:               2303
+   Number of wire bits:           4592
+   Number of public wires:        2303
+   Number of public wire bits:    4592
+   Number of memories:               0
+   Number of memory bits:            0
+   Number of processes:              0
+   Number of cells:               4072
+     SB_CARRY                      174
+     SB_DFF                        115
+     SB_DFFE                      1316
+     SB_DFFER                      125
+     SB_DFFES                        4
+     SB_DFFESR                       8
+     SB_DFFR                        66
+     SB_DFFS                        16
+     SB_DFFSR                        9
+     SB_DFFSS                        1
+     SB_LUT4                      2229
+     SB_RAM40_4K                     9
+     
+     Python Hardware Processor
+
+The Following is a implementation of a Hardware CPU in Myhdl. The CPU can directly execute something very similar 
+to python bytecode (but only a very restricted instruction set). The Programm code for the CPU can be written 
+directly in python (very restricted parts of python). This code is then converted by a small python programm to 
+this restricted python bytecode. Since the hardware description is also in python, the slightly modified bytecode 
+an then automatically loaded into the CPU design.
+
+Most “bytecode” instructions are executed in the Hardware CPU with one instruction per cycle. If you have enought hardware 
+available you can simply instantiate more cores on an FPGA with different Programmcode to make them run in parallel.
+
+Why another Hardware Processor?
+
+Hardware description languages are good for particular problems (e.g parallel memory). But it is tough to handle 
+sequential execution problems with them. For such problems the sequential execution of a programm often fits well. 
+A standard solution would be to use a Microcontroller Core (e.g. from Opencores written in VHDL). To programm 
+this Microcontroller often the C programming language is used. The C code is converted to Assembler and the Assembler 
+code is then loaded into the Microcontroller. To accomplish such a task you at least need a C programming environment 
+and a VHDL programming enviroment and you need a chain between them create and load the Assembler. What if you could 
+write your Microcontroller Code in the same environment where you describe your hardware. This is where the Python 
+Hardware Processor together with Myhdl fits in. So the idea was to create a Python Hardware Processor that supports 
+just enougth of the python language to handle sequential execution problems. Parallel array processing jobs and comparable, 
+are then implemented in the hardware description language where they normaly nicely fit and perform well.
+

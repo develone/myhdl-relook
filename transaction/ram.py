@@ -27,6 +27,8 @@ yosys -l simple.log -p 'synth_ice40 -blif ram.blif -json ram.json' ram.v
 """
 import myhdl
 from myhdl import *
+from constsig import *
+
 from PIL import Image
 im = Image.open("red-32.pgm")
 pix = im.load()
@@ -35,9 +37,7 @@ m = list(im.getdata())
 m = [m[i:i+im.size[0]] for i in range(0, len(m), im.size[0])]
 #print m
 
-ramsize = 32
-AZ = 5 
-W0 = 15
+
 
 @block
 def ram(dout, din, addr, we, clk, depth=256):
@@ -56,12 +56,7 @@ def ram(dout, din, addr, we, clk, depth=256):
 
     return write, read
 
-
-dout = Signal(intbv(0, min=-(2**(W0)), max=(2**(W0))))
-din = Signal(intbv(0, min=-(2**(W0)), max=(2**(W0))))
-addr = Signal(intbv(0)[AZ:])
-we = Signal(bool(0))
-clk = Signal(bool(0))
+ 
 
 def convert_ram(hdl):
     ram_1 = ram(dout, din, addr, we, clk, depth=ramsize)

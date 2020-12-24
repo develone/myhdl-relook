@@ -1,6 +1,6 @@
 import myhdl
 from myhdl import *
-W0 = 15
+from constsig import *
 """
 yosys -l simple.log -p 'synth_ice40 -blif oneminuszero.blif -json oneminuszero.json' oneminuszero.v
 === oneminuszero ===
@@ -18,30 +18,22 @@ yosys -l simple.log -p 'synth_ice40 -blif oneminuszero.blif -json oneminuszero.j
      SB_DFFE                        16
      SB_LUT4                        32
 
-"""
-clk = Signal(bool(0))
-update1_i = Signal(bool(0))
-update1_o = Signal(bool(0))
-sub_o = Signal(intbv(0, min=-(2**(W0)), max=(2**(W0))))
-first_i = Signal(intbv(0, min=-(2**(W0)), max=(2**(W0))))
-snd_i = Signal(intbv(0, min=-(2**(W0)), max=(2**(W0))))
-
-
+""" 
 
 @block
-def oneminuszero(first_i, snd_i,  update1_i, clk, sub_o, update1_o):
+def oneminuszero(first_i, nd_i,  update1_i, clk, sub_o, update1_o):
 	@always(clk.posedge)
 	def rtl1 ():
 		if (update1_i == 1):
 			update1_o.next =  0
-			sub_o.next = (first_i - snd_i)
+			sub_o.next = (first_i - nd_i)
 		else:
 			update1_o.next = 1
 	
 	return rtl1
 
 def convert_oneminuszero(hdl):
-	inst_1 = oneminuszero(first_i, snd_i,  update1_i, clk, sub_o, update1_o)
+	inst_1 = oneminuszero(first_i, nd_i,  update1_i, clk, sub_o, update1_o)
 	inst_1.convert(hdl=hdl)
 	
 #convert_oneminuszero(hdl='Verilog')

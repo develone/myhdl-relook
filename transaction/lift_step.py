@@ -5,9 +5,7 @@ from signed2twoscomplement import signed2twoscomplement
 from ram import ram
 from oneminuszero import oneminuszero
 from addrbump import addrbump
-W0 = 15
-ramsize = 32
-AZ = 5
+from constsig import *
 
 im = Image.open("red-32.pgm")
 pix = im.load()
@@ -18,37 +16,6 @@ m = [m[i:i+im.size[0]] for i in range(0, len(m), im.size[0])]
 
 
 
-res_o = Signal(intbv(0, min=-(2**(W0)), max=(2**(W0))))
-left_i = Signal(intbv(0, min=-(2**(W0)), max=(2**(W0))))
-right_i = Signal(intbv(0, min=-(2**(W0)), max=(2**(W0))))
-sam_i = Signal(intbv(0, min=-(2**(W0)), max=(2**(W0))))
-flgs_i = Signal(intbv(0)[4:])
-clk = Signal(bool(0))
-update_i = Signal(bool(0))
-update_o = Signal(bool(0))
-x = Signal(intbv(0, min= -(2**(W0)) ,max= (2**(W0))))
-z = Signal(intbv(0, min= -(2**(W0)) ,max= (2**(W0))))
-
-dout_i = Signal(intbv(0, min=-(2**(W0)), max=(2**(W0))))
-din_i = Signal(intbv(0, min=-(2**(W0)), max=(2**(W0))))
-addr_i = Signal(intbv(0)[AZ:])
-we_i = Signal(bool(0))
-
-dout_o = Signal(intbv(0, min=-(2**(W0)), max=(2**(W0))))
-din_o = Signal(intbv(0, min= -(2**(W0)) ,max= (2**(W0))))
-addr_o = Signal(intbv(0)[AZ:])
-we_o = Signal(bool(0))
-
-update1_i = Signal(bool(0))
-update1_o = Signal(bool(0))
-sub_o = Signal(intbv(0, min=-(2**(W0)), max=(2**(W0))))
-first_i = Signal(intbv(0, min=-(2**(W0)), max=(2**(W0))))
-snd_i = Signal(intbv(0, min=-(2**(W0)), max=(2**(W0))))
-
-addrtoinc = Signal(intbv(0)[AZ:])
-incaddr = Signal(intbv(0)[AZ:])
-update2_i = Signal(bool(0))
-update2_o = Signal(bool(0))
 		
 @block
 def lift_step(left_i, sam_i, right_i, flgs_i, update_i, clk, res_o, update_o):
@@ -70,13 +37,13 @@ def lift_step(left_i, sam_i, right_i, flgs_i, update_i, clk, res_o, update_o):
 	return rtl
 	    
 @block
-def testbench(left_i, sam_i, right_i, flgs_i, update_i, clk, res_o, update_o, x, z, dout_i, din_i, addr_i, we_i, dout_o, din_o, addr_o, we_o, first_i, snd_i,  update1_i, sub_o, update1_o, addrtoinc, update2_i, incaddr, update2_o):
+def testbench(left_i, sam_i, right_i, flgs_i, update_i, clk, res_o, update_o, x, z, dout_i, din_i, addr_i, we_i, dout_o, din_o, addr_o, we_o, first_i, nd_i,  update1_i, sub_o, update1_o, addrtoinc, update2_i, incaddr, update2_o):
 	inst_0 = lift_step(left_i, sam_i, right_i, flgs_i, update_i, clk, res_o, update_o)
 	inst_1 = signed2twoscomplement(clk, x, z)
 	ramsize = 32
 	ram_2 = ram(dout_i, din_i, addr_i, we_i, clk, depth=ramsize)
 	ram_3 = ram(dout_o, din_o, addr_o, we_o, clk, depth=ramsize)
-	inst_3 = oneminuszero(first_i, snd_i,  update1_i, clk, sub_o, update1_o)
+	inst_3 = oneminuszero(first_i, nd_i,  update1_i, clk, sub_o, update1_o)
 	addrbump_1 = addrbump(addrtoinc, update2_i, clk, incaddr, update2_o)
 	
 	@always(delay(10))
@@ -164,7 +131,7 @@ def testbench(left_i, sam_i, right_i, flgs_i, update_i, clk, res_o, update_o, x,
 						
 			#m[0][1]
 			#read addr 1
-			snd_i.next = dout_i
+			nd_i.next = dout_i
 			yield clk.posedge			
 			
 			update1_i.next = 1
@@ -321,8 +288,141 @@ def testbench(left_i, sam_i, right_i, flgs_i, update_i, clk, res_o, update_o, x,
 		
 			we_o.next = 0
 			yield clk.posedge
-			for col in range(1,4):
-				print col
+		for col in range(1,2):
+			#addr_i incremented by 1
+			we_i.next = 0
+			yield clk.posedge
+				
+			addrtoinc.next = addr_i
+			yield clk.posedge
+				
+			update2_i.next = 1
+			yield clk.posedge
+				
+			update2_i.next = 0
+			yield clk.posedge
+				
+			
+			addr_i.next = incaddr
+			yield clk.posedge
+				
+			addrtoinc.next = addr_i
+			yield clk.posedge
+				
+			update2_i.next = 1
+			yield clk.posedge
+				
+			update2_i.next = 0
+			yield clk.posedge
+				
+			addr_i.next = incaddr
+			yield clk.posedge
+			
+				
+			left_i.next = dout_i
+			yield clk.posedge
+				
+			addrtoinc.next = addr_i
+			yield clk.posedge
+				
+			update2_i.next = 1
+			yield clk.posedge
+				
+			update2_i.next = 0
+			yield clk.posedge
+				
+			addr_i.next = incaddr
+			yield clk.posedge
+				
+			sam_i.next = dout_i
+			yield clk.posedge
+				
+			addrtoinc.next = addr_i
+			yield clk.posedge
+				
+			update2_i.next = 1
+			yield clk.posedge
+				
+			update2_i.next = 0
+			yield clk.posedge
+				
+			addr_i.next = incaddr
+			yield clk.posedge
+				
+			right_i.next = dout_i
+			yield clk.posedge
+				
+			flgs_i.next = 7
+			yield clk.posedge
+		
+			update_i.next = 1
+			yield clk.posedge
+				
+			update_i.next = 0
+			yield clk.posedge
+				
+			we_o.next = 1
+			yield clk.posedge
+				
+			addr_o.next = col
+			yield clk.posedge
+				
+			din_o.next = res_o
+			yield clk.posedge
+				
+			we_o.next = 0
+			yield clk.posedge
+				
+			#The result of hi pass 
+			#becomes the right_i of
+			#lo pass
+			
+			sam_i.next = left_i
+			yield clk.posedge
+			
+			left_i.next = 8
+			yield clk.posedge
+				
+			right_i.next = res_o
+			yield clk.posedge
+							
+			flgs_i.next = 6
+			yield clk.posedge
+		
+			update_i.next = 1
+			yield clk.posedge
+				
+			update_i.next = 0
+			yield clk.posedge
+			addrtoinc.next = addr_i
+			yield clk.posedge
+				
+			update2_i.next = 1
+			yield clk.posedge
+				
+			update2_i.next = 0
+			yield clk.posedge
+				
+			addr_i.next = incaddr
+			yield clk.posedge
+			
+			
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
 			
 			
 			 
@@ -335,6 +435,6 @@ def convert_lift_step(hdl):
 	lift_step_1.convert(hdl=hdl)
 
 convert_lift_step(hdl='Verilog')
-tb = testbench(left_i, sam_i, right_i, flgs_i, update_i, clk, res_o, update_o, x, z, dout_i, din_i, addr_i, we_i, dout_o, din_o, addr_o, we_o, first_i, snd_i,  update1_i, sub_o, update1_o, addrtoinc, update2_i, incaddr, update2_o)
+tb = testbench(left_i, sam_i, right_i, flgs_i, update_i, clk, res_o, update_o, x, z, dout_i, din_i, addr_i, we_i, dout_o, din_o, addr_o, we_o, first_i, nd_i,  update1_i, sub_o, update1_o, addrtoinc, update2_i, incaddr, update2_o)
 tb.config_sim(trace=True)
 tb.run_sim()

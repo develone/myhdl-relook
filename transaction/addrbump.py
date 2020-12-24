@@ -1,5 +1,6 @@
 import myhdl
 from myhdl import *
+from constsig import *
 from PIL import Image
 im = Image.open("red-32.pgm")
 pix = im.load()
@@ -7,8 +8,7 @@ w, h = im.size
 m = list(im.getdata())
 m = [m[i:i+im.size[0]] for i in range(0, len(m), im.size[0])]
 
-W0 = 15
-AZ = 5 
+
 """
 yosys -l simple.log -p 'synth_ice40 -blif addrbump.blif -json addrbump.json' addrbump.v
 === addrbump ===
@@ -27,11 +27,7 @@ yosys -l simple.log -p 'synth_ice40 -blif addrbump.blif -json addrbump.json' add
      SB_LUT4                         6
 
 """
-clk = Signal(bool(0))
-addrtoinc = Signal(intbv(0)[AZ:])
-incaddr = Signal(intbv(0)[AZ:])
-update2_i = Signal(bool(0))
-update2_o = Signal(bool(0))
+ 
 
 @block
 def addrbump(addrtoinc, update2_i, clk, incaddr, update2_o):

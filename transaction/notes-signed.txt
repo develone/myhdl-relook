@@ -1,0 +1,32 @@
+Binary Unsigned  signed  
+  1000          8      -8
+  1110         14      -2
+  1111         15      -1    
+  0001          1       1
+  0010          2       2
+  0111          7       7
+  
+  
+If your register really does contain signed information then semantically you should define it as :  
+reg signed [15:0] my_reg;  
+
+reg signed [15:0] my_reg;
+reg        [15:0] my_reg_unsigned;
+
+To absolute the value:
+
+always @* begin
+  if (my_reg < 16'd0) begin
+    my_reg_unsigned = -my_reg ;
+  end
+  else begin
+    my_reg_unsigned = my_reg ;
+  end
+end
+
+If you do not need to absolute it but just want to use that number to drive some 
+thing it is valid to just connect signed to an unsigned, ie:
+
+always @* begin
+  my_reg_unsigned = my_reg ;
+end

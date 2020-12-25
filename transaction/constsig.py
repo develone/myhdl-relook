@@ -3,6 +3,22 @@ W0 = 15
 ramsize = 32
 AZ = 5
 
+Clk_f=100e6 #100 Mhz
+BAUDRATE=38400 
+  
+##### Signal definitions #####
+iData=Signal(intbv(0)[8:])
+oData=Signal(intbv(0)[8:])
+iClk=Signal(bool(0))
+iRst=Signal(bool(1))
+iRX=Signal(bool(1))
+oTX=Signal(bool(0))
+WriteEnable=Signal(bool(0))
+oWrBuffer_full=Signal(bool(0))
+read_addr=Signal(intbv(0,min=0,max=8))
+RX_BUFF_LEN=8
+rx_addr=Signal(intbv(0,min=0,max=RX_BUFF_LEN))
+
 res_o = Signal(intbv(0, min=-(2**(W0)), max=(2**(W0-1))))
 left_i = Signal(intbv(0, min=-(2**(W0)), max=(2**(W0-1))))
 right_i = Signal(intbv(0, min=-(2**(W0)), max=(2**(W0-1))))

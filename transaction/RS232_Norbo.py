@@ -23,7 +23,30 @@
 # Licence: Only use it to do good, no garantie warranty
 
 from myhdl import *
+from constsig import *
+"""
+yosys -l simple.log -p 'synth_ice40 -blif RS232_Module.blif -json RS232_Module.json' RS232_Module.v
 
+=== RS232_Module ===
+
+   Number of wires:                209
+   Number of wire bits:            460
+   Number of public wires:         209
+   Number of public wire bits:     460
+   Number of memories:               0
+   Number of memory bits:            0
+   Number of processes:              0
+   Number of cells:                426
+     SB_CARRY                       21
+     SB_DFF                          8
+     SB_DFFE                       128
+     SB_DFFER                       53
+     SB_DFFR                         6
+     SB_DFFS                         2
+     SB_DFFSS                        1
+     SB_LUT4                       207
+"""
+@block 
 def RS232_Module(iClk,iRst,iRX,oTX, iData,WriteEnable,oWrBuffer_full,oData,read_addr,oRx_addr,Clkfrequenz=12e6,Baudrate=38400,RX_BUFFER_LENGTH=8,TX_BUFFER_LENGTH=8): 
     ##### Constants #####
     CounterCycle=int(Clkfrequenz/Baudrate)
@@ -139,10 +162,10 @@ def RS232_Module(iClk,iRst,iRX,oTX, iData,WriteEnable,oWrBuffer_full,oData,read_
         
     return seq_logic,comb_logic,comb2_logic
 
-
+@block
 def test_bench():
     ###### Constnats #####
-    Clk_f=12e6 #12 Mhz
+    Clk_f=100e6 #100 Mhz
     BAUDRATE=38400 
   
     ##### Signal definitions #####
@@ -270,8 +293,19 @@ def test_bench():
 
     return  clk_gen,rs232loopback,stimulus,rs232_instance#,Monitor_oTX
 
+def convert_RS232_Module(hdl):
+  rs232_instance=RS232_Module(iClk,iRst,iRX,oTX, iData,WriteEnable,  \
+    oWrBuffer_full,oData,read_addr,rx_addr,Clkfrequenz=Clk_f,  \
+    Baudrate=BAUDRATE,RX_BUFFER_LENGTH=RX_BUFF_LEN)
+    
+  rs232_instance.convert(hdl=hdl)
+
+
+
 if __name__ == '__main__':
-  tb = traceSignals(test_bench)
-  sim= Simulation(tb)
-  #sim = Simulation(test_bench())
-  sim.run()
+  #convert_RS232_Module(hdl='Verilog')
+   
+  tb = test_bench()
+  tb.config_sim(trace=True)
+  tb.run_sim()
+  

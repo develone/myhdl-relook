@@ -338,6 +338,6 @@ def convert_RS232Programmer(hdl):
 
 
 #convert_RS232Programmer(hdl='Verilog')
-tb = test_bench()
-tb.config_sim(trace=False)
-tb.run_sim()         
+#tb = test_bench()
+#tb.config_sim(trace=False)
+#tb.run_sim()         

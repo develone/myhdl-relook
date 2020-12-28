@@ -27,7 +27,7 @@ def top(clk,iRX,oTX):
 	rs232_instance=RS232_Module(clk,iRst,iRX,oTX, iData,WriteEnable,  \
 		oWrBuffer_full,oData,read_addr,rx_addr,Clkfrequenz=Clk_f,  \
 		Baudrate=BAUDRATE,RX_BUFFER_LENGTH=RX_BUFF_LEN)
-	programmer_inst=RS232Programmer(iClk,iRst,programmer_enable,oInfobyte, \
+	programmer_inst=RS232Programmer(clk,iRst,programmer_enable,oInfobyte, \
 		dout,addr_out,we, \
 		oprog_Data_RS232,oprog_WriteEnable_RS232, iprog_WrBuffer_full_RS232,oData,read_addr,rx_addr)
 	return instances()

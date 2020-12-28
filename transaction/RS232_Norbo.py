@@ -3,17 +3,17 @@
 #
 # Module Signals:
 # +++++++++++++++
-#iClk -> Clock Signal
+#clk -> Clock Signal
 #iRst -> Reset Signal
 #iRX  -> Receiver input Signal
 #oTX  -> Transmitter output Signal
 #iData -> Data to write to the transmit-buffer
 #WriteEnable -> Strobe this signal to write iData to the transmit-buffer (write address is incremmented in the Module)
 #oWrBuffer_full -> Indicates that the transmit-buffer is full. If Data is strobed when the transmit-buffer is indicated full it is ignored
-#oData -> Output data at the read_addr of the receive-buffer. (oData<=receive-buffer[read_addr] on the next iClk clock-edge)
+#oData -> Output data at the read_addr of the receive-buffer. (oData<=receive-buffer[read_addr] on the next clk clock-edge)
 #read_addr -> Address to read from the receive-buffer
 #oRx_addr -> Address where the next byte which will be received will be put into the receive-buffer
-#Clkfrequenz -> Constant which should be set to the frequency of iClk
+#Clkfrequenz -> Constant which should be set to the frequency of clk
 #Baudrate -> Constant to set the Baudrate of the unit.
 #RX_BUFFER_LENGTH -> Constant, sets the receive-buffer size
 #TX_BUFFER_LENGTH -> Constant, sets the transmit-buffer size
@@ -47,7 +47,7 @@ yosys -l simple.log -p 'synth_ice40 -blif RS232_Module.blif -json RS232_Module.j
      SB_LUT4                       207
 """
 @block 
-def RS232_Module(iClk,iRst,iRX,oTX, iData,WriteEnable,oWrBuffer_full,oData,read_addr,oRx_addr,Clkfrequenz=12e6,Baudrate=38400,RX_BUFFER_LENGTH=8,TX_BUFFER_LENGTH=8): 
+def RS232_Module(clk,iRst,iRX,oTX, iData,WriteEnable,oWrBuffer_full,oData,read_addr,oRx_addr,Clkfrequenz=12e6,Baudrate=38400,RX_BUFFER_LENGTH=8,TX_BUFFER_LENGTH=8): 
     ##### Constants #####
     CounterCycle=int(Clkfrequenz/Baudrate)
     CounterCycle_half=int(Clkfrequenz/(Baudrate*2.0))
@@ -81,7 +81,7 @@ def RS232_Module(iClk,iRst,iRX,oTX, iData,WriteEnable,oWrBuffer_full,oData,read_
       else:
         sig_WrBuffer_full.next=False
       
-    @always(iClk.posedge,iRst.negedge)
+    @always(clk.posedge,iRst.negedge)
     def seq_logic():
       if iRst==0:
         ###### Resets Receiver Part #####
@@ -171,7 +171,7 @@ def test_bench():
     ##### Signal definitions #####
     iData=Signal(intbv(0)[8:])
     oData=Signal(intbv(0)[8:])
-    iClk=Signal(bool(0))
+    clk=Signal(bool(0))
     iRst=Signal(bool(1))
     iRX=Signal(bool(1))
     oTX=Signal(bool(0))
@@ -182,32 +182,32 @@ def test_bench():
     rx_addr=Signal(intbv(0,min=0,max=RX_BUFF_LEN))
 
     ##### Instanziate RS232 Module #####
-    rs232_instance=RS232_Module(iClk,iRst,iRX,oTX, iData,WriteEnable,  \
+    rs232_instance=RS232_Module(clk,iRst,iRX,oTX, iData,WriteEnable,  \
          oWrBuffer_full,oData,read_addr,rx_addr,Clkfrequenz=Clk_f,  \
          Baudrate=BAUDRATE,RX_BUFFER_LENGTH=RX_BUFF_LEN)
     
     ##### Convert to VHDL ######
-    #toVHDL(RS232_Module,iClk,iRst,iRX,oTX, iData,WriteEnable, \
+    #toVHDL(RS232_Module,clk,iRst,iRX,oTX, iData,WriteEnable, \
     #       oWrBuffer_full,oData,read_addr,rx_addr,Clkfrequenz=Clk_f,  \
     #       Baudrate=BAUDRATE,RX_BUFFER_LENGTH=RX_BUFF_LEN)
     
     interval = delay(10)
     @always(interval)
     def clk_gen():
-      iClk.next=not iClk
+      clk.next=not clk
         
     @always_comb
     def rs232loopback():
         iRX.next=oTX
 
     def Write_to_rs232_send_buffer(value):
-      yield iClk.posedge
+      yield clk.posedge
       iData.next=value
       if oWrBuffer_full:
         print "Value:",value,"\tNot written, RS232 Transmittbuffer has indiciated to be allready full. (by oWrBuffer_full)"
       
       WriteEnable.next=1
-      yield iClk.posedge
+      yield clk.posedge
       WriteEnable.next=0
     
     def TestTransmitReceive(testARRAY):
@@ -219,7 +219,7 @@ def test_bench():
       count=0
       currentArryPos=0
       while 1:
-        yield iClk.posedge
+        yield clk.posedge
         yield delay(0)
         count=count+1
         if rx_addr!=read_addr:
@@ -294,18 +294,17 @@ def test_bench():
     return  clk_gen,rs232loopback,stimulus,rs232_instance#,Monitor_oTX
 
 def convert_RS232_Module(hdl):
-  rs232_instance=RS232_Module(iClk,iRst,iRX,oTX, iData,WriteEnable,  \
+  rs232_instance=RS232_Module(clk,iRst,iRX,oTX, iData,WriteEnable,  \
     oWrBuffer_full,oData,read_addr,rx_addr,Clkfrequenz=Clk_f,  \
     Baudrate=BAUDRATE,RX_BUFFER_LENGTH=RX_BUFF_LEN)
     
   rs232_instance.convert(hdl=hdl)
 
-
-
-if __name__ == '__main__':
-  #convert_RS232_Module(hdl='Verilog')
+#convert_RS232_Module(hdl='Verilog')
    
-  tb = test_bench()
-  tb.config_sim(trace=True)
-  tb.run_sim()
+#tb = test_bench()
+#tb.config_sim(trace=True)
+#tb.run_sim()
+
+
   

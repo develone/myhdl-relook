@@ -1,7 +1,29 @@
 from myhdl import *
 import RS232_Norbo
+#from RS232_Norbo import RS232_Module
+from constsig import *
 
+"""
+yosys -l simple.log -p 'synth_ice40 -blif RS232Programmer.blif -json RS232Programmer.json' RS232Programmer.v
+=== RS232Programmer ===
 
+   Number of wires:                 75
+   Number of wire bits:            337
+   Number of public wires:          75
+   Number of public wire bits:     337
+   Number of memories:               0
+   Number of memory bits:            0
+   Number of processes:              0
+   Number of cells:                244
+     SB_CARRY                       15
+     SB_DFF                         64
+     SB_DFFER                       20
+     SB_DFFES                        2
+     SB_DFFR                        14
+     SB_DFFS                         1
+     SB_LUT4                       128
+
+"""
 t_State = enum('IDLE','READ_INFO_DATA', 'INFO_DATA_HERE','WAIT_ONE_CLK', 'RECEIVE_IT')
 
 @block
@@ -113,13 +135,13 @@ def RS232Programmer(clk,rst,enable,oInfobyte,dout,addr_out,we, \
 @block    
 def test_bench():
     ###### Constnats #####
-    Clk_f=12e6 #12 Mhz
+    Clk_f=100e6 #12 Mhz
     BAUDRATE=230400
   
     ##### Signal definitions #####
     iData=Signal(intbv(0)[8:])
     oData=Signal(intbv(0)[8:])
-    iClk=Signal(bool(0))
+    clk=Signal(bool(0))
     iRst=Signal(bool(1))
     iRX=Signal(bool(1))
     oTX=Signal(bool(0))
@@ -130,17 +152,22 @@ def test_bench():
     rx_addr=Signal(intbv(0,min=0,max=RX_BUFF_LEN))
 
     ##### Instanziate RS232 Module #####
-    rs232_instance=RS232_Norbo.RS232_Module(iClk,iRst,iRX,oTX, iData,WriteEnable,  \
+    
+    rs232_instance=RS232_Norbo.RS232_Module(clk,iRst,iRX,oTX, iData,WriteEnable,  \
          oWrBuffer_full,oData,read_addr,rx_addr,Clkfrequenz=Clk_f,  \
          Baudrate=BAUDRATE,RX_BUFFER_LENGTH=RX_BUFF_LEN,TX_BUFFER_LENGTH=RX_BUFF_LEN)
     
-    
+    """
+    rs232_instance=RS232_Norbo(clk,iRst,iRX,oTX, iData,WriteEnable,  \
+         oWrBuffer_full,oData,read_addr,rx_addr,Clkfrequenz=Clk_f,  \
+         Baudrate=BAUDRATE,RX_BUFFER_LENGTH=RX_BUFF_LEN,TX_BUFFER_LENGTH=RX_BUFF_LEN)
+    """
     dout=Signal(intbv(0)[32:])
     addr_out=Signal(intbv(0)[32:])
     we=Signal(bool(0))
     oTX_programmer=Signal(bool(0))
     oInfobyte=Signal(intbv(0)[8:])
-    #programmer_inst=RS232Programmer(iClk,iRst,oInfobyte,dout,addr_out,we, oTX,oTX_programmer, BAUDRATE=BAUDRATE,RX_BUFF_LEN=RX_BUFF_LEN,TX_BUFF_LEN=RX_BUFF_LEN,Clk_f=Clk_f)
+    #programmer_inst=RS232Programmer(clk,iRst,oInfobyte,dout,addr_out,we, oTX,oTX_programmer, BAUDRATE=BAUDRATE,RX_BUFF_LEN=RX_BUFF_LEN,TX_BUFF_LEN=RX_BUFF_LEN,Clk_f=Clk_f)
     
     
     oprog_Data_RS232=Signal(intbv(0)[8:])
@@ -148,22 +175,22 @@ def test_bench():
     iprog_WrBuffer_full_RS232=Signal(bool(0))
     programmer_enable=Signal(bool(1))
     
-    programmer_inst=RS232Programmer(iClk,iRst,programmer_enable,oInfobyte, \
+    programmer_inst=RS232Programmer(clk,iRst,programmer_enable,oInfobyte, \
                        dout,addr_out,we, \
                        oprog_Data_RS232,oprog_WriteEnable_RS232, iprog_WrBuffer_full_RS232,oData,read_addr,rx_addr)
     
     
-    #toVHDL(RS232Programmer,iClk,iRst,oInfobyte,dout,addr_out,we, oTX,oTX_programmer, BAUDRATE=BAUDRATE,RX_BUFF_LEN=RX_BUFF_LEN,TX_BUFF_LEN=RX_BUFF_LEN,Clk_f=Clk_f)
+    #toVHDL(RS232Programmer,clk,iRst,oInfobyte,dout,addr_out,we, oTX,oTX_programmer, BAUDRATE=BAUDRATE,RX_BUFF_LEN=RX_BUFF_LEN,TX_BUFF_LEN=RX_BUFF_LEN,Clk_f=Clk_f)
     
     ##### Convert to VHDL ######
-    #toVHDL(RS232_Module,iClk,iRst,iRX,oTX, iData,WriteEnable, \
+    #toVHDL(RS232_Module,clk,iRst,iRX,oTX, iData,WriteEnable, \
     #       oWrBuffer_full,oData,read_addr,rx_addr,Clkfrequenz=Clk_f,  \
     #       Baudrate=BAUDRATE,RX_BUFFER_LENGTH=RX_BUFF_LEN)
     
     interval = delay(10)
     @always(interval)
     def clk_gen():
-      iClk.next=not iClk
+      clk.next=not clk
     
     @always_comb
     def rs232loopback():
@@ -184,7 +211,7 @@ def test_bench():
       count=0
       currentPos=0
       while 1:
-        yield iClk.posedge
+        yield clk.posedge
         yield delay(0)
         count=count+1
         if rx_addr!=read_addr:
@@ -203,15 +230,15 @@ def test_bench():
           break
 
     def Write_to_rs232_send_buffer(value):
-      yield iClk.posedge
+      yield clk.posedge
       while oWrBuffer_full:
-	yield iClk.posedge
+	yield clk.posedge
       iData.next=value
       if oWrBuffer_full:
         print "Value:",value,"\tNot written, RS232 Transmittbuffer has indiciated to be allready full. (by oWrBuffer_full)"
       
       WriteEnable.next=1
-      yield iClk.posedge
+      yield clk.posedge
       WriteEnable.next=0
     
     def TestTransmitReceive(testARRAY):
@@ -220,7 +247,7 @@ def test_bench():
         yield Write_to_rs232_send_buffer(data)
       
       for i in range(int(Clk_f/BAUDRATE)*10*(RX_BUFF_LEN+3)):
-	yield iClk.posedge
+	yield clk.posedge
     @instance
     def stimulus():
       #### Reseting #####
@@ -268,13 +295,13 @@ def test_bench():
     
 def convert_RS232Programmer(hdl):
     ###### Constnats #####
-    Clk_f=12e6 #12 Mhz
+    Clk_f=100e6 #12 Mhz
     BAUDRATE=230400
   
     ##### Signal definitions #####
     iData=Signal(intbv(0)[8:])
     oData=Signal(intbv(0)[8:])
-    iClk=Signal(bool(0))
+    clk=Signal(bool(0))
     iRst=Signal(bool(1))
     iRX=Signal(bool(1))
     oTX=Signal(bool(0))
@@ -285,7 +312,7 @@ def convert_RS232Programmer(hdl):
     rx_addr=Signal(intbv(0,min=0,max=RX_BUFF_LEN))
 
     ##### Instanziate RS232 Module #####
-    rs232_instance=RS232_Norbo.RS232_Module(iClk,iRst,iRX,oTX, iData,WriteEnable,  \
+    rs232_instance=RS232_Norbo.RS232_Module(clk,iRst,iRX,oTX, iData,WriteEnable,  \
          oWrBuffer_full,oData,read_addr,rx_addr,Clkfrequenz=Clk_f,  \
          Baudrate=BAUDRATE,RX_BUFFER_LENGTH=RX_BUFF_LEN,TX_BUFFER_LENGTH=RX_BUFF_LEN)
     
@@ -295,7 +322,7 @@ def convert_RS232Programmer(hdl):
     we=Signal(bool(0))
     oTX_programmer=Signal(bool(0))
     oInfobyte=Signal(intbv(0)[8:])
-    #programmer_inst=RS232Programmer(iClk,iRst,oInfobyte,dout,addr_out,we, oTX,oTX_programmer, BAUDRATE=BAUDRATE,RX_BUFF_LEN=RX_BUFF_LEN,TX_BUFF_LEN=RX_BUFF_LEN,Clk_f=Clk_f)
+    #programmer_inst=RS232Programmer(clk,iRst,oInfobyte,dout,addr_out,we, oTX,oTX_programmer, BAUDRATE=BAUDRATE,RX_BUFF_LEN=RX_BUFF_LEN,TX_BUFF_LEN=RX_BUFF_LEN,Clk_f=Clk_f)
     
     
     oprog_Data_RS232=Signal(intbv(0)[8:])
@@ -303,14 +330,14 @@ def convert_RS232Programmer(hdl):
     iprog_WrBuffer_full_RS232=Signal(bool(0))
     programmer_enable=Signal(bool(1))
     
-    programmer_inst=RS232Programmer(iClk,iRst,programmer_enable,oInfobyte, \
+    programmer_inst=RS232Programmer(clk,iRst,programmer_enable,oInfobyte, \
                        dout,addr_out,we, \
                        oprog_Data_RS232,oprog_WriteEnable_RS232, iprog_WrBuffer_full_RS232,oData,read_addr,rx_addr)
     programmer_inst.convert(hdl=hdl)
     
 
-if __name__=='__main__':
-    #convert_RS232Programmer(hdl='Verilog')
-    tb = test_bench()
-    tb.config_sim(trace=True)
-    tb.run_sim()         
+
+#convert_RS232Programmer(hdl='Verilog')
+tb = test_bench()
+tb.config_sim(trace=False)
+tb.run_sim()         

@@ -1,0 +1,31 @@
+step 1 python top.py
+	Clk_f=100e6 #100 Mhz
+	BAUDRATE=230400
+	CounterCycle = 100000000 / 230400 = 434.027
+	CounterCycle_half = 100000000 / (230400 * 2) = 217.013
+
+	if ((RS232_Module0_rx_counter == 217)) begin
+
+yosys -l simple.log -p 'synth_ice40 -abc9 -blif $@ -json $*.json' $<
+
+yosys -l simple.log -p 'synth_ice40 -abc9 -blif top.blif -json top.json' top.v
+
+nextpnr-ice40 --hx8k --pcf $*.pcf --json $*.json --asc $*.asc
+
+nextpnr-ice40 --hx8k --pcf top.pcf --json top.json --asc top.asc
+
+icetime -d hx8k -c 100 $<
+
+icetime -d hx8k -c 100 top.asc
+// Reading input .asc file..
+// Reading 8k chipdb file..
+// Creating timing netlist..
+// Timing estimate: 4.74 ns (210.84 MHz)
+// Checking 10.00 ns (100.00 MHz) clock constraint: PASSED.
+
+icepack $< $@
+
+icepack top.asc top.bin
+
+ls -la top.bin
+-rw-r--r-- 1 devel devel 135100 Dec 29 06:54 top.bin

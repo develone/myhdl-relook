@@ -1,6 +1,7 @@
 from myhdl import *
 from RS232_Norbo import RS232_Module
 from RS232Programmer import RS232Programmer
+from rs232loopback import rs232loopback
 """
 yosys -l simple.log -p 'synth_ice40 -blif main.blif -json main.json' main.v
 === top ===
@@ -24,6 +25,7 @@ from constsig import *
 
 @block
 def main(clk,iRX,oTX):
+	rs232loopback_1 = rs232loopback(oTX, iRX)
 	rs232_instance=RS232_Module(clk,iRst,iRX,oTX, iData,WriteEnable,  \
 		oWrBuffer_full,oData,read_addr,rx_addr,Clkfrequenz=Clk_f,  \
 		Baudrate=BAUDRATE,RX_BUFFER_LENGTH=RX_BUFF_LEN)

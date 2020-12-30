@@ -5,19 +5,20 @@ from main import main
 yosys -l simple.log -p 'synth_ice40 -blif top.blif -json top.json' top.v
 === top ===
 
-   Number of wires:                 42
-   Number of wire bits:            156
-   Number of public wires:          42
-   Number of public wire bits:     156
+   Number of wires:                 43
+   Number of wire bits:            157
+   Number of public wires:          43
+   Number of public wire bits:     157
    Number of memories:               0
    Number of memory bits:            0
    Number of processes:              0
-   Number of cells:                 61
+   Number of cells:                 63
      SB_CARRY                       10
      SB_DFF                          2
      SB_DFFE                        18
      SB_DFFSS                        1
-     SB_LUT4                        30
+     SB_LUT4                        32
+
 
 """
 from constsig import *

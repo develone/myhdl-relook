@@ -1,6 +1,8 @@
 from myhdl import *
 import RS232_Norbo
-#from RS232_Norbo import RS232_Module
+from RS232_Norbo import RS232_Module
+from rs232loopback import rs232loopback
+
 from constsig import *
 
 """
@@ -151,6 +153,9 @@ def test_bench():
     RX_BUFF_LEN=8
     rx_addr=Signal(intbv(0,min=0,max=RX_BUFF_LEN))
 
+    ##### Instanziate rs232loopback #####
+    rs232loopback_1 = rs232loopback(oTX, iRX)
+
     ##### Instanziate RS232 Module #####
     
     rs232_instance=RS232_Norbo.RS232_Module(clk,iRst,iRX,oTX, iData,WriteEnable,  \
@@ -192,9 +197,11 @@ def test_bench():
     def clk_gen():
       clk.next=not clk
     
+    """
     @always_comb
     def rs232loopback():
         iRX.next=oTX
+    """
 
     @instance
     def Monitor():
@@ -290,7 +297,7 @@ def test_bench():
       print "End of Simulation, simulation done!"
       raise StopSimulation
 
-    return  clk_gen,Monitor,stimulus,rs232_instance,programmer_inst,rs232loopback,Monitor2#,Monitor_oTX    
+    return  clk_gen,Monitor,stimulus,rs232_instance,programmer_inst,rs232loopback_1,Monitor2#,Monitor_oTX    
 
     
 def convert_RS232Programmer(hdl):
@@ -339,5 +346,5 @@ def convert_RS232Programmer(hdl):
 
 #convert_RS232Programmer(hdl='Verilog')
 #tb = test_bench()
-#tb.config_sim(trace=False)
+#tb.config_sim(trace=True)
 #tb.run_sim()         

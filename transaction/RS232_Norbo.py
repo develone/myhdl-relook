@@ -24,6 +24,7 @@
 
 from myhdl import *
 from constsig import *
+from rs232loopback import rs232loopback
 """
 yosys -l simple.log -p 'synth_ice40 -blif RS232_Module.blif -json RS232_Module.json' RS232_Module.v
 
@@ -180,7 +181,9 @@ def test_bench():
     read_addr=Signal(intbv(0,min=0,max=8))
     RX_BUFF_LEN=8
     rx_addr=Signal(intbv(0,min=0,max=RX_BUFF_LEN))
-
+    
+    ##### Instanziate rs232loopback #####
+    rs232loopback_1 = rs232loopback(oTX, iRX)
     ##### Instanziate RS232 Module #####
     rs232_instance=RS232_Module(clk,iRst,iRX,oTX, iData,WriteEnable,  \
          oWrBuffer_full,oData,read_addr,rx_addr,Clkfrequenz=Clk_f,  \
@@ -195,10 +198,12 @@ def test_bench():
     @always(interval)
     def clk_gen():
       clk.next=not clk
-        
+    
+    """"    
     @always_comb
     def rs232loopback():
         iRX.next=oTX
+    """
 
     def Write_to_rs232_send_buffer(value):
       yield clk.posedge
@@ -291,7 +296,7 @@ def test_bench():
       print "End of Simulation, simulation succesfull!"
       raise StopSimulation
 
-    return  clk_gen,rs232loopback,stimulus,rs232_instance#,Monitor_oTX
+    return  clk_gen,rs232loopback_1,stimulus,rs232_instance#,Monitor_oTX
 
 def convert_RS232_Module(hdl):
   rs232_instance=RS232_Module(clk,iRst,iRX,oTX, iData,WriteEnable,  \

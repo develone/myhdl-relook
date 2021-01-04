@@ -1,5 +1,5 @@
 from myhdl import *
-from main import main
+import main
 
 """
 yosys -l simple.log -p 'synth_ice40 -blif top.blif -json top.json' top.v
@@ -21,11 +21,11 @@ yosys -l simple.log -p 'synth_ice40 -blif top.blif -json top.json' top.v
 
 
 """
-from constsig import *
+ 
 
 @block
 def top(clk,iRX,oTX):
-	main_0 = main(clk,iRX,oTX)
+	main_inst = main.main(clk,iRX,oTX)
 	return instances()
 
 def convert_top(hdl):

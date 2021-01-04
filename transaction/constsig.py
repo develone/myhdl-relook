@@ -56,6 +56,7 @@ incaddr = Signal(intbv(0)[AZ:])
 update2_i = Signal(bool(0))
 update2_o = Signal(bool(0))
 
+ldData=Signal(intbv(0)[8:])
 iData=Signal(intbv(0)[8:])
 oData=Signal(intbv(0)[8:])
 iClk=Signal(bool(0))

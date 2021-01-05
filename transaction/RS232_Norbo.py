@@ -140,7 +140,7 @@ def RS232_Module(iClk,iRst,iRX,oTX, iData,WriteEnable,oWrBuffer_full,oData,read_
         
     return seq_logic,comb_logic,comb2_logic
 
-
+@block
 def test_bench():
     ###### Constnats #####
     Clk_f=12e6 #12 Mhz
@@ -272,7 +272,10 @@ def test_bench():
     return  clk_gen,rs232loopback,stimulus,rs232_instance#,Monitor_oTX
 
 if __name__ == '__main__':
-  tb = traceSignals(test_bench)
-  sim= Simulation(tb)
+  #tb = traceSignals(test_bench)
+  #sim= Simulation(tb)
   #sim = Simulation(test_bench())
-  sim.run()
+  #sim.run()
+  tb = test_bench()
+  tb.config_sim(trace=True)
+  tb.run_sim()

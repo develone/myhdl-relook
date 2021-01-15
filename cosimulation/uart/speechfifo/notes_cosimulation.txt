@@ -1,0 +1,70 @@
+Cosimulation 01/15/21
+requires myhdl.vpi
+os.system('iverilog -o helloworld.vvp speechfifo.v speechfifo_tb.v')
+return Cosimulation('vvp -m ./myhdl.vpi speechfifo.vvp', i_clk=i_clk, o_uart_tx=o_uart_tx)
+
+python speechfifo.py > xx.txt
+('from checker, time=', 20005, ' o_uart_=', Signal(0))
+('from checker, time=', 20015, ' o_uart_=', Signal(0))
+('from checker, time=', 20025, ' o_uart_=', Signal(0))
+('from checker, time=', 20035, ' o_uart_=', Signal(1))
+('from checker, time=', 20045, ' o_uart_=', Signal(1))
+('from checker, time=', 20055, ' o_uart_=', Signal(1))
+('from checker, time=', 20065, ' o_uart_=', Signal(1))
+('from checker, time=', 20075, ' o_uart_=', Signal(1))
+('from checker, time=', 20085, ' o_uart_=', Signal(1))
+('from checker, time=', 20095, ' o_uart_=', Signal(1))
+				.
+				.
+('from checker, time=', 199905, ' o_uart_=', Signal(1))
+('from checker, time=', 199915, ' o_uart_=', Signal(1))
+('from checker, time=', 199925, ' o_uart_=', Signal(1))
+('from checker, time=', 199935, ' o_uart_=', Signal(1))
+('from checker, time=', 199945, ' o_uart_=', Signal(1))
+('from checker, time=', 199955, ' o_uart_=', Signal(1))
+('from checker, time=', 199965, ' o_uart_=', Signal(1))
+('from checker, time=', 199975, ' o_uart_=', Signal(1))
+('from checker, time=', 199985, ' o_uart_=', Signal(1))
+('from checker, time=', 199995, ' o_uart_=', Signal(1))				
+<class 'myhdl._SuspendSimulation'>: Simulated 200000 timesteps
+
+gtkwave speechfifo.vcd
+
+yosys -l simple.log -p 'synth_ice40 -abc9 -blif $@ -json $*.json' $<
+
+yosys -l simple.log -p 'synth_ice40 -abc9 -blif speechfifo.blif -json speechfifo.json' speechfifo.v
+=== speechfifo ===
+
+   Number of wires:               6167
+   Number of wire bits:          35850
+   Number of public wires:        6167
+   Number of public wire bits:   35850
+   Number of memories:               0
+   Number of memory bits:            0
+   Number of processes:              0
+   Number of cells:               2206
+     SB_CARRY                       98
+     SB_DFF                         82
+     SB_DFFE                       167
+     SB_DFFESR                      22
+     SB_DFFESS                       4
+     SB_DFFSR                       21
+     SB_DFFSS                        2
+     SB_LUT4                      1810
+
+nextpnr-ice40 --hx8k --pcf $*.pcf --json $*.json --asc $*.asc
+
+nextpnr-ice40 --hx8k --pcf speechfifo.pcf --json speechfifo.json --asc speechfifo.asc
+
+icetime -d hx8k -c 100 $<
+
+icetime -d hx8k -c 100 speechfifo.asc
+// Reading input .asc file..
+// Reading 8k chipdb file..
+// Creating timing netlist..
+// Timing estimate: 14.12 ns (70.82 MHz)
+// Checking 10.00 ns (100.00 MHz) clock constraint: FAILED.
+icepack $< $@
+
+icepack speechfifo.asc speechfifo.bin
+

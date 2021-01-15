@@ -1,0 +1,69 @@
+Cosimulation 01/15/21
+requires myhdl.vpi
+os.system('iverilog -o helloworld.vvp helloworld.v helloworld_tb.v')
+return Cosimulation('vvp -m ./myhdl.vpi helloworld.vvp', i_clk=i_clk, o_uart_tx=o_uart_tx)
+
+python helloworld.py > xx.txt
+('from checker, time=', 20005, ' o_uart_=', Signal(0))
+('from checker, time=', 20015, ' o_uart_=', Signal(0))
+('from checker, time=', 20025, ' o_uart_=', Signal(0))
+('from checker, time=', 20035, ' o_uart_=', Signal(1))
+('from checker, time=', 20045, ' o_uart_=', Signal(1))
+('from checker, time=', 20055, ' o_uart_=', Signal(1))
+('from checker, time=', 20065, ' o_uart_=', Signal(1))
+('from checker, time=', 20075, ' o_uart_=', Signal(1))
+('from checker, time=', 20085, ' o_uart_=', Signal(1))
+('from checker, time=', 20095, ' o_uart_=', Signal(1))
+				.
+				.
+('from checker, time=', 199905, ' o_uart_=', Signal(1))
+('from checker, time=', 199915, ' o_uart_=', Signal(1))
+('from checker, time=', 199925, ' o_uart_=', Signal(1))
+('from checker, time=', 199935, ' o_uart_=', Signal(1))
+('from checker, time=', 199945, ' o_uart_=', Signal(1))
+('from checker, time=', 199955, ' o_uart_=', Signal(1))
+('from checker, time=', 199965, ' o_uart_=', Signal(1))
+('from checker, time=', 199975, ' o_uart_=', Signal(1))
+('from checker, time=', 199985, ' o_uart_=', Signal(1))
+('from checker, time=', 199995, ' o_uart_=', Signal(1))				
+<class 'myhdl._SuspendSimulation'>: Simulated 200000 timesteps
+
+gtkwave helloworld.vcd
+
+yosys -l simple.log -p 'synth_ice40 -abc9 -blif $@ -json $*.json' $<
+
+yosys -l simple.log -p 'synth_ice40 -abc9 -blif helloworld.blif -json helloworld.json' helloworld.v
+=== helloworld ===
+
+   Number of wires:                229
+   Number of wire bits:            530
+   Number of public wires:         229
+   Number of public wire bits:     530
+   Number of memories:               0
+   Number of memory bits:            0
+   Number of processes:              0
+   Number of cells:                277
+     SB_CARRY                       56
+     SB_DFF                         32
+     SB_DFFE                        17
+     SB_DFFESR                       2
+     SB_DFFSR                       24
+     SB_DFFSS                        3
+     SB_LUT4                       142
+     SB_RAM40_4K                     1
+nextpnr-ice40 --hx8k --pcf $*.pcf --json $*.json --asc $*.asc
+
+nextpnr-ice40 --hx8k --pcf helloworld.pcf --json helloworld.json --asc helloworld.asc
+
+icetime -d hx8k -c 100 $<
+
+icetime -d hx8k -c 100 helloworld.asc
+// Reading input .asc file..
+// Reading 8k chipdb file..
+// Creating timing netlist..
+// Timing estimate: 7.78 ns (128.54 MHz)
+// Checking 10.00 ns (100.00 MHz) clock constraint: PASSED.
+icepack $< $@
+
+icepack helloworld.asc helloworld.bin
+

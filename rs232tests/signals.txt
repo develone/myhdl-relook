@@ -1,0 +1,62 @@
+Signals	
+
+
+
+
+U4B
+ICE40-HX8K-CT256				echotest										PMODUSB
+PM2-A2 IOT-223 B3 output wire	o_uart_tx B3 with respect to module --> to uart rx	2 
+PM2-A3 IOT-214 B5 input  i_uart_rx B5 with respect to module	<-- from the uart tx 3 
+																				PMODUSB
+input iClk;
+input iRst;
+input iRX;
+output oTX;
+input [7:0] iData;
+input WriteEnable;
+output oWrBuffer_full;
+input [2:0] read_addr;
+output [2:0] oRx_addr;
+
+			iRX
+	WriteEnable
+		iData
+	read_addr	
+										oTX
+										oWrBuffer_full
+										oRx_addr
+										oData
+					RS232_Module
+			iClk
+			iRst
+			
+input clk;
+input rst;
+input enable;
+output [7:0] oInfobyte;
+
+output [31:0] dout;
+output [31:0] addr_out;
+output [7:0] iData_RS232;
+output WriteEnable_RS232;
+input oWrBuffer_full_RS232;
+input [7:0] oData_RS232;
+output [2:0] read_addr_RS232;					
+input [2:0] rx_addr_RS232;
+
+					
+		iData_RS232
+		iClk
+		iRst
+		enable
+						RS232Programmer		oData_RS232
+											read_addr_RS232
+											dout
+											addr_out
+											iData_RS232
+											WriteEnable_RS232
+											we
+oWrBuffer_full_RS232
+		oData_RS232
+		rx_addr_RS232
+											oInfobyte

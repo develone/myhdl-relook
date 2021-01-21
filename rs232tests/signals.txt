@@ -14,7 +14,7 @@ input iRX;
 output oTX;
 input [7:0] iData;
 input WriteEnable;
-output oWrBuffer_full;
+output oWrBuffer_full;	wire
 input [2:0] read_addr;
 output [2:0] oRx_addr;
 
@@ -33,10 +33,10 @@ output [2:0] oRx_addr;
 input clk;
 input rst;
 input enable;
-output [7:0] oInfobyte;
+output [7:0] oInfobyte;	wire
 
-output [31:0] dout;
-output [31:0] addr_out;
+output [31:0] dout;		wire
+output [31:0] addr_out;	wire
 output [7:0] iData_RS232;
 output WriteEnable_RS232;
 input oWrBuffer_full_RS232;

@@ -36,22 +36,11 @@ def convert_main(hdl):
 
 @block
 def test_bench():
-    ###### Constnats #####
-    #Clk_f=100e6 #100 Mhz
-    #BAUDRATE=230400
 
     ##### Signal definitions #####
 
     ##### Instanziate RS232 Module #####
-    rs232_instance=RS232_Norbo.RS232_Module(iClk,iRst,iRX,oTX, iData,WriteEnable,  \
-         oWrBuffer_full,oData,read_addr,rx_addr,Clkfrequenz=Clk_f,  \
-         Baudrate=BAUDRATE,RX_BUFFER_LENGTH=RX_BUFF_LEN,TX_BUFFER_LENGTH=RX_BUFF_LEN)
-
-
-    programmer_inst=RS232Programmer.RS232Programmer(iClk,iRst, \
-        programmer_enable,oInfobyte,dout,addr_out,we, \
-        oprog_Data_RS232,oprog_WriteEnable_RS232, \
-        iprog_WrBuffer_full_RS232,oData,read_addr,rx_addr)
+    main_0 = main(iClk,iRX,oTX)
 
     interval = delay(10)
     @always(interval)
@@ -117,12 +106,14 @@ def test_bench():
     @instance
     def stimulus():
         #### Reseting #####
+        """
         iRst.next=1
         yield delay(50)
         iRst.next=0
         yield delay(50)
         iRst.next=1
         yield delay(50)
+        """
 
         #### Some Test Data ####
         testARRAY=[0x09]+range(256)+range(256)+[0x12]+range(256)+range(256)+range(256)+range(256)
@@ -156,12 +147,13 @@ def test_bench():
         print "End of Simulation, simulation done!"
         raise StopSimulation
 
-    return  clk_gen,Monitor,stimulus,rs232_instance,programmer_inst,rs232loopback,Monitor2#,Monitor_oTX
+    #return  clk_gen,Monitor,stimulus,rs232_instance,programmer_inst,rs232loopback,Monitor2#,Monitor_oTX
+    return  clk_gen,Monitor,stimulus,main_0,rs232loopback,Monitor2#,Monitor_oTX
 
 
-convert_main(hdl='Verilog')
-"""
+#convert_main(hdl='Verilog')
+
 tb = test_bench()
 tb.config_sim(trace=True)
 tb.run_sim()
-"""
+

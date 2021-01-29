@@ -1,0 +1,1584 @@
+
+ /----------------------------------------------------------------------------\
+ |                                                                            |
+ |  yosys -- Yosys Open SYnthesis Suite                                       |
+ |                                                                            |
+ |  Copyright (C) 2012 - 2019  Clifford Wolf <clifford@clifford.at>           |
+ |                                                                            |
+ |  Permission to use, copy, modify, and/or distribute this software for any  |
+ |  purpose with or without fee is hereby granted, provided that the above    |
+ |  copyright notice and this permission notice appear in all copies.         |
+ |                                                                            |
+ |  THE SOFTWARE IS PROVIDED "AS IS" AND THE AUTHOR DISCLAIMS ALL WARRANTIES  |
+ |  WITH REGARD TO THIS SOFTWARE INCLUDING ALL IMPLIED WARRANTIES OF          |
+ |  MERCHANTABILITY AND FITNESS. IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR   |
+ |  ANY SPECIAL, DIRECT, INDIRECT, OR CONSEQUENTIAL DAMAGES OR ANY DAMAGES    |
+ |  WHATSOEVER RESULTING FROM LOSS OF USE, DATA OR PROFITS, WHETHER IN AN     |
+ |  ACTION OF CONTRACT, NEGLIGENCE OR OTHER TORTIOUS ACTION, ARISING OUT OF   |
+ |  OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.            |
+ |                                                                            |
+ \----------------------------------------------------------------------------/
+
+ Yosys 0.9+1706 (git sha1 7cc9d487, clang 7.0.1-8+rpi3+deb10u2 -fPIC -Os)
+
+
+-- Parsing `main.v' using frontend `verilog' --
+
+1. Executing Verilog-2005 frontend: main.v
+Parsing Verilog input from `main.v' to AST representation.
+Generating RTLIL representation for module `\main'.
+main.v:112: Warning: System task `$write' outside initial block is unsupported.
+main.v:113: Warning: System task `$write' outside initial block is unsupported.
+Warning: Replacing memory \RS232_Module0_Transmit_RAM with list of registers. See main.v:214
+Warning: Replacing memory \RS232_Module0_Receive_RAM with list of registers. See main.v:207
+Note: Assuming pure combinatorial block at main.v:243 in
+compliance with IEC 62142(E):2005 / IEEE Std. 1364.1(E):2002. Recommending
+use of @* instead of @(...) for better match of synthesis and simulation.
+Note: Assuming pure combinatorial block at main.v:335 in
+compliance with IEC 62142(E):2005 / IEEE Std. 1364.1(E):2002. Recommending
+use of @* instead of @(...) for better match of synthesis and simulation.
+Successfully finished Verilog frontend.
+
+-- Running command `synth_ice40 -blif main.blif -json main.json' --
+
+2. Executing SYNTH_ICE40 pass.
+
+2.1. Executing Verilog-2005 frontend: /usr/local/bin/../share/yosys/ice40/cells_sim.v
+Parsing Verilog input from `/usr/local/bin/../share/yosys/ice40/cells_sim.v' to AST representation.
+Generating RTLIL representation for module `\SB_IO'.
+Generating RTLIL representation for module `\SB_GB_IO'.
+Generating RTLIL representation for module `\SB_GB'.
+Generating RTLIL representation for module `\SB_LUT4'.
+Generating RTLIL representation for module `\SB_CARRY'.
+Generating RTLIL representation for module `\SB_DFF'.
+Generating RTLIL representation for module `\SB_DFFE'.
+Generating RTLIL representation for module `\SB_DFFSR'.
+Generating RTLIL representation for module `\SB_DFFR'.
+Generating RTLIL representation for module `\SB_DFFSS'.
+Generating RTLIL representation for module `\SB_DFFS'.
+Generating RTLIL representation for module `\SB_DFFESR'.
+Generating RTLIL representation for module `\SB_DFFER'.
+Generating RTLIL representation for module `\SB_DFFESS'.
+Generating RTLIL representation for module `\SB_DFFES'.
+Generating RTLIL representation for module `\SB_DFFN'.
+Generating RTLIL representation for module `\SB_DFFNE'.
+Generating RTLIL representation for module `\SB_DFFNSR'.
+Generating RTLIL representation for module `\SB_DFFNR'.
+Generating RTLIL representation for module `\SB_DFFNSS'.
+Generating RTLIL representation for module `\SB_DFFNS'.
+Generating RTLIL representation for module `\SB_DFFNESR'.
+Generating RTLIL representation for module `\SB_DFFNER'.
+Generating RTLIL representation for module `\SB_DFFNESS'.
+Generating RTLIL representation for module `\SB_DFFNES'.
+Generating RTLIL representation for module `\SB_RAM40_4K'.
+Generating RTLIL representation for module `\SB_RAM40_4KNR'.
+Generating RTLIL representation for module `\SB_RAM40_4KNW'.
+Generating RTLIL representation for module `\SB_RAM40_4KNRNW'.
+Generating RTLIL representation for module `\ICESTORM_LC'.
+Generating RTLIL representation for module `\SB_PLL40_CORE'.
+Generating RTLIL representation for module `\SB_PLL40_PAD'.
+Generating RTLIL representation for module `\SB_PLL40_2_PAD'.
+Generating RTLIL representation for module `\SB_PLL40_2F_CORE'.
+Generating RTLIL representation for module `\SB_PLL40_2F_PAD'.
+Generating RTLIL representation for module `\SB_WARMBOOT'.
+Generating RTLIL representation for module `\SB_SPRAM256KA'.
+Generating RTLIL representation for module `\SB_HFOSC'.
+Generating RTLIL representation for module `\SB_LFOSC'.
+Generating RTLIL representation for module `\SB_RGBA_DRV'.
+Generating RTLIL representation for module `\SB_LED_DRV_CUR'.
+Generating RTLIL representation for module `\SB_RGB_DRV'.
+Generating RTLIL representation for module `\SB_I2C'.
+Generating RTLIL representation for module `\SB_SPI'.
+Generating RTLIL representation for module `\SB_LEDDA_IP'.
+Generating RTLIL representation for module `\SB_FILTER_50NS'.
+Generating RTLIL representation for module `\SB_IO_I3C'.
+Generating RTLIL representation for module `\SB_IO_OD'.
+Generating RTLIL representation for module `\SB_MAC16'.
+Generating RTLIL representation for module `\ICESTORM_RAM'.
+Successfully finished Verilog frontend.
+
+2.2. Executing HIERARCHY pass (managing design hierarchy).
+
+2.2.1. Finding top of design hierarchy..
+root of   0 design levels: main                
+Automatically selected main as design top module.
+
+2.2.2. Analyzing design hierarchy..
+Top module:  \main
+
+2.2.3. Analyzing design hierarchy..
+Top module:  \main
+Removed 0 unused modules.
+
+2.3. Executing PROC pass (convert processes to netlists).
+
+2.3.1. Executing PROC_CLEAN pass (remove empty switches from decision trees).
+Cleaned up 0 empty switches.
+
+2.3.2. Executing PROC_RMDEAD pass (remove dead branches from decision trees).
+Marked 1 switch rules as full_case in process $proc$main.v:335$107 in module main.
+Marked 1 switch rules as full_case in process $proc$main.v:320$100 in module main.
+Marked 4 switch rules as full_case in process $proc$main.v:257$90 in module main.
+Marked 1 switch rules as full_case in process $proc$main.v:243$86 in module main.
+Removed 2 dead cases from process $proc$main.v:154$29 in module main.
+Marked 12 switch rules as full_case in process $proc$main.v:154$29 in module main.
+Marked 3 switch rules as full_case in process $proc$main.v:66$5 in module main.
+Removed a total of 2 dead cases.
+
+2.3.3. Executing PROC_PRUNE pass (remove redundant assignments in processes).
+Removed 4 redundant assignments.
+Promoted 10 assignments to connections.
+
+2.3.4. Executing PROC_INIT pass (extract init attributes).
+
+2.3.5. Executing PROC_ARST pass (detect async resets in processes).
+Found async reset \iRst in `\main.$proc$main.v:257$90'.
+Found async reset \iRst in `\main.$proc$main.v:154$29'.
+Found async reset \iRst in `\main.$proc$main.v:66$5'.
+
+2.3.6. Executing PROC_MUX pass (convert decision trees to multiplexers).
+Creating decoders for process `\main.$proc$main.v:335$107'.
+     1/1: $1\rom_dout[7:0]
+Creating decoders for process `\main.$proc$main.v:320$100'.
+     1/2: $0\pwrup[5:0]
+     2/2: $0\iRst[0:0]
+Creating decoders for process `\main.$proc$main.v:257$90'.
+     1/7: $0\updatebuff0_0_state1[2:0]
+     2/7: $0\rom_addr[3:0]
+     3/7: $0\ppscounter[31:0]
+     4/7: $0\WriteEnable[0:0]
+     5/7: $0\ldData[7:0]
+     6/7: $0\iData[7:0]
+     7/7: $0\obusy[0:0]
+Creating decoders for process `\main.$proc$main.v:243$86'.
+     1/1: $1\RS232_Module0_sig_WrBuffer_full[0:0]
+Creating decoders for process `\main.$proc$main.v:154$29'.
+     1/52: $4$mem2reg_rd$\RS232_Module0_Transmit_RAM$main.v:223$4_DATA[7:0]$78
+     2/52: $3$mem2reg_rd$\RS232_Module0_Transmit_RAM$main.v:223$4_DATA[7:0]$77
+     3/52: $3$mem2reg_rd$\RS232_Module0_Transmit_RAM$main.v:223$4_ADDR[2:0]$76
+     4/52: $2$mem2reg_rd$\RS232_Module0_Transmit_RAM$main.v:223$4_DATA[7:0]$74
+     5/52: $2$mem2reg_rd$\RS232_Module0_Transmit_RAM$main.v:223$4_ADDR[2:0]$73
+     6/52: $2$mem2reg_wr$\RS232_Module0_Transmit_RAM$main.v:214$3_ADDR[2:0]$69
+     7/52: $2$mem2reg_wr$\RS232_Module0_Transmit_RAM$main.v:214$3_DATA[7:0]$70
+     8/52: $4$mem2reg_wr$\RS232_Module0_Receive_RAM$main.v:207$2_ADDR[2:0]$63
+     9/52: $4$mem2reg_wr$\RS232_Module0_Receive_RAM$main.v:207$2_DATA[7:0]$64
+    10/52: $3$mem2reg_wr$\RS232_Module0_Receive_RAM$main.v:207$2_DATA[7:0]$61
+    11/52: $3$mem2reg_wr$\RS232_Module0_Receive_RAM$main.v:207$2_ADDR[2:0]$60
+    12/52: $2$mem2reg_wr$\RS232_Module0_Receive_RAM$main.v:207$2_DATA[7:0]$49
+    13/52: $2$mem2reg_wr$\RS232_Module0_Receive_RAM$main.v:207$2_ADDR[2:0]$48
+    14/52: $2$mem2reg_rd$\RS232_Module0_Receive_RAM$main.v:171$1_DATA[7:0]$47
+    15/52: $1$mem2reg_rd$\RS232_Module0_Transmit_RAM$main.v:223$4_DATA[7:0]$46
+    16/52: $1$mem2reg_rd$\RS232_Module0_Transmit_RAM$main.v:223$4_ADDR[2:0]$45
+    17/52: $1$mem2reg_wr$\RS232_Module0_Transmit_RAM$main.v:214$3_DATA[7:0]$44
+    18/52: $1$mem2reg_wr$\RS232_Module0_Transmit_RAM$main.v:214$3_ADDR[2:0]$43
+    19/52: $1$mem2reg_wr$\RS232_Module0_Receive_RAM$main.v:207$2_DATA[7:0]$42
+    20/52: $1$mem2reg_wr$\RS232_Module0_Receive_RAM$main.v:207$2_ADDR[2:0]$41
+    21/52: $1$mem2reg_rd$\RS232_Module0_Receive_RAM$main.v:171$1_DATA[7:0]$40
+    22/52: $1$mem2reg_rd$\RS232_Module0_Receive_RAM$main.v:171$1_ADDR[2:0]$39
+    23/52: $0\rx_addr[2:0]
+    24/52: $0\RS232_Module0_Transmit_RAM[7][7:0]
+    25/52: $0\RS232_Module0_Transmit_RAM[6][7:0]
+    26/52: $0\RS232_Module0_Transmit_RAM[5][7:0]
+    27/52: $0\RS232_Module0_Transmit_RAM[4][7:0]
+    28/52: $0\RS232_Module0_Transmit_RAM[3][7:0]
+    29/52: $0\RS232_Module0_Transmit_RAM[2][7:0]
+    30/52: $0\RS232_Module0_Transmit_RAM[1][7:0]
+    31/52: $0\RS232_Module0_Transmit_RAM[0][7:0]
+    32/52: $0\RS232_Module0_Receive_RAM[7][7:0]
+    33/52: $0\RS232_Module0_Receive_RAM[6][7:0]
+    34/52: $0\RS232_Module0_Receive_RAM[5][7:0]
+    35/52: $0\RS232_Module0_Receive_RAM[4][7:0]
+    36/52: $0\RS232_Module0_Receive_RAM[3][7:0]
+    37/52: $0\RS232_Module0_Receive_RAM[2][7:0]
+    38/52: $0\RS232_Module0_Receive_RAM[1][7:0]
+    39/52: $0\RS232_Module0_Receive_RAM[0][7:0]
+    40/52: $0\RS232_Module0_rx_bit_count[3:0]
+    41/52: $0\RS232_Module0_tx_addr[2:0]
+    42/52: $0\RS232_Module0_SendREG[9:0]
+    43/52: $0\RS232_Module0_tx_State[1:0]
+    44/52: $0\RS232_Module0_rx_counter[8:0]
+    45/52: $0\RS232_Module0_rx_addr[2:0]
+    46/52: $0\RS232_Module0_write_addr[2:0]
+    47/52: $0\RS232_Module0_rx_State[1:0]
+    48/52: $0\RS232_Module0_rx_currentData[8:0]
+    49/52: $0\RS232_Module0_tx_bit_count[3:0]
+    50/52: $0\RS232_Module0_tx_counter[8:0]
+    51/52: $0\oData[7:0]
+    52/52: $0\oTX[0:0]
+Creating decoders for process `\main.$proc$main.v:66$5'.
+     1/11: $0\we[0:0]
+     2/11: $0\oprog_WriteEnable_RS232[0:0]
+     3/11: $0\RS232Programmer0_subcount[1:0]
+     4/11: $0\RS232Programmer0_received_addr[31:0]
+     5/11: $0\RS232Programmer0_state[2:0]
+     6/11: $0\RS232Programmer0_received_data[31:0]
+     7/11: $0\RS232Programmer0_countbytesRX[8:0]
+     8/11: $0\RS232Programmer0_Info_byte[7:0]
+     9/11: $0\RS232Programmer0_isData[0:0]
+    10/11: $0\oprog_Data_RS232[7:0]
+    11/11: $0\read_addr[2:0]
+
+2.3.7. Executing PROC_DLATCH pass (convert process syncs to latches).
+No latch inferred for signal `\main.\rom_dout' from process `\main.$proc$main.v:335$107'.
+No latch inferred for signal `\main.\RS232_Module0_sig_WrBuffer_full' from process `\main.$proc$main.v:243$86'.
+
+2.3.8. Executing PROC_DFF pass (convert process syncs to FFs).
+Creating register for signal `\main.\iRst' using process `\main.$proc$main.v:320$100'.
+  created $dff cell `$procdff$784' with positive edge clock.
+Creating register for signal `\main.\pwrup' using process `\main.$proc$main.v:320$100'.
+  created $dff cell `$procdff$785' with positive edge clock.
+Creating register for signal `\main.\obusy' using process `\main.$proc$main.v:257$90'.
+  created $adff cell `$procdff$786' with positive edge clock and negative level reset.
+Creating register for signal `\main.\iData' using process `\main.$proc$main.v:257$90'.
+  created $adff cell `$procdff$787' with positive edge clock and negative level reset.
+Creating register for signal `\main.\ldData' using process `\main.$proc$main.v:257$90'.
+  created $adff cell `$procdff$788' with positive edge clock and negative level reset.
+Creating register for signal `\main.\WriteEnable' using process `\main.$proc$main.v:257$90'.
+  created $adff cell `$procdff$789' with positive edge clock and negative level reset.
+Creating register for signal `\main.\ppscounter' using process `\main.$proc$main.v:257$90'.
+  created $dff cell `$procdff$790' with positive edge clock.
+Creating register for signal `\main.\rom_addr' using process `\main.$proc$main.v:257$90'.
+  created $adff cell `$procdff$791' with positive edge clock and negative level reset.
+Creating register for signal `\main.\updatebuff0_0_state1' using process `\main.$proc$main.v:257$90'.
+  created $adff cell `$procdff$792' with positive edge clock and negative level reset.
+Creating register for signal `\main.\oTX' using process `\main.$proc$main.v:154$29'.
+  created $dff cell `$procdff$793' with positive edge clock.
+Creating register for signal `\main.\oData' using process `\main.$proc$main.v:154$29'.
+  created $dff cell `$procdff$794' with positive edge clock.
+Creating register for signal `\main.\rx_addr' using process `\main.$proc$main.v:154$29'.
+  created $adff cell `$procdff$795' with positive edge clock and negative level reset.
+Creating register for signal `\main.\RS232_Module0_tx_counter' using process `\main.$proc$main.v:154$29'.
+  created $adff cell `$procdff$796' with positive edge clock and negative level reset.
+Creating register for signal `\main.\RS232_Module0_tx_bit_count' using process `\main.$proc$main.v:154$29'.
+  created $adff cell `$procdff$797' with positive edge clock and negative level reset.
+Creating register for signal `\main.\RS232_Module0_rx_currentData' using process `\main.$proc$main.v:154$29'.
+  created $adff cell `$procdff$798' with positive edge clock and negative level reset.
+Creating register for signal `\main.\RS232_Module0_rx_State' using process `\main.$proc$main.v:154$29'.
+  created $adff cell `$procdff$799' with positive edge clock and negative level reset.
+Creating register for signal `\main.\RS232_Module0_write_addr' using process `\main.$proc$main.v:154$29'.
+  created $adff cell `$procdff$800' with positive edge clock and negative level reset.
+Creating register for signal `\main.\RS232_Module0_rx_addr' using process `\main.$proc$main.v:154$29'.
+  created $adff cell `$procdff$801' with positive edge clock and negative level reset.
+Creating register for signal `\main.\RS232_Module0_rx_counter' using process `\main.$proc$main.v:154$29'.
+  created $adff cell `$procdff$802' with positive edge clock and negative level reset.
+Creating register for signal `\main.\RS232_Module0_tx_State' using process `\main.$proc$main.v:154$29'.
+  created $adff cell `$procdff$803' with positive edge clock and negative level reset.
+Creating register for signal `\main.\RS232_Module0_SendREG' using process `\main.$proc$main.v:154$29'.
+  created $adff cell `$procdff$804' with positive edge clock and negative level reset.
+Creating register for signal `\main.\RS232_Module0_tx_addr' using process `\main.$proc$main.v:154$29'.
+  created $adff cell `$procdff$805' with positive edge clock and negative level reset.
+Creating register for signal `\main.\RS232_Module0_rx_bit_count' using process `\main.$proc$main.v:154$29'.
+  created $adff cell `$procdff$806' with positive edge clock and negative level reset.
+Creating register for signal `\main.\RS232_Module0_Receive_RAM[0]' using process `\main.$proc$main.v:154$29'.
+  created $dff cell `$procdff$807' with positive edge clock.
+Creating register for signal `\main.\RS232_Module0_Receive_RAM[1]' using process `\main.$proc$main.v:154$29'.
+  created $dff cell `$procdff$808' with positive edge clock.
+Creating register for signal `\main.\RS232_Module0_Receive_RAM[2]' using process `\main.$proc$main.v:154$29'.
+  created $dff cell `$procdff$809' with positive edge clock.
+Creating register for signal `\main.\RS232_Module0_Receive_RAM[3]' using process `\main.$proc$main.v:154$29'.
+  created $dff cell `$procdff$810' with positive edge clock.
+Creating register for signal `\main.\RS232_Module0_Receive_RAM[4]' using process `\main.$proc$main.v:154$29'.
+  created $dff cell `$procdff$811' with positive edge clock.
+Creating register for signal `\main.\RS232_Module0_Receive_RAM[5]' using process `\main.$proc$main.v:154$29'.
+  created $dff cell `$procdff$812' with positive edge clock.
+Creating register for signal `\main.\RS232_Module0_Receive_RAM[6]' using process `\main.$proc$main.v:154$29'.
+  created $dff cell `$procdff$813' with positive edge clock.
+Creating register for signal `\main.\RS232_Module0_Receive_RAM[7]' using process `\main.$proc$main.v:154$29'.
+  created $dff cell `$procdff$814' with positive edge clock.
+Creating register for signal `\main.\RS232_Module0_Transmit_RAM[0]' using process `\main.$proc$main.v:154$29'.
+  created $dff cell `$procdff$815' with positive edge clock.
+Creating register for signal `\main.\RS232_Module0_Transmit_RAM[1]' using process `\main.$proc$main.v:154$29'.
+  created $dff cell `$procdff$816' with positive edge clock.
+Creating register for signal `\main.\RS232_Module0_Transmit_RAM[2]' using process `\main.$proc$main.v:154$29'.
+  created $dff cell `$procdff$817' with positive edge clock.
+Creating register for signal `\main.\RS232_Module0_Transmit_RAM[3]' using process `\main.$proc$main.v:154$29'.
+  created $dff cell `$procdff$818' with positive edge clock.
+Creating register for signal `\main.\RS232_Module0_Transmit_RAM[4]' using process `\main.$proc$main.v:154$29'.
+  created $dff cell `$procdff$819' with positive edge clock.
+Creating register for signal `\main.\RS232_Module0_Transmit_RAM[5]' using process `\main.$proc$main.v:154$29'.
+  created $dff cell `$procdff$820' with positive edge clock.
+Creating register for signal `\main.\RS232_Module0_Transmit_RAM[6]' using process `\main.$proc$main.v:154$29'.
+  created $dff cell `$procdff$821' with positive edge clock.
+Creating register for signal `\main.\RS232_Module0_Transmit_RAM[7]' using process `\main.$proc$main.v:154$29'.
+  created $dff cell `$procdff$822' with positive edge clock.
+Creating register for signal `\main.$mem2reg_rd$\RS232_Module0_Receive_RAM$main.v:171$1_ADDR' using process `\main.$proc$main.v:154$29'.
+  created $adff cell `$procdff$823' with positive edge clock and negative level reset.
+Creating register for signal `\main.$mem2reg_rd$\RS232_Module0_Receive_RAM$main.v:171$1_DATA' using process `\main.$proc$main.v:154$29'.
+  created $adff cell `$procdff$824' with positive edge clock and negative level reset.
+Creating register for signal `\main.$mem2reg_wr$\RS232_Module0_Receive_RAM$main.v:207$2_ADDR' using process `\main.$proc$main.v:154$29'.
+  created $adff cell `$procdff$825' with positive edge clock and negative level reset.
+Creating register for signal `\main.$mem2reg_wr$\RS232_Module0_Receive_RAM$main.v:207$2_DATA' using process `\main.$proc$main.v:154$29'.
+  created $adff cell `$procdff$826' with positive edge clock and negative level reset.
+Creating register for signal `\main.$mem2reg_wr$\RS232_Module0_Transmit_RAM$main.v:214$3_ADDR' using process `\main.$proc$main.v:154$29'.
+  created $adff cell `$procdff$827' with positive edge clock and negative level reset.
+Creating register for signal `\main.$mem2reg_wr$\RS232_Module0_Transmit_RAM$main.v:214$3_DATA' using process `\main.$proc$main.v:154$29'.
+  created $adff cell `$procdff$828' with positive edge clock and negative level reset.
+Creating register for signal `\main.$mem2reg_rd$\RS232_Module0_Transmit_RAM$main.v:223$4_ADDR' using process `\main.$proc$main.v:154$29'.
+  created $adff cell `$procdff$829' with positive edge clock and negative level reset.
+Creating register for signal `\main.$mem2reg_rd$\RS232_Module0_Transmit_RAM$main.v:223$4_DATA' using process `\main.$proc$main.v:154$29'.
+  created $adff cell `$procdff$830' with positive edge clock and negative level reset.
+Creating register for signal `\main.\oprog_WriteEnable_RS232' using process `\main.$proc$main.v:66$5'.
+  created $adff cell `$procdff$831' with positive edge clock and negative level reset.
+Creating register for signal `\main.\read_addr' using process `\main.$proc$main.v:66$5'.
+  created $adff cell `$procdff$832' with positive edge clock and negative level reset.
+Creating register for signal `\main.\we' using process `\main.$proc$main.v:66$5'.
+  created $adff cell `$procdff$833' with positive edge clock and negative level reset.
+Creating register for signal `\main.\oprog_Data_RS232' using process `\main.$proc$main.v:66$5'.
+  created $adff cell `$procdff$834' with positive edge clock and negative level reset.
+Creating register for signal `\main.\RS232Programmer0_isData' using process `\main.$proc$main.v:66$5'.
+  created $adff cell `$procdff$835' with positive edge clock and negative level reset.
+Creating register for signal `\main.\RS232Programmer0_Info_byte' using process `\main.$proc$main.v:66$5'.
+  created $adff cell `$procdff$836' with positive edge clock and negative level reset.
+Creating register for signal `\main.\RS232Programmer0_countbytesRX' using process `\main.$proc$main.v:66$5'.
+  created $adff cell `$procdff$837' with positive edge clock and negative level reset.
+Creating register for signal `\main.\RS232Programmer0_received_data' using process `\main.$proc$main.v:66$5'.
+  created $dff cell `$procdff$838' with positive edge clock.
+Creating register for signal `\main.\RS232Programmer0_state' using process `\main.$proc$main.v:66$5'.
+  created $adff cell `$procdff$839' with positive edge clock and negative level reset.
+Creating register for signal `\main.\RS232Programmer0_received_addr' using process `\main.$proc$main.v:66$5'.
+  created $dff cell `$procdff$840' with positive edge clock.
+Creating register for signal `\main.\RS232Programmer0_subcount' using process `\main.$proc$main.v:66$5'.
+  created $adff cell `$procdff$841' with positive edge clock and negative level reset.
+
+2.3.9. Executing PROC_CLEAN pass (remove empty switches from decision trees).
+Found and cleaned up 1 empty switch in `\main.$proc$main.v:335$107'.
+Removing empty process `main.$proc$main.v:335$107'.
+Found and cleaned up 3 empty switches in `\main.$proc$main.v:320$100'.
+Removing empty process `main.$proc$main.v:320$100'.
+Found and cleaned up 5 empty switches in `\main.$proc$main.v:257$90'.
+Removing empty process `main.$proc$main.v:257$90'.
+Found and cleaned up 1 empty switch in `\main.$proc$main.v:243$86'.
+Removing empty process `main.$proc$main.v:243$86'.
+Found and cleaned up 17 empty switches in `\main.$proc$main.v:154$29'.
+Removing empty process `main.$proc$main.v:154$29'.
+Found and cleaned up 10 empty switches in `\main.$proc$main.v:66$5'.
+Removing empty process `main.$proc$main.v:66$5'.
+Cleaned up 37 empty switches.
+
+2.4. Executing FLATTEN pass (flatten design).
+No more expansions possible.
+
+2.5. Executing TRIBUF pass.
+
+2.6. Executing DEMINOUT pass (demote inout ports to input or output).
+
+2.7. Executing OPT_EXPR pass (perform const folding).
+Optimizing module main.
+<suppressed ~46 debug messages>
+
+2.8. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \main..
+Removed 239 unused cells and 429 unused wires.
+<suppressed ~270 debug messages>
+
+2.9. Executing CHECK pass (checking for obvious problems).
+checking module main..
+found and reported 0 problems.
+
+2.10. Executing OPT pass (performing simple optimizations).
+
+2.10.1. Executing OPT_EXPR pass (perform const folding).
+Optimizing module main.
+
+2.10.2. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\main'.
+<suppressed ~54 debug messages>
+Removed a total of 18 cells.
+
+2.10.3. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module \main..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+    dead port 2/2 on $mux $procmux$337.
+    dead port 2/2 on $mux $procmux$339.
+Removed 2 multiplexer ports.
+<suppressed ~24 debug messages>
+
+2.10.4. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module \main.
+    New ctrl vector for $pmux cell $procmux$237: { $procmux$248_CMP $procmux$247_CMP $procmux$243_CMP $auto$opt_reduce.cc:134:opt_mux$845 $procmux$241_CMP $auto$opt_reduce.cc:134:opt_mux$843 $procmux$239_CMP $procmux$238_CMP }
+    New ctrl vector for $pmux cell $procmux$292: { $procmux$271_CMP $auto$opt_reduce.cc:134:opt_mux$847 }
+  Optimizing cells in module \main.
+Performed a total of 2 changes.
+
+2.10.5. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\main'.
+Removed a total of 0 cells.
+
+2.10.6. Executing OPT_RMDFF pass (remove dff with constant values).
+
+2.10.7. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \main..
+Removed 0 unused cells and 20 unused wires.
+<suppressed ~1 debug messages>
+
+2.10.8. Executing OPT_EXPR pass (perform const folding).
+Optimizing module main.
+
+2.10.9. Rerunning OPT passes. (Maybe there is more to do..)
+
+2.10.10. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module \main..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Removed 0 multiplexer ports.
+<suppressed ~24 debug messages>
+
+2.10.11. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module \main.
+Performed a total of 0 changes.
+
+2.10.12. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\main'.
+Removed a total of 0 cells.
+
+2.10.13. Executing OPT_RMDFF pass (remove dff with constant values).
+
+2.10.14. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \main..
+
+2.10.15. Executing OPT_EXPR pass (perform const folding).
+Optimizing module main.
+
+2.10.16. Finished OPT passes. (There is nothing left to do.)
+
+2.11. Executing WREDUCE pass (reducing word size of cells).
+Removed top 31 bits (of 32) from port B of cell main.$add$main.v:215$71 ($add).
+Removed top 28 bits (of 32) from port Y of cell main.$add$main.v:215$71 ($add).
+Removed top 28 bits (of 32) from port A of cell main.$mod$main.v:215$72 ($and).
+Removed top 28 bits (of 32) from port Y of cell main.$mod$main.v:215$72 ($and).
+Removed top 31 bits (of 32) from port B of cell main.$add$main.v:224$79 ($add).
+Removed top 28 bits (of 32) from port Y of cell main.$add$main.v:224$79 ($add).
+Removed top 28 bits (of 32) from port A of cell main.$mod$main.v:224$80 ($and).
+Removed top 29 bits (of 32) from port Y of cell main.$mod$main.v:224$80 ($and).
+Removed top 1 bits (of 4) from port A of cell main.$mod$main.v:224$80 ($and).
+Removed top 31 bits (of 32) from port B of cell main.$add$main.v:229$82 ($add).
+Removed top 23 bits (of 32) from port Y of cell main.$add$main.v:229$82 ($add).
+Removed top 31 bits (of 32) from port B of cell main.$add$main.v:231$84 ($add).
+Removed top 28 bits (of 32) from port Y of cell main.$add$main.v:231$84 ($add).
+Removed top 28 bits (of 32) from port A of cell main.$eq$main.v:244$89 ($eq).
+Removed top 28 bits (of 32) from port B of cell main.$lt$main.v:286$95 ($lt).
+Removed top 31 bits (of 32) from port B of cell main.$add$main.v:287$96 ($add).
+Removed top 28 bits (of 32) from port Y of cell main.$add$main.v:287$96 ($add).
+Removed top 19 bits (of 32) from port B of cell main.$lt$main.v:300$97 ($lt).
+Removed top 31 bits (of 32) from port B of cell main.$add$main.v:301$98 ($add).
+Removed top 26 bits (of 32) from port B of cell main.$le$main.v:325$104 ($le).
+Removed top 31 bits (of 32) from port B of cell main.$add$main.v:326$105 ($add).
+Removed top 26 bits (of 32) from port Y of cell main.$add$main.v:326$105 ($add).
+Removed top 1 bits (of 8) from mux cell main.$procmux$237 ($pmux).
+Removed top 1 bits (of 4) from port B of cell main.$procmux$241_CMP0 ($eq).
+Removed top 1 bits (of 4) from port B of cell main.$procmux$242_CMP0 ($eq).
+Removed top 1 bits (of 4) from port B of cell main.$procmux$243_CMP0 ($eq).
+Removed top 1 bits (of 4) from port B of cell main.$procmux$244_CMP0 ($eq).
+Removed top 2 bits (of 4) from port B of cell main.$procmux$245_CMP0 ($eq).
+Removed top 2 bits (of 4) from port B of cell main.$procmux$246_CMP0 ($eq).
+Removed top 3 bits (of 4) from port B of cell main.$procmux$247_CMP0 ($eq).
+Removed top 1 bits (of 3) from mux cell main.$procmux$262 ($mux).
+Removed top 1 bits (of 3) from port B of cell main.$procmux$270_CMP0 ($eq).
+Removed top 1 bits (of 3) from port B of cell main.$procmux$271_CMP0 ($eq).
+Removed top 2 bits (of 3) from port B of cell main.$procmux$272_CMP0 ($eq).
+Removed top 2 bits (of 3) from mux cell main.$procmux$273 ($mux).
+Removed top 1 bits (of 3) from port B of cell main.$procmux$333_CMP0 ($eq).
+Removed top 1 bits (of 3) from port B of cell main.$procmux$334_CMP0 ($eq).
+Removed top 2 bits (of 3) from port B of cell main.$procmux$335_CMP0 ($eq).
+Removed top 1 bits (of 3) from port B of cell main.$procmux$446_CMP0 ($eq).
+Removed top 1 bits (of 3) from port B of cell main.$procmux$456_CMP0 ($eq).
+Removed top 2 bits (of 3) from port B of cell main.$procmux$467_CMP0 ($eq).
+Removed top 1 bits (of 2) from port B of cell main.$procmux$627_CMP0 ($eq).
+Removed top 1 bits (of 4) from port Y of cell main.$add$main.v:224$79 ($add).
+Removed top 28 bits (of 32) from wire main.$add$main.v:215$71_Y.
+Removed top 29 bits (of 32) from wire main.$add$main.v:224$79_Y.
+Removed top 23 bits (of 32) from wire main.$add$main.v:229$82_Y.
+Removed top 28 bits (of 32) from wire main.$add$main.v:287$96_Y.
+Removed top 26 bits (of 32) from wire main.$add$main.v:326$105_Y.
+Removed top 28 bits (of 32) from wire main.$mod$main.v:215$72_Y.
+Removed top 29 bits (of 32) from wire main.$mod$main.v:224$80_Y.
+Removed top 1 bits (of 8) from wire main.rom_dout.
+
+2.12. Executing PEEPOPT pass (run peephole optimizers).
+
+2.13. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \main..
+Removed 0 unused cells and 8 unused wires.
+<suppressed ~1 debug messages>
+
+2.14. Executing SHARE pass (SAT-based resource sharing).
+
+2.15. Executing TECHMAP pass (map to technology primitives).
+
+2.15.1. Executing Verilog-2005 frontend: /usr/local/bin/../share/yosys/cmp2lut.v
+Parsing Verilog input from `/usr/local/bin/../share/yosys/cmp2lut.v' to AST representation.
+Generating RTLIL representation for module `\_90_lut_cmp_'.
+Successfully finished Verilog frontend.
+
+2.15.2. Continuing TECHMAP pass.
+Using template $paramod$4608844f33105bdd268e369db4910f80a1c467b8\_90_lut_cmp_ for cells of type $lt.
+No more expansions possible.
+<suppressed ~86 debug messages>
+
+2.16. Executing OPT_EXPR pass (perform const folding).
+Optimizing module main.
+
+2.17. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \main..
+Removed 0 unused cells and 3 unused wires.
+<suppressed ~1 debug messages>
+
+2.18. Executing ALUMACC pass (create $alu and $macc cells).
+Extracting $alu and $macc cells in module main:
+  creating $macc model for $add$main.v:215$71 ($add).
+  creating $macc model for $add$main.v:224$79 ($add).
+  creating $macc model for $add$main.v:229$82 ($add).
+  creating $macc model for $add$main.v:231$84 ($add).
+  creating $macc model for $add$main.v:287$96 ($add).
+  creating $macc model for $add$main.v:301$98 ($add).
+  creating $macc model for $add$main.v:326$105 ($add).
+  creating $alu model for $macc $add$main.v:326$105.
+  creating $alu model for $macc $add$main.v:301$98.
+  creating $alu model for $macc $add$main.v:287$96.
+  creating $alu model for $macc $add$main.v:231$84.
+  creating $alu model for $macc $add$main.v:229$82.
+  creating $alu model for $macc $add$main.v:224$79.
+  creating $alu model for $macc $add$main.v:215$71.
+  creating $alu model for $le$main.v:325$104 ($le): new $alu
+  creating $alu model for $lt$main.v:300$97 ($lt): new $alu
+  creating $alu model for $eq$main.v:329$106 ($eq): merged with $le$main.v:325$104.
+  creating $alu cell for $lt$main.v:300$97: $auto$alumacc.cc:485:replace_alu$860
+  creating $alu cell for $le$main.v:325$104, $eq$main.v:329$106: $auto$alumacc.cc:485:replace_alu$871
+  creating $alu cell for $add$main.v:215$71: $auto$alumacc.cc:485:replace_alu$884
+  creating $alu cell for $add$main.v:224$79: $auto$alumacc.cc:485:replace_alu$887
+  creating $alu cell for $add$main.v:229$82: $auto$alumacc.cc:485:replace_alu$890
+  creating $alu cell for $add$main.v:231$84: $auto$alumacc.cc:485:replace_alu$893
+  creating $alu cell for $add$main.v:287$96: $auto$alumacc.cc:485:replace_alu$896
+  creating $alu cell for $add$main.v:301$98: $auto$alumacc.cc:485:replace_alu$899
+  creating $alu cell for $add$main.v:326$105: $auto$alumacc.cc:485:replace_alu$902
+  created 9 $alu and 0 $macc cells.
+
+2.19. Executing OPT pass (performing simple optimizations).
+
+2.19.1. Executing OPT_EXPR pass (perform const folding).
+Optimizing module main.
+<suppressed ~2 debug messages>
+
+2.19.2. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\main'.
+Removed a total of 0 cells.
+
+2.19.3. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module \main..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Removed 0 multiplexer ports.
+<suppressed ~24 debug messages>
+
+2.19.4. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module \main.
+Performed a total of 0 changes.
+
+2.19.5. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\main'.
+Removed a total of 0 cells.
+
+2.19.6. Executing OPT_RMDFF pass (remove dff with constant values).
+
+2.19.7. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \main..
+Removed 1 unused cells and 4 unused wires.
+<suppressed ~2 debug messages>
+
+2.19.8. Executing OPT_EXPR pass (perform const folding).
+Optimizing module main.
+
+2.19.9. Rerunning OPT passes. (Maybe there is more to do..)
+
+2.19.10. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module \main..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Removed 0 multiplexer ports.
+<suppressed ~24 debug messages>
+
+2.19.11. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module \main.
+Performed a total of 0 changes.
+
+2.19.12. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\main'.
+Removed a total of 0 cells.
+
+2.19.13. Executing OPT_RMDFF pass (remove dff with constant values).
+
+2.19.14. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \main..
+
+2.19.15. Executing OPT_EXPR pass (perform const folding).
+Optimizing module main.
+
+2.19.16. Finished OPT passes. (There is nothing left to do.)
+
+2.20. Executing FSM pass (extract and optimize FSM).
+
+2.20.1. Executing FSM_DETECT pass (finding FSMs in design).
+Found FSM state register main.RS232_Module0_tx_State.
+Not marking main.ldData as FSM state register:
+    Users of register don't seem to benefit from recoding.
+Not marking main.updatebuff0_0_state1 as FSM state register:
+    Circuit seems to be self-resetting.
+
+2.20.2. Executing FSM_EXTRACT pass (extracting FSM from design).
+Extracting FSM `\RS232_Module0_tx_State' from module `\main'.
+  found $adff cell for state register: $procdff$803
+  root of input selection tree: $0\RS232_Module0_tx_State[1:0]
+  found reset state: 2'00 (from async reset)
+  found ctrl input: $procmux$627_CMP
+  found ctrl input: $procmux$340_CMP
+  found ctrl input: $eq$main.v:230$83_Y
+  found ctrl input: $eq$main.v:233$85_Y
+  found ctrl input: $ne$main.v:219$75_Y
+  found state code: 2'01
+  found ctrl output: $procmux$340_CMP
+  found ctrl output: $procmux$627_CMP
+  ctrl inputs: { $eq$main.v:233$85_Y $eq$main.v:230$83_Y $ne$main.v:219$75_Y }
+  ctrl outputs: { $procmux$627_CMP $procmux$340_CMP $0\RS232_Module0_tx_State[1:0] }
+  transition:       2'00 3'--0 ->       2'00 4'0100
+  transition:       2'00 3'--1 ->       2'01 4'0101
+  transition:       2'01 3'-0- ->       2'01 4'1001
+  transition:       2'01 3'01- ->       2'01 4'1001
+  transition:       2'01 3'11- ->       2'00 4'1000
+
+2.20.3. Executing FSM_OPT pass (simple optimizations of FSMs).
+Optimizing FSM `$fsm$\RS232_Module0_tx_State$905' from module `\main'.
+
+2.20.4. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \main..
+Removed 7 unused cells and 7 unused wires.
+<suppressed ~8 debug messages>
+
+2.20.5. Executing FSM_OPT pass (simple optimizations of FSMs).
+Optimizing FSM `$fsm$\RS232_Module0_tx_State$905' from module `\main'.
+  Removing unused output signal $0\RS232_Module0_tx_State[1:0] [0].
+  Removing unused output signal $0\RS232_Module0_tx_State[1:0] [1].
+
+2.20.6. Executing FSM_RECODE pass (re-assigning FSM state encoding).
+Recoding FSM `$fsm$\RS232_Module0_tx_State$905' from module `\main' using `auto' encoding:
+  mapping auto encoding to `one-hot` for this FSM.
+  00 -> -1
+  01 -> 1-
+
+2.20.7. Executing FSM_INFO pass (dumping all available information on FSM cells).
+
+FSM `$fsm$\RS232_Module0_tx_State$905' from module `\main':
+-------------------------------------
+
+  Information on FSM $fsm$\RS232_Module0_tx_State$905 (\RS232_Module0_tx_State):
+
+  Number of input signals:    3
+  Number of output signals:   2
+  Number of state bits:       2
+
+  Input signals:
+    0: $ne$main.v:219$75_Y
+    1: $eq$main.v:230$83_Y
+    2: $eq$main.v:233$85_Y
+
+  Output signals:
+    0: $procmux$340_CMP
+    1: $procmux$627_CMP
+
+  State encoding:
+    0:       2'-1  <RESET STATE>
+    1:       2'1-
+
+  Transition Table (state_in, ctrl_in, state_out, ctrl_out):
+      0:     0 3'--0   ->     0 2'01
+      1:     0 3'--1   ->     1 2'01
+      2:     1 3'11-   ->     0 2'10
+      3:     1 3'-0-   ->     1 2'10
+      4:     1 3'01-   ->     1 2'10
+
+-------------------------------------
+
+2.20.8. Executing FSM_MAP pass (mapping FSMs to basic logic).
+Mapping FSM `$fsm$\RS232_Module0_tx_State$905' from module `\main'.
+
+2.21. Executing OPT pass (performing simple optimizations).
+
+2.21.1. Executing OPT_EXPR pass (perform const folding).
+Optimizing module main.
+<suppressed ~3 debug messages>
+
+2.21.2. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\main'.
+Removed a total of 0 cells.
+
+2.21.3. Executing OPT_RMDFF pass (remove dff with constant values).
+
+2.21.4. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \main..
+Removed 0 unused cells and 6 unused wires.
+<suppressed ~1 debug messages>
+
+2.21.5. Finished fast OPT passes.
+
+2.22. Executing MEMORY pass.
+
+2.22.1. Executing OPT_MEM pass (optimize memories).
+Performed a total of 0 transformations.
+
+2.22.2. Executing MEMORY_DFF pass (merging $dff cells to $memrd and $memwr).
+
+2.22.3. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \main..
+
+2.22.4. Executing MEMORY_SHARE pass (consolidating $memrd/$memwr cells).
+
+2.22.5. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \main..
+
+2.22.6. Executing MEMORY_COLLECT pass (generating $mem cells).
+
+2.23. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \main..
+
+2.24. Executing MEMORY_BRAM pass (mapping $mem cells to block memories).
+
+2.25. Executing TECHMAP pass (map to technology primitives).
+
+2.25.1. Executing Verilog-2005 frontend: /usr/local/bin/../share/yosys/ice40/brams_map.v
+Parsing Verilog input from `/usr/local/bin/../share/yosys/ice40/brams_map.v' to AST representation.
+Generating RTLIL representation for module `\$__ICE40_RAM4K'.
+Generating RTLIL representation for module `\$__ICE40_RAM4K_M0'.
+Generating RTLIL representation for module `\$__ICE40_RAM4K_M123'.
+Successfully finished Verilog frontend.
+
+2.25.2. Continuing TECHMAP pass.
+No more expansions possible.
+
+2.26. Executing ICE40_BRAMINIT pass.
+
+2.27. Executing OPT pass (performing simple optimizations).
+
+2.27.1. Executing OPT_EXPR pass (perform const folding).
+Optimizing module main.
+<suppressed ~9 debug messages>
+
+2.27.2. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\main'.
+Removed a total of 0 cells.
+
+2.27.3. Executing OPT_RMDFF pass (remove dff with constant values).
+
+2.27.4. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \main..
+Removed 1 unused cells and 6 unused wires.
+<suppressed ~2 debug messages>
+
+2.27.5. Finished fast OPT passes.
+
+2.28. Executing MEMORY_MAP pass (converting $mem cells to logic and flip-flops).
+
+2.29. Executing OPT pass (performing simple optimizations).
+
+2.29.1. Executing OPT_EXPR pass (perform const folding).
+Optimizing module main.
+
+2.29.2. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\main'.
+Removed a total of 0 cells.
+
+2.29.3. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module \main..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Removed 0 multiplexer ports.
+<suppressed ~22 debug messages>
+
+2.29.4. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module \main.
+    Consolidated identical input bits for $pmux cell $procmux$237:
+      Old ports: A=7'0001010, B=56'10010001000101101011110011111010010100110010001000001101, Y=\rom_dout
+      New ports: A=6'001010, B=48'101000100101110111101111110010101100100100001101, Y={ \rom_dout [6] \rom_dout [4:0] }
+      New connections: \rom_dout [5] = 1'0
+    Consolidated identical input bits for $mux cell $procmux$268:
+      Old ports: A=3'000, B=3'100, Y=$procmux$268_Y
+      New ports: A=1'0, B=1'1, Y=$procmux$268_Y [2]
+      New connections: $procmux$268_Y [1:0] = 2'00
+  Optimizing cells in module \main.
+Performed a total of 2 changes.
+
+2.29.5. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\main'.
+Removed a total of 0 cells.
+
+2.29.6. Executing OPT_RMDFF pass (remove dff with constant values).
+
+2.29.7. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \main..
+
+2.29.8. Executing OPT_EXPR pass (perform const folding).
+Optimizing module main.
+
+2.29.9. Rerunning OPT passes. (Maybe there is more to do..)
+
+2.29.10. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module \main..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Removed 0 multiplexer ports.
+<suppressed ~22 debug messages>
+
+2.29.11. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module \main.
+Performed a total of 0 changes.
+
+2.29.12. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\main'.
+Removed a total of 0 cells.
+
+2.29.13. Executing OPT_RMDFF pass (remove dff with constant values).
+
+2.29.14. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \main..
+
+2.29.15. Executing OPT_EXPR pass (perform const folding).
+Optimizing module main.
+
+2.29.16. Finished OPT passes. (There is nothing left to do.)
+
+2.30. Executing ICE40_WRAPCARRY pass (wrap carries).
+
+2.31. Executing TECHMAP pass (map to technology primitives).
+
+2.31.1. Executing Verilog-2005 frontend: /usr/local/bin/../share/yosys/techmap.v
+Parsing Verilog input from `/usr/local/bin/../share/yosys/techmap.v' to AST representation.
+Generating RTLIL representation for module `\_90_simplemap_bool_ops'.
+Generating RTLIL representation for module `\_90_simplemap_reduce_ops'.
+Generating RTLIL representation for module `\_90_simplemap_logic_ops'.
+Generating RTLIL representation for module `\_90_simplemap_compare_ops'.
+Generating RTLIL representation for module `\_90_simplemap_various'.
+Generating RTLIL representation for module `\_90_simplemap_registers'.
+Generating RTLIL representation for module `\_90_shift_ops_shr_shl_sshl_sshr'.
+Generating RTLIL representation for module `\_90_shift_shiftx'.
+Generating RTLIL representation for module `\_90_fa'.
+Generating RTLIL representation for module `\_90_lcu'.
+Generating RTLIL representation for module `\_90_alu'.
+Generating RTLIL representation for module `\_90_macc'.
+Generating RTLIL representation for module `\_90_alumacc'.
+Generating RTLIL representation for module `\$__div_mod_u'.
+Generating RTLIL representation for module `\$__div_mod'.
+Generating RTLIL representation for module `\_90_div'.
+Generating RTLIL representation for module `\_90_mod'.
+Generating RTLIL representation for module `\_90_pow'.
+Generating RTLIL representation for module `\_90_pmux'.
+Generating RTLIL representation for module `\_90_lut'.
+Successfully finished Verilog frontend.
+
+2.31.2. Executing Verilog-2005 frontend: /usr/local/bin/../share/yosys/ice40/arith_map.v
+Parsing Verilog input from `/usr/local/bin/../share/yosys/ice40/arith_map.v' to AST representation.
+Generating RTLIL representation for module `\_80_ice40_alu'.
+Successfully finished Verilog frontend.
+
+2.31.3. Continuing TECHMAP pass.
+Using extmapper simplemap for cells of type $reduce_or.
+Using extmapper simplemap for cells of type $adff.
+Using extmapper simplemap for cells of type $logic_not.
+Using extmapper simplemap for cells of type $logic_and.
+Using template $paramod\_80_ice40_alu\A_SIGNED=0\B_SIGNED=0\A_WIDTH=1\B_WIDTH=3\Y_WIDTH=3 for cells of type $alu.
+Using extmapper simplemap for cells of type $ne.
+Using template $paramod\_80_ice40_alu\A_SIGNED=0\B_SIGNED=0\A_WIDTH=1\B_WIDTH=9\Y_WIDTH=9 for cells of type $alu.
+Using extmapper simplemap for cells of type $and.
+Using extmapper simplemap for cells of type $not.
+Using template $paramod$d11c65254168cdbfc3399ffadc4a5bef3dc003ef\_90_shift_shiftx for cells of type $shiftx.
+Using template $paramod\_80_ice40_alu\A_SIGNED=0\B_SIGNED=0\A_WIDTH=1\B_WIDTH=4\Y_WIDTH=4 for cells of type $alu.
+Using extmapper simplemap for cells of type $eq.
+Using extmapper simplemap for cells of type $or.
+Using template $paramod\_80_ice40_alu\A_SIGNED=0\B_SIGNED=0\A_WIDTH=1\B_WIDTH=32\Y_WIDTH=32 for cells of type $alu.
+Using template $paramod\_80_ice40_alu\A_SIGNED=0\B_SIGNED=0\A_WIDTH=6\B_WIDTH=6\Y_WIDTH=6 for cells of type $alu.
+Using template $paramod\_80_ice40_alu\A_SIGNED=0\B_SIGNED=0\A_WIDTH=1\B_WIDTH=6\Y_WIDTH=6 for cells of type $alu.
+Using template $paramod\_80_ice40_alu\A_SIGNED=0\B_SIGNED=0\A_WIDTH=1\B_WIDTH=3\Y_WIDTH=4 for cells of type $alu.
+Using template $paramod\_90_pmux\WIDTH=6\S_WIDTH=8 for cells of type $pmux.
+Using extmapper simplemap for cells of type $mux.
+Using template $paramod\_90_pmux\WIDTH=3\S_WIDTH=6 for cells of type $pmux.
+Using extmapper simplemap for cells of type $reduce_and.
+Using template $paramod\_90_pmux\WIDTH=1\S_WIDTH=2 for cells of type $pmux.
+Using extmapper simplemap for cells of type $lut.
+Using template $paramod\_90_pmux\WIDTH=8\S_WIDTH=7 for cells of type $pmux.
+Using template $paramod\_80_ice40_alu\A_SIGNED=0\B_SIGNED=0\A_WIDTH=13\B_WIDTH=32\Y_WIDTH=32 for cells of type $alu.
+Using template $paramod\_90_pmux\WIDTH=4\S_WIDTH=2 for cells of type $pmux.
+Using template $paramod\_90_pmux\WIDTH=9\S_WIDTH=2 for cells of type $pmux.
+Using extmapper simplemap for cells of type $dff.
+Using extmapper simplemap for cells of type $pos.
+Using extmapper simplemap for cells of type $xor.
+Using template $paramod$1bb08f5824597663e87f12bc22b63deae88bd63f\_90_shift_shiftx for cells of type $shiftx.
+Using template $paramod$2e04945f418f28eabdc5e13a7b4a9ad29b92263b\_90_shift_shiftx for cells of type $shiftx.
+Using template $paramod$constmap:de554f9cc18e049d5b7dc95f0bcf8e03e57019ff$paramod$5c10e52cdc159999f3945c97d8a1bfa2ca0de2dc\_90_shift_shiftx for cells of type $shiftx.
+No more expansions possible.
+<suppressed ~680 debug messages>
+
+2.32. Executing OPT pass (performing simple optimizations).
+
+2.32.1. Executing OPT_EXPR pass (perform const folding).
+Optimizing module main.
+<suppressed ~486 debug messages>
+
+2.32.2. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\main'.
+<suppressed ~342 debug messages>
+Removed a total of 114 cells.
+
+2.32.3. Executing OPT_RMDFF pass (remove dff with constant values).
+
+2.32.4. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \main..
+Removed 35 unused cells and 433 unused wires.
+<suppressed ~38 debug messages>
+
+2.32.5. Finished fast OPT passes.
+
+2.33. Executing ICE40_OPT pass (performing simple optimizations).
+
+2.33.1. Running ICE40 specific optimizations.
+Optimized $__ICE40_CARRY_WRAPPER cell back to logic (without SB_CARRY) main.$auto$alumacc.cc:485:replace_alu$860.slice[0].carry: CO=$auto$alumacc.cc:485:replace_alu$860.BB [0]
+Optimized $__ICE40_CARRY_WRAPPER cell back to logic (without SB_CARRY) main.$auto$alumacc.cc:485:replace_alu$871.slice[0].carry: CO=$auto$alumacc.cc:485:replace_alu$871.BB [0]
+Optimized $__ICE40_CARRY_WRAPPER cell back to logic (without SB_CARRY) main.$auto$alumacc.cc:485:replace_alu$884.slice[0].carry: CO=\RS232_Module0_write_addr [0]
+Optimized $__ICE40_CARRY_WRAPPER cell back to logic (without SB_CARRY) main.$auto$alumacc.cc:485:replace_alu$884.slice[3].carry: CO=1'0
+Optimized $__ICE40_CARRY_WRAPPER cell back to logic (without SB_CARRY) main.$auto$alumacc.cc:485:replace_alu$887.slice[0].carry: CO=\RS232_Module0_tx_addr [0]
+Optimized $__ICE40_CARRY_WRAPPER cell back to logic (without SB_CARRY) main.$auto$alumacc.cc:485:replace_alu$890.slice[0].carry: CO=\RS232_Module0_tx_counter [0]
+Optimized $__ICE40_CARRY_WRAPPER cell back to logic (without SB_CARRY) main.$auto$alumacc.cc:485:replace_alu$893.slice[0].carry: CO=\RS232_Module0_tx_bit_count [0]
+Optimized $__ICE40_CARRY_WRAPPER cell back to logic (without SB_CARRY) main.$auto$alumacc.cc:485:replace_alu$896.slice[0].carry: CO=\rom_addr [0]
+Optimized $__ICE40_CARRY_WRAPPER cell back to logic (without SB_CARRY) main.$auto$alumacc.cc:485:replace_alu$899.slice[0].carry: CO=\ppscounter [0]
+Optimized $__ICE40_CARRY_WRAPPER cell back to logic (without SB_CARRY) main.$auto$alumacc.cc:485:replace_alu$902.slice[0].carry: CO=\pwrup [0]
+
+2.33.2. Executing OPT_EXPR pass (perform const folding).
+Optimizing module main.
+<suppressed ~2 debug messages>
+
+2.33.3. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\main'.
+Removed a total of 0 cells.
+
+2.33.4. Executing OPT_RMDFF pass (remove dff with constant values).
+
+2.33.5. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \main..
+Removed 3 unused cells and 3 unused wires.
+<suppressed ~4 debug messages>
+
+2.33.6. Rerunning OPT passes. (Removed registers in this run.)
+
+2.33.7. Running ICE40 specific optimizations.
+
+2.33.8. Executing OPT_EXPR pass (perform const folding).
+Optimizing module main.
+
+2.33.9. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\main'.
+Removed a total of 0 cells.
+
+2.33.10. Executing OPT_RMDFF pass (remove dff with constant values).
+
+2.33.11. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \main..
+
+2.33.12. Finished OPT passes. (There is nothing left to do.)
+
+2.34. Executing DFFSR2DFF pass (mapping DFFSR cells to simpler FFs).
+
+2.35. Executing DFF2DFFE pass (transform $dff to $dffe where applicable).
+Selected cell types for direct conversion:
+  $_DFF_PP1_ -> $__DFFE_PP1
+  $_DFF_PP0_ -> $__DFFE_PP0
+  $_DFF_PN1_ -> $__DFFE_PN1
+  $_DFF_PN0_ -> $__DFFE_PN0
+  $_DFF_NP1_ -> $__DFFE_NP1
+  $_DFF_NP0_ -> $__DFFE_NP0
+  $_DFF_NN1_ -> $__DFFE_NN1
+  $_DFF_NN0_ -> $__DFFE_NN0
+  $_DFF_N_ -> $_DFFE_NP_
+  $_DFF_P_ -> $_DFFE_PP_
+Transforming FF to FF+Enable cells in module main:
+  converting $_DFF_P_ cell $auto$simplemap.cc:420:simplemap_dff$2008 to $_DFFE_PP_ for $0\iRst[0:0] -> \iRst.
+  converting $_DFF_P_ cell $auto$simplemap.cc:420:simplemap_dff$2009 to $_DFFE_PP_ for $0\pwrup[5:0] [0] -> \pwrup [0].
+  converting $_DFF_P_ cell $auto$simplemap.cc:420:simplemap_dff$2010 to $_DFFE_PP_ for $0\pwrup[5:0] [1] -> \pwrup [1].
+  converting $_DFF_P_ cell $auto$simplemap.cc:420:simplemap_dff$2011 to $_DFFE_PP_ for $0\pwrup[5:0] [2] -> \pwrup [2].
+  converting $_DFF_P_ cell $auto$simplemap.cc:420:simplemap_dff$2012 to $_DFFE_PP_ for $0\pwrup[5:0] [3] -> \pwrup [3].
+  converting $_DFF_P_ cell $auto$simplemap.cc:420:simplemap_dff$2013 to $_DFFE_PP_ for $0\pwrup[5:0] [4] -> \pwrup [4].
+  converting $_DFF_P_ cell $auto$simplemap.cc:420:simplemap_dff$2014 to $_DFFE_PP_ for $0\pwrup[5:0] [5] -> \pwrup [5].
+  converting $_DFF_P_ cell $auto$simplemap.cc:420:simplemap_dff$2032 to $_DFFE_PP_ for $0\ppscounter[31:0] [0] -> \ppscounter [0].
+  converting $_DFF_P_ cell $auto$simplemap.cc:420:simplemap_dff$2033 to $_DFFE_PP_ for $0\ppscounter[31:0] [1] -> \ppscounter [1].
+  converting $_DFF_P_ cell $auto$simplemap.cc:420:simplemap_dff$2034 to $_DFFE_PP_ for $0\ppscounter[31:0] [2] -> \ppscounter [2].
+  converting $_DFF_P_ cell $auto$simplemap.cc:420:simplemap_dff$2035 to $_DFFE_PP_ for $0\ppscounter[31:0] [3] -> \ppscounter [3].
+  converting $_DFF_P_ cell $auto$simplemap.cc:420:simplemap_dff$2036 to $_DFFE_PP_ for $0\ppscounter[31:0] [4] -> \ppscounter [4].
+  converting $_DFF_P_ cell $auto$simplemap.cc:420:simplemap_dff$2037 to $_DFFE_PP_ for $0\ppscounter[31:0] [5] -> \ppscounter [5].
+  converting $_DFF_P_ cell $auto$simplemap.cc:420:simplemap_dff$2038 to $_DFFE_PP_ for $0\ppscounter[31:0] [6] -> \ppscounter [6].
+  converting $_DFF_P_ cell $auto$simplemap.cc:420:simplemap_dff$2039 to $_DFFE_PP_ for $0\ppscounter[31:0] [7] -> \ppscounter [7].
+  converting $_DFF_P_ cell $auto$simplemap.cc:420:simplemap_dff$2040 to $_DFFE_PP_ for $0\ppscounter[31:0] [8] -> \ppscounter [8].
+  converting $_DFF_P_ cell $auto$simplemap.cc:420:simplemap_dff$2041 to $_DFFE_PP_ for $0\ppscounter[31:0] [9] -> \ppscounter [9].
+  converting $_DFF_P_ cell $auto$simplemap.cc:420:simplemap_dff$2042 to $_DFFE_PP_ for $0\ppscounter[31:0] [10] -> \ppscounter [10].
+  converting $_DFF_P_ cell $auto$simplemap.cc:420:simplemap_dff$2043 to $_DFFE_PP_ for $0\ppscounter[31:0] [11] -> \ppscounter [11].
+  converting $_DFF_P_ cell $auto$simplemap.cc:420:simplemap_dff$2044 to $_DFFE_PP_ for $0\ppscounter[31:0] [12] -> \ppscounter [12].
+  converting $_DFF_P_ cell $auto$simplemap.cc:420:simplemap_dff$2045 to $_DFFE_PP_ for $0\ppscounter[31:0] [13] -> \ppscounter [13].
+  converting $_DFF_P_ cell $auto$simplemap.cc:420:simplemap_dff$2046 to $_DFFE_PP_ for $0\ppscounter[31:0] [14] -> \ppscounter [14].
+  converting $_DFF_P_ cell $auto$simplemap.cc:420:simplemap_dff$2047 to $_DFFE_PP_ for $0\ppscounter[31:0] [15] -> \ppscounter [15].
+  converting $_DFF_P_ cell $auto$simplemap.cc:420:simplemap_dff$2048 to $_DFFE_PP_ for $0\ppscounter[31:0] [16] -> \ppscounter [16].
+  converting $_DFF_P_ cell $auto$simplemap.cc:420:simplemap_dff$2049 to $_DFFE_PP_ for $0\ppscounter[31:0] [17] -> \ppscounter [17].
+  converting $_DFF_P_ cell $auto$simplemap.cc:420:simplemap_dff$2050 to $_DFFE_PP_ for $0\ppscounter[31:0] [18] -> \ppscounter [18].
+  converting $_DFF_P_ cell $auto$simplemap.cc:420:simplemap_dff$2051 to $_DFFE_PP_ for $0\ppscounter[31:0] [19] -> \ppscounter [19].
+  converting $_DFF_P_ cell $auto$simplemap.cc:420:simplemap_dff$2052 to $_DFFE_PP_ for $0\ppscounter[31:0] [20] -> \ppscounter [20].
+  converting $_DFF_P_ cell $auto$simplemap.cc:420:simplemap_dff$2053 to $_DFFE_PP_ for $0\ppscounter[31:0] [21] -> \ppscounter [21].
+  converting $_DFF_P_ cell $auto$simplemap.cc:420:simplemap_dff$2054 to $_DFFE_PP_ for $0\ppscounter[31:0] [22] -> \ppscounter [22].
+  converting $_DFF_P_ cell $auto$simplemap.cc:420:simplemap_dff$2055 to $_DFFE_PP_ for $0\ppscounter[31:0] [23] -> \ppscounter [23].
+  converting $_DFF_P_ cell $auto$simplemap.cc:420:simplemap_dff$2056 to $_DFFE_PP_ for $0\ppscounter[31:0] [24] -> \ppscounter [24].
+  converting $_DFF_P_ cell $auto$simplemap.cc:420:simplemap_dff$2057 to $_DFFE_PP_ for $0\ppscounter[31:0] [25] -> \ppscounter [25].
+  converting $_DFF_P_ cell $auto$simplemap.cc:420:simplemap_dff$2058 to $_DFFE_PP_ for $0\ppscounter[31:0] [26] -> \ppscounter [26].
+  converting $_DFF_P_ cell $auto$simplemap.cc:420:simplemap_dff$2059 to $_DFFE_PP_ for $0\ppscounter[31:0] [27] -> \ppscounter [27].
+  converting $_DFF_P_ cell $auto$simplemap.cc:420:simplemap_dff$2060 to $_DFFE_PP_ for $0\ppscounter[31:0] [28] -> \ppscounter [28].
+  converting $_DFF_P_ cell $auto$simplemap.cc:420:simplemap_dff$2061 to $_DFFE_PP_ for $0\ppscounter[31:0] [29] -> \ppscounter [29].
+  converting $_DFF_P_ cell $auto$simplemap.cc:420:simplemap_dff$2062 to $_DFFE_PP_ for $0\ppscounter[31:0] [30] -> \ppscounter [30].
+  converting $_DFF_P_ cell $auto$simplemap.cc:420:simplemap_dff$2063 to $_DFFE_PP_ for $0\ppscounter[31:0] [31] -> \ppscounter [31].
+  converting $_DFF_P_ cell $auto$simplemap.cc:420:simplemap_dff$2102 to $_DFFE_PP_ for $0\RS232_Module0_Transmit_RAM[0][7:0] [0] -> \RS232_Module0_Transmit_RAM[0] [0].
+  converting $_DFF_P_ cell $auto$simplemap.cc:420:simplemap_dff$2103 to $_DFFE_PP_ for $0\RS232_Module0_Transmit_RAM[0][7:0] [1] -> \RS232_Module0_Transmit_RAM[0] [1].
+  converting $_DFF_P_ cell $auto$simplemap.cc:420:simplemap_dff$2104 to $_DFFE_PP_ for $0\RS232_Module0_Transmit_RAM[0][7:0] [2] -> \RS232_Module0_Transmit_RAM[0] [2].
+  converting $_DFF_P_ cell $auto$simplemap.cc:420:simplemap_dff$2105 to $_DFFE_PP_ for $0\RS232_Module0_Transmit_RAM[0][7:0] [3] -> \RS232_Module0_Transmit_RAM[0] [3].
+  converting $_DFF_P_ cell $auto$simplemap.cc:420:simplemap_dff$2106 to $_DFFE_PP_ for $0\RS232_Module0_Transmit_RAM[0][7:0] [4] -> \RS232_Module0_Transmit_RAM[0] [4].
+  converting $_DFF_P_ cell $auto$simplemap.cc:420:simplemap_dff$2107 to $_DFFE_PP_ for $0\RS232_Module0_Transmit_RAM[0][7:0] [5] -> \RS232_Module0_Transmit_RAM[0] [5].
+  converting $_DFF_P_ cell $auto$simplemap.cc:420:simplemap_dff$2108 to $_DFFE_PP_ for $0\RS232_Module0_Transmit_RAM[0][7:0] [6] -> \RS232_Module0_Transmit_RAM[0] [6].
+  converting $_DFF_P_ cell $auto$simplemap.cc:420:simplemap_dff$2109 to $_DFFE_PP_ for $0\RS232_Module0_Transmit_RAM[0][7:0] [7] -> \RS232_Module0_Transmit_RAM[0] [7].
+  converting $_DFF_P_ cell $auto$simplemap.cc:420:simplemap_dff$2110 to $_DFFE_PP_ for $0\RS232_Module0_Transmit_RAM[1][7:0] [0] -> \RS232_Module0_Transmit_RAM[1] [0].
+  converting $_DFF_P_ cell $auto$simplemap.cc:420:simplemap_dff$2111 to $_DFFE_PP_ for $0\RS232_Module0_Transmit_RAM[1][7:0] [1] -> \RS232_Module0_Transmit_RAM[1] [1].
+  converting $_DFF_P_ cell $auto$simplemap.cc:420:simplemap_dff$2112 to $_DFFE_PP_ for $0\RS232_Module0_Transmit_RAM[1][7:0] [2] -> \RS232_Module0_Transmit_RAM[1] [2].
+  converting $_DFF_P_ cell $auto$simplemap.cc:420:simplemap_dff$2113 to $_DFFE_PP_ for $0\RS232_Module0_Transmit_RAM[1][7:0] [3] -> \RS232_Module0_Transmit_RAM[1] [3].
+  converting $_DFF_P_ cell $auto$simplemap.cc:420:simplemap_dff$2114 to $_DFFE_PP_ for $0\RS232_Module0_Transmit_RAM[1][7:0] [4] -> \RS232_Module0_Transmit_RAM[1] [4].
+  converting $_DFF_P_ cell $auto$simplemap.cc:420:simplemap_dff$2115 to $_DFFE_PP_ for $0\RS232_Module0_Transmit_RAM[1][7:0] [5] -> \RS232_Module0_Transmit_RAM[1] [5].
+  converting $_DFF_P_ cell $auto$simplemap.cc:420:simplemap_dff$2116 to $_DFFE_PP_ for $0\RS232_Module0_Transmit_RAM[1][7:0] [6] -> \RS232_Module0_Transmit_RAM[1] [6].
+  converting $_DFF_P_ cell $auto$simplemap.cc:420:simplemap_dff$2117 to $_DFFE_PP_ for $0\RS232_Module0_Transmit_RAM[1][7:0] [7] -> \RS232_Module0_Transmit_RAM[1] [7].
+  converting $_DFF_P_ cell $auto$simplemap.cc:420:simplemap_dff$2118 to $_DFFE_PP_ for $0\RS232_Module0_Transmit_RAM[2][7:0] [0] -> \RS232_Module0_Transmit_RAM[2] [0].
+  converting $_DFF_P_ cell $auto$simplemap.cc:420:simplemap_dff$2119 to $_DFFE_PP_ for $0\RS232_Module0_Transmit_RAM[2][7:0] [1] -> \RS232_Module0_Transmit_RAM[2] [1].
+  converting $_DFF_P_ cell $auto$simplemap.cc:420:simplemap_dff$2120 to $_DFFE_PP_ for $0\RS232_Module0_Transmit_RAM[2][7:0] [2] -> \RS232_Module0_Transmit_RAM[2] [2].
+  converting $_DFF_P_ cell $auto$simplemap.cc:420:simplemap_dff$2121 to $_DFFE_PP_ for $0\RS232_Module0_Transmit_RAM[2][7:0] [3] -> \RS232_Module0_Transmit_RAM[2] [3].
+  converting $_DFF_P_ cell $auto$simplemap.cc:420:simplemap_dff$2122 to $_DFFE_PP_ for $0\RS232_Module0_Transmit_RAM[2][7:0] [4] -> \RS232_Module0_Transmit_RAM[2] [4].
+  converting $_DFF_P_ cell $auto$simplemap.cc:420:simplemap_dff$2123 to $_DFFE_PP_ for $0\RS232_Module0_Transmit_RAM[2][7:0] [5] -> \RS232_Module0_Transmit_RAM[2] [5].
+  converting $_DFF_P_ cell $auto$simplemap.cc:420:simplemap_dff$2124 to $_DFFE_PP_ for $0\RS232_Module0_Transmit_RAM[2][7:0] [6] -> \RS232_Module0_Transmit_RAM[2] [6].
+  converting $_DFF_P_ cell $auto$simplemap.cc:420:simplemap_dff$2125 to $_DFFE_PP_ for $0\RS232_Module0_Transmit_RAM[2][7:0] [7] -> \RS232_Module0_Transmit_RAM[2] [7].
+  converting $_DFF_P_ cell $auto$simplemap.cc:420:simplemap_dff$2126 to $_DFFE_PP_ for $0\RS232_Module0_Transmit_RAM[3][7:0] [0] -> \RS232_Module0_Transmit_RAM[3] [0].
+  converting $_DFF_P_ cell $auto$simplemap.cc:420:simplemap_dff$2127 to $_DFFE_PP_ for $0\RS232_Module0_Transmit_RAM[3][7:0] [1] -> \RS232_Module0_Transmit_RAM[3] [1].
+  converting $_DFF_P_ cell $auto$simplemap.cc:420:simplemap_dff$2128 to $_DFFE_PP_ for $0\RS232_Module0_Transmit_RAM[3][7:0] [2] -> \RS232_Module0_Transmit_RAM[3] [2].
+  converting $_DFF_P_ cell $auto$simplemap.cc:420:simplemap_dff$2129 to $_DFFE_PP_ for $0\RS232_Module0_Transmit_RAM[3][7:0] [3] -> \RS232_Module0_Transmit_RAM[3] [3].
+  converting $_DFF_P_ cell $auto$simplemap.cc:420:simplemap_dff$2130 to $_DFFE_PP_ for $0\RS232_Module0_Transmit_RAM[3][7:0] [4] -> \RS232_Module0_Transmit_RAM[3] [4].
+  converting $_DFF_P_ cell $auto$simplemap.cc:420:simplemap_dff$2131 to $_DFFE_PP_ for $0\RS232_Module0_Transmit_RAM[3][7:0] [5] -> \RS232_Module0_Transmit_RAM[3] [5].
+  converting $_DFF_P_ cell $auto$simplemap.cc:420:simplemap_dff$2132 to $_DFFE_PP_ for $0\RS232_Module0_Transmit_RAM[3][7:0] [6] -> \RS232_Module0_Transmit_RAM[3] [6].
+  converting $_DFF_P_ cell $auto$simplemap.cc:420:simplemap_dff$2133 to $_DFFE_PP_ for $0\RS232_Module0_Transmit_RAM[3][7:0] [7] -> \RS232_Module0_Transmit_RAM[3] [7].
+  converting $_DFF_P_ cell $auto$simplemap.cc:420:simplemap_dff$2134 to $_DFFE_PP_ for $0\RS232_Module0_Transmit_RAM[4][7:0] [0] -> \RS232_Module0_Transmit_RAM[4] [0].
+  converting $_DFF_P_ cell $auto$simplemap.cc:420:simplemap_dff$2135 to $_DFFE_PP_ for $0\RS232_Module0_Transmit_RAM[4][7:0] [1] -> \RS232_Module0_Transmit_RAM[4] [1].
+  converting $_DFF_P_ cell $auto$simplemap.cc:420:simplemap_dff$2136 to $_DFFE_PP_ for $0\RS232_Module0_Transmit_RAM[4][7:0] [2] -> \RS232_Module0_Transmit_RAM[4] [2].
+  converting $_DFF_P_ cell $auto$simplemap.cc:420:simplemap_dff$2137 to $_DFFE_PP_ for $0\RS232_Module0_Transmit_RAM[4][7:0] [3] -> \RS232_Module0_Transmit_RAM[4] [3].
+  converting $_DFF_P_ cell $auto$simplemap.cc:420:simplemap_dff$2138 to $_DFFE_PP_ for $0\RS232_Module0_Transmit_RAM[4][7:0] [4] -> \RS232_Module0_Transmit_RAM[4] [4].
+  converting $_DFF_P_ cell $auto$simplemap.cc:420:simplemap_dff$2139 to $_DFFE_PP_ for $0\RS232_Module0_Transmit_RAM[4][7:0] [5] -> \RS232_Module0_Transmit_RAM[4] [5].
+  converting $_DFF_P_ cell $auto$simplemap.cc:420:simplemap_dff$2140 to $_DFFE_PP_ for $0\RS232_Module0_Transmit_RAM[4][7:0] [6] -> \RS232_Module0_Transmit_RAM[4] [6].
+  converting $_DFF_P_ cell $auto$simplemap.cc:420:simplemap_dff$2141 to $_DFFE_PP_ for $0\RS232_Module0_Transmit_RAM[4][7:0] [7] -> \RS232_Module0_Transmit_RAM[4] [7].
+  converting $_DFF_P_ cell $auto$simplemap.cc:420:simplemap_dff$2142 to $_DFFE_PP_ for $0\RS232_Module0_Transmit_RAM[5][7:0] [0] -> \RS232_Module0_Transmit_RAM[5] [0].
+  converting $_DFF_P_ cell $auto$simplemap.cc:420:simplemap_dff$2143 to $_DFFE_PP_ for $0\RS232_Module0_Transmit_RAM[5][7:0] [1] -> \RS232_Module0_Transmit_RAM[5] [1].
+  converting $_DFF_P_ cell $auto$simplemap.cc:420:simplemap_dff$2144 to $_DFFE_PP_ for $0\RS232_Module0_Transmit_RAM[5][7:0] [2] -> \RS232_Module0_Transmit_RAM[5] [2].
+  converting $_DFF_P_ cell $auto$simplemap.cc:420:simplemap_dff$2145 to $_DFFE_PP_ for $0\RS232_Module0_Transmit_RAM[5][7:0] [3] -> \RS232_Module0_Transmit_RAM[5] [3].
+  converting $_DFF_P_ cell $auto$simplemap.cc:420:simplemap_dff$2146 to $_DFFE_PP_ for $0\RS232_Module0_Transmit_RAM[5][7:0] [4] -> \RS232_Module0_Transmit_RAM[5] [4].
+  converting $_DFF_P_ cell $auto$simplemap.cc:420:simplemap_dff$2147 to $_DFFE_PP_ for $0\RS232_Module0_Transmit_RAM[5][7:0] [5] -> \RS232_Module0_Transmit_RAM[5] [5].
+  converting $_DFF_P_ cell $auto$simplemap.cc:420:simplemap_dff$2148 to $_DFFE_PP_ for $0\RS232_Module0_Transmit_RAM[5][7:0] [6] -> \RS232_Module0_Transmit_RAM[5] [6].
+  converting $_DFF_P_ cell $auto$simplemap.cc:420:simplemap_dff$2149 to $_DFFE_PP_ for $0\RS232_Module0_Transmit_RAM[5][7:0] [7] -> \RS232_Module0_Transmit_RAM[5] [7].
+  converting $_DFF_P_ cell $auto$simplemap.cc:420:simplemap_dff$2150 to $_DFFE_PP_ for $0\RS232_Module0_Transmit_RAM[6][7:0] [0] -> \RS232_Module0_Transmit_RAM[6] [0].
+  converting $_DFF_P_ cell $auto$simplemap.cc:420:simplemap_dff$2151 to $_DFFE_PP_ for $0\RS232_Module0_Transmit_RAM[6][7:0] [1] -> \RS232_Module0_Transmit_RAM[6] [1].
+  converting $_DFF_P_ cell $auto$simplemap.cc:420:simplemap_dff$2152 to $_DFFE_PP_ for $0\RS232_Module0_Transmit_RAM[6][7:0] [2] -> \RS232_Module0_Transmit_RAM[6] [2].
+  converting $_DFF_P_ cell $auto$simplemap.cc:420:simplemap_dff$2153 to $_DFFE_PP_ for $0\RS232_Module0_Transmit_RAM[6][7:0] [3] -> \RS232_Module0_Transmit_RAM[6] [3].
+  converting $_DFF_P_ cell $auto$simplemap.cc:420:simplemap_dff$2154 to $_DFFE_PP_ for $0\RS232_Module0_Transmit_RAM[6][7:0] [4] -> \RS232_Module0_Transmit_RAM[6] [4].
+  converting $_DFF_P_ cell $auto$simplemap.cc:420:simplemap_dff$2155 to $_DFFE_PP_ for $0\RS232_Module0_Transmit_RAM[6][7:0] [5] -> \RS232_Module0_Transmit_RAM[6] [5].
+  converting $_DFF_P_ cell $auto$simplemap.cc:420:simplemap_dff$2156 to $_DFFE_PP_ for $0\RS232_Module0_Transmit_RAM[6][7:0] [6] -> \RS232_Module0_Transmit_RAM[6] [6].
+  converting $_DFF_P_ cell $auto$simplemap.cc:420:simplemap_dff$2157 to $_DFFE_PP_ for $0\RS232_Module0_Transmit_RAM[6][7:0] [7] -> \RS232_Module0_Transmit_RAM[6] [7].
+  converting $_DFF_P_ cell $auto$simplemap.cc:420:simplemap_dff$2158 to $_DFFE_PP_ for $0\RS232_Module0_Transmit_RAM[7][7:0] [0] -> \RS232_Module0_Transmit_RAM[7] [0].
+  converting $_DFF_P_ cell $auto$simplemap.cc:420:simplemap_dff$2159 to $_DFFE_PP_ for $0\RS232_Module0_Transmit_RAM[7][7:0] [1] -> \RS232_Module0_Transmit_RAM[7] [1].
+  converting $_DFF_P_ cell $auto$simplemap.cc:420:simplemap_dff$2160 to $_DFFE_PP_ for $0\RS232_Module0_Transmit_RAM[7][7:0] [2] -> \RS232_Module0_Transmit_RAM[7] [2].
+  converting $_DFF_P_ cell $auto$simplemap.cc:420:simplemap_dff$2161 to $_DFFE_PP_ for $0\RS232_Module0_Transmit_RAM[7][7:0] [3] -> \RS232_Module0_Transmit_RAM[7] [3].
+  converting $_DFF_P_ cell $auto$simplemap.cc:420:simplemap_dff$2162 to $_DFFE_PP_ for $0\RS232_Module0_Transmit_RAM[7][7:0] [4] -> \RS232_Module0_Transmit_RAM[7] [4].
+  converting $_DFF_P_ cell $auto$simplemap.cc:420:simplemap_dff$2163 to $_DFFE_PP_ for $0\RS232_Module0_Transmit_RAM[7][7:0] [5] -> \RS232_Module0_Transmit_RAM[7] [5].
+  converting $_DFF_P_ cell $auto$simplemap.cc:420:simplemap_dff$2164 to $_DFFE_PP_ for $0\RS232_Module0_Transmit_RAM[7][7:0] [6] -> \RS232_Module0_Transmit_RAM[7] [6].
+  converting $_DFF_P_ cell $auto$simplemap.cc:420:simplemap_dff$2165 to $_DFFE_PP_ for $0\RS232_Module0_Transmit_RAM[7][7:0] [7] -> \RS232_Module0_Transmit_RAM[7] [7].
+  converting $_DFF_PN0_ cell $auto$simplemap.cc:496:simplemap_adff$2015 to $__DFFE_PN0 for $0\iData[7:0] [0] -> \iData [0].
+  converting $_DFF_PN0_ cell $auto$simplemap.cc:496:simplemap_adff$2016 to $__DFFE_PN0 for $0\iData[7:0] [1] -> \iData [1].
+  converting $_DFF_PN0_ cell $auto$simplemap.cc:496:simplemap_adff$2017 to $__DFFE_PN0 for $0\iData[7:0] [2] -> \iData [2].
+  converting $_DFF_PN0_ cell $auto$simplemap.cc:496:simplemap_adff$2018 to $__DFFE_PN0 for $0\iData[7:0] [3] -> \iData [3].
+  converting $_DFF_PN0_ cell $auto$simplemap.cc:496:simplemap_adff$2019 to $__DFFE_PN0 for $0\iData[7:0] [4] -> \iData [4].
+  converting $_DFF_PN0_ cell $auto$simplemap.cc:496:simplemap_adff$2020 to $__DFFE_PN0 for $0\iData[7:0] [5] -> \iData [5].
+  converting $_DFF_PN0_ cell $auto$simplemap.cc:496:simplemap_adff$2021 to $__DFFE_PN0 for $0\iData[7:0] [6] -> \iData [6].
+  converting $_DFF_PN0_ cell $auto$simplemap.cc:496:simplemap_adff$2022 to $__DFFE_PN0 for $0\iData[7:0] [7] -> \iData [7].
+  converting $_DFF_PN0_ cell $auto$simplemap.cc:496:simplemap_adff$2023 to $__DFFE_PN0 for $0\ldData[7:0] [0] -> \ldData [0].
+  converting $_DFF_PN0_ cell $auto$simplemap.cc:496:simplemap_adff$2024 to $__DFFE_PN0 for $0\ldData[7:0] [1] -> \ldData [1].
+  converting $_DFF_PN0_ cell $auto$simplemap.cc:496:simplemap_adff$2025 to $__DFFE_PN0 for $0\ldData[7:0] [2] -> \ldData [2].
+  converting $_DFF_PN0_ cell $auto$simplemap.cc:496:simplemap_adff$2026 to $__DFFE_PN0 for $0\ldData[7:0] [3] -> \ldData [3].
+  converting $_DFF_PN0_ cell $auto$simplemap.cc:496:simplemap_adff$2027 to $__DFFE_PN0 for $0\ldData[7:0] [4] -> \ldData [4].
+  converting $_DFF_PN0_ cell $auto$simplemap.cc:496:simplemap_adff$2028 to $__DFFE_PN0 for $0\ldData[7:0] [5] -> \ldData [5].
+  converting $_DFF_PN0_ cell $auto$simplemap.cc:496:simplemap_adff$2029 to $__DFFE_PN0 for $0\ldData[7:0] [6] -> \ldData [6].
+  converting $_DFF_PN0_ cell $auto$simplemap.cc:496:simplemap_adff$2030 to $__DFFE_PN0 for $0\ldData[7:0] [7] -> \ldData [7].
+  converting $_DFF_PN0_ cell $auto$simplemap.cc:496:simplemap_adff$2031 to $__DFFE_PN0 for $0\WriteEnable[0:0] -> \WriteEnable.
+  converting $_DFF_PN0_ cell $auto$simplemap.cc:496:simplemap_adff$2064 to $__DFFE_PN0 for $0\rom_addr[3:0] [0] -> \rom_addr [0].
+  converting $_DFF_PN0_ cell $auto$simplemap.cc:496:simplemap_adff$2065 to $__DFFE_PN0 for $0\rom_addr[3:0] [1] -> \rom_addr [1].
+  converting $_DFF_PN0_ cell $auto$simplemap.cc:496:simplemap_adff$2066 to $__DFFE_PN0 for $0\rom_addr[3:0] [2] -> \rom_addr [2].
+  converting $_DFF_PN0_ cell $auto$simplemap.cc:496:simplemap_adff$2067 to $__DFFE_PN0 for $0\rom_addr[3:0] [3] -> \rom_addr [3].
+  converting $_DFF_PN0_ cell $auto$simplemap.cc:496:simplemap_adff$2072 to $__DFFE_PN0 for $0\RS232_Module0_tx_counter[8:0] [0] -> \RS232_Module0_tx_counter [0].
+  converting $_DFF_PN0_ cell $auto$simplemap.cc:496:simplemap_adff$2073 to $__DFFE_PN0 for $0\RS232_Module0_tx_counter[8:0] [1] -> \RS232_Module0_tx_counter [1].
+  converting $_DFF_PN0_ cell $auto$simplemap.cc:496:simplemap_adff$2074 to $__DFFE_PN0 for $0\RS232_Module0_tx_counter[8:0] [2] -> \RS232_Module0_tx_counter [2].
+  converting $_DFF_PN0_ cell $auto$simplemap.cc:496:simplemap_adff$2075 to $__DFFE_PN0 for $0\RS232_Module0_tx_counter[8:0] [3] -> \RS232_Module0_tx_counter [3].
+  converting $_DFF_PN0_ cell $auto$simplemap.cc:496:simplemap_adff$2076 to $__DFFE_PN0 for $0\RS232_Module0_tx_counter[8:0] [4] -> \RS232_Module0_tx_counter [4].
+  converting $_DFF_PN0_ cell $auto$simplemap.cc:496:simplemap_adff$2077 to $__DFFE_PN0 for $0\RS232_Module0_tx_counter[8:0] [5] -> \RS232_Module0_tx_counter [5].
+  converting $_DFF_PN0_ cell $auto$simplemap.cc:496:simplemap_adff$2078 to $__DFFE_PN0 for $0\RS232_Module0_tx_counter[8:0] [6] -> \RS232_Module0_tx_counter [6].
+  converting $_DFF_PN0_ cell $auto$simplemap.cc:496:simplemap_adff$2079 to $__DFFE_PN0 for $0\RS232_Module0_tx_counter[8:0] [7] -> \RS232_Module0_tx_counter [7].
+  converting $_DFF_PN0_ cell $auto$simplemap.cc:496:simplemap_adff$2080 to $__DFFE_PN0 for $0\RS232_Module0_tx_counter[8:0] [8] -> \RS232_Module0_tx_counter [8].
+  converting $_DFF_PN0_ cell $auto$simplemap.cc:496:simplemap_adff$2081 to $__DFFE_PN0 for $0\RS232_Module0_tx_bit_count[3:0] [0] -> \RS232_Module0_tx_bit_count [0].
+  converting $_DFF_PN0_ cell $auto$simplemap.cc:496:simplemap_adff$2082 to $__DFFE_PN0 for $0\RS232_Module0_tx_bit_count[3:0] [1] -> \RS232_Module0_tx_bit_count [1].
+  converting $_DFF_PN0_ cell $auto$simplemap.cc:496:simplemap_adff$2083 to $__DFFE_PN0 for $0\RS232_Module0_tx_bit_count[3:0] [2] -> \RS232_Module0_tx_bit_count [2].
+  converting $_DFF_PN0_ cell $auto$simplemap.cc:496:simplemap_adff$2084 to $__DFFE_PN0 for $0\RS232_Module0_tx_bit_count[3:0] [3] -> \RS232_Module0_tx_bit_count [3].
+  converting $_DFF_PN0_ cell $auto$simplemap.cc:496:simplemap_adff$2085 to $__DFFE_PN0 for $0\RS232_Module0_write_addr[2:0] [0] -> \RS232_Module0_write_addr [0].
+  converting $_DFF_PN0_ cell $auto$simplemap.cc:496:simplemap_adff$2086 to $__DFFE_PN0 for $0\RS232_Module0_write_addr[2:0] [1] -> \RS232_Module0_write_addr [1].
+  converting $_DFF_PN0_ cell $auto$simplemap.cc:496:simplemap_adff$2087 to $__DFFE_PN0 for $0\RS232_Module0_write_addr[2:0] [2] -> \RS232_Module0_write_addr [2].
+  converting $_DFF_PN0_ cell $auto$simplemap.cc:496:simplemap_adff$2089 to $__DFFE_PN0 for $0\RS232_Module0_SendREG[9:0] [0] -> \RS232_Module0_SendREG [0].
+  converting $_DFF_PN0_ cell $auto$simplemap.cc:496:simplemap_adff$2090 to $__DFFE_PN0 for $0\RS232_Module0_SendREG[9:0] [1] -> \RS232_Module0_SendREG [1].
+  converting $_DFF_PN0_ cell $auto$simplemap.cc:496:simplemap_adff$2091 to $__DFFE_PN0 for $0\RS232_Module0_SendREG[9:0] [2] -> \RS232_Module0_SendREG [2].
+  converting $_DFF_PN0_ cell $auto$simplemap.cc:496:simplemap_adff$2092 to $__DFFE_PN0 for $0\RS232_Module0_SendREG[9:0] [3] -> \RS232_Module0_SendREG [3].
+  converting $_DFF_PN0_ cell $auto$simplemap.cc:496:simplemap_adff$2093 to $__DFFE_PN0 for $0\RS232_Module0_SendREG[9:0] [4] -> \RS232_Module0_SendREG [4].
+  converting $_DFF_PN0_ cell $auto$simplemap.cc:496:simplemap_adff$2094 to $__DFFE_PN0 for $0\RS232_Module0_SendREG[9:0] [5] -> \RS232_Module0_SendREG [5].
+  converting $_DFF_PN0_ cell $auto$simplemap.cc:496:simplemap_adff$2095 to $__DFFE_PN0 for $0\RS232_Module0_SendREG[9:0] [6] -> \RS232_Module0_SendREG [6].
+  converting $_DFF_PN0_ cell $auto$simplemap.cc:496:simplemap_adff$2096 to $__DFFE_PN0 for $0\RS232_Module0_SendREG[9:0] [7] -> \RS232_Module0_SendREG [7].
+  converting $_DFF_PN0_ cell $auto$simplemap.cc:496:simplemap_adff$2097 to $__DFFE_PN0 for $0\RS232_Module0_SendREG[9:0] [8] -> \RS232_Module0_SendREG [8].
+  converting $_DFF_PN0_ cell $auto$simplemap.cc:496:simplemap_adff$2098 to $__DFFE_PN0 for $0\RS232_Module0_SendREG[9:0] [9] -> \RS232_Module0_SendREG [9].
+  converting $_DFF_PN0_ cell $auto$simplemap.cc:496:simplemap_adff$2099 to $__DFFE_PN0 for $0\RS232_Module0_tx_addr[2:0] [0] -> \RS232_Module0_tx_addr [0].
+  converting $_DFF_PN0_ cell $auto$simplemap.cc:496:simplemap_adff$2100 to $__DFFE_PN0 for $0\RS232_Module0_tx_addr[2:0] [1] -> \RS232_Module0_tx_addr [1].
+  converting $_DFF_PN0_ cell $auto$simplemap.cc:496:simplemap_adff$2101 to $__DFFE_PN0 for $0\RS232_Module0_tx_addr[2:0] [2] -> \RS232_Module0_tx_addr [2].
+
+2.36. Executing TECHMAP pass (map to technology primitives).
+
+2.36.1. Executing Verilog-2005 frontend: /usr/local/bin/../share/yosys/ice40/cells_map.v
+Parsing Verilog input from `/usr/local/bin/../share/yosys/ice40/cells_map.v' to AST representation.
+Generating RTLIL representation for module `\$_DFF_N_'.
+Generating RTLIL representation for module `\$_DFF_P_'.
+Generating RTLIL representation for module `\$_DFFE_NN_'.
+Generating RTLIL representation for module `\$_DFFE_PN_'.
+Generating RTLIL representation for module `\$_DFFE_NP_'.
+Generating RTLIL representation for module `\$_DFFE_PP_'.
+Generating RTLIL representation for module `\$_DFF_NN0_'.
+Generating RTLIL representation for module `\$_DFF_NN1_'.
+Generating RTLIL representation for module `\$_DFF_PN0_'.
+Generating RTLIL representation for module `\$_DFF_PN1_'.
+Generating RTLIL representation for module `\$_DFF_NP0_'.
+Generating RTLIL representation for module `\$_DFF_NP1_'.
+Generating RTLIL representation for module `\$_DFF_PP0_'.
+Generating RTLIL representation for module `\$_DFF_PP1_'.
+Generating RTLIL representation for module `\$__DFFE_NN0'.
+Generating RTLIL representation for module `\$__DFFE_NN1'.
+Generating RTLIL representation for module `\$__DFFE_PN0'.
+Generating RTLIL representation for module `\$__DFFE_PN1'.
+Generating RTLIL representation for module `\$__DFFE_NP0'.
+Generating RTLIL representation for module `\$__DFFE_NP1'.
+Generating RTLIL representation for module `\$__DFFE_PP0'.
+Generating RTLIL representation for module `\$__DFFE_PP1'.
+Successfully finished Verilog frontend.
+
+2.36.2. Continuing TECHMAP pass.
+Using template \$_DFFE_PP_ for cells of type $_DFFE_PP_.
+Using template \$_DFF_PN1_ for cells of type $_DFF_PN1_.
+Using template \$_DFF_PN0_ for cells of type $_DFF_PN0_.
+Using template \$__DFFE_PN0 for cells of type $__DFFE_PN0.
+Using template \$_DFF_P_ for cells of type $_DFF_P_.
+No more expansions possible.
+<suppressed ~159 debug messages>
+
+2.37. Executing OPT_EXPR pass (perform const folding).
+Optimizing module main.
+<suppressed ~382 debug messages>
+
+2.38. Executing SIMPLEMAP pass (map simple cells to gate primitives).
+Mapping main.$auto$alumacc.cc:485:replace_alu$884.slice[0].carry ($lut).
+Mapping main.$auto$alumacc.cc:485:replace_alu$887.slice[0].carry ($lut).
+Mapping main.$auto$alumacc.cc:485:replace_alu$890.slice[0].carry ($lut).
+Mapping main.$auto$alumacc.cc:485:replace_alu$893.slice[0].carry ($lut).
+Mapping main.$auto$alumacc.cc:485:replace_alu$896.slice[0].carry ($lut).
+Mapping main.$auto$alumacc.cc:485:replace_alu$899.slice[0].carry ($lut).
+Mapping main.$auto$alumacc.cc:485:replace_alu$902.slice[0].carry ($lut).
+Mapping main.$techmap$techmap5017$auto$simplemap.cc:496:simplemap_adff$991.$logic_not$/usr/local/bin/../share/yosys/ice40/cells_map.v:12$5009 ($logic_not).
+Mapping main.$techmap$techmap5021$auto$simplemap.cc:496:simplemap_adff$2031.$logic_not$/usr/local/bin/../share/yosys/ice40/cells_map.v:22$5013 ($logic_not).
+Mapping main.$techmap$techmap5057$auto$simplemap.cc:496:simplemap_adff$2030.$logic_not$/usr/local/bin/../share/yosys/ice40/cells_map.v:22$5013 ($logic_not).
+Mapping main.$techmap$techmap5024$auto$simplemap.cc:496:simplemap_adff$2068.$logic_not$/usr/local/bin/../share/yosys/ice40/cells_map.v:12$5009 ($logic_not).
+Mapping main.$techmap$techmap5030$auto$simplemap.cc:496:simplemap_adff$2099.$logic_not$/usr/local/bin/../share/yosys/ice40/cells_map.v:22$5013 ($logic_not).
+Mapping main.$techmap$techmap5117$auto$simplemap.cc:496:simplemap_adff$2101.$logic_not$/usr/local/bin/../share/yosys/ice40/cells_map.v:22$5013 ($logic_not).
+Mapping main.$techmap$techmap5044$auto$simplemap.cc:496:simplemap_adff$2016.$logic_not$/usr/local/bin/../share/yosys/ice40/cells_map.v:22$5013 ($logic_not).
+Mapping main.$techmap$techmap5045$auto$simplemap.cc:496:simplemap_adff$2017.$logic_not$/usr/local/bin/../share/yosys/ice40/cells_map.v:22$5013 ($logic_not).
+Mapping main.$techmap$techmap5046$auto$simplemap.cc:496:simplemap_adff$2018.$logic_not$/usr/local/bin/../share/yosys/ice40/cells_map.v:22$5013 ($logic_not).
+Mapping main.$techmap$techmap5047$auto$simplemap.cc:496:simplemap_adff$2019.$logic_not$/usr/local/bin/../share/yosys/ice40/cells_map.v:22$5013 ($logic_not).
+Mapping main.$techmap$techmap5048$auto$simplemap.cc:496:simplemap_adff$2020.$logic_not$/usr/local/bin/../share/yosys/ice40/cells_map.v:22$5013 ($logic_not).
+Mapping main.$techmap$techmap5049$auto$simplemap.cc:496:simplemap_adff$2021.$logic_not$/usr/local/bin/../share/yosys/ice40/cells_map.v:22$5013 ($logic_not).
+Mapping main.$techmap$techmap5019$auto$simplemap.cc:496:simplemap_adff$2015.$logic_not$/usr/local/bin/../share/yosys/ice40/cells_map.v:22$5013 ($logic_not).
+Mapping main.$techmap$techmap5050$auto$simplemap.cc:496:simplemap_adff$2022.$logic_not$/usr/local/bin/../share/yosys/ice40/cells_map.v:22$5013 ($logic_not).
+Mapping main.$techmap$techmap5051$auto$simplemap.cc:496:simplemap_adff$2024.$logic_not$/usr/local/bin/../share/yosys/ice40/cells_map.v:22$5013 ($logic_not).
+Mapping main.$techmap$techmap5052$auto$simplemap.cc:496:simplemap_adff$2025.$logic_not$/usr/local/bin/../share/yosys/ice40/cells_map.v:22$5013 ($logic_not).
+Mapping main.$techmap$techmap5053$auto$simplemap.cc:496:simplemap_adff$2026.$logic_not$/usr/local/bin/../share/yosys/ice40/cells_map.v:22$5013 ($logic_not).
+Mapping main.$techmap$techmap5054$auto$simplemap.cc:496:simplemap_adff$2027.$logic_not$/usr/local/bin/../share/yosys/ice40/cells_map.v:22$5013 ($logic_not).
+Mapping main.$techmap$techmap5055$auto$simplemap.cc:496:simplemap_adff$2028.$logic_not$/usr/local/bin/../share/yosys/ice40/cells_map.v:22$5013 ($logic_not).
+Mapping main.$techmap$techmap5056$auto$simplemap.cc:496:simplemap_adff$2029.$logic_not$/usr/local/bin/../share/yosys/ice40/cells_map.v:22$5013 ($logic_not).
+Mapping main.$techmap$techmap5020$auto$simplemap.cc:496:simplemap_adff$2023.$logic_not$/usr/local/bin/../share/yosys/ice40/cells_map.v:22$5013 ($logic_not).
+Mapping main.$techmap$techmap5089$auto$simplemap.cc:496:simplemap_adff$2065.$logic_not$/usr/local/bin/../share/yosys/ice40/cells_map.v:22$5013 ($logic_not).
+Mapping main.$techmap$techmap5090$auto$simplemap.cc:496:simplemap_adff$2066.$logic_not$/usr/local/bin/../share/yosys/ice40/cells_map.v:22$5013 ($logic_not).
+Mapping main.$techmap$techmap5023$auto$simplemap.cc:496:simplemap_adff$2064.$logic_not$/usr/local/bin/../share/yosys/ice40/cells_map.v:22$5013 ($logic_not).
+Mapping main.$techmap$techmap5091$auto$simplemap.cc:496:simplemap_adff$2067.$logic_not$/usr/local/bin/../share/yosys/ice40/cells_map.v:22$5013 ($logic_not).
+Mapping main.$techmap$techmap5092$auto$simplemap.cc:496:simplemap_adff$2069.$logic_not$/usr/local/bin/../share/yosys/ice40/cells_map.v:12$5009 ($logic_not).
+Mapping main.$techmap$techmap5093$auto$simplemap.cc:496:simplemap_adff$2070.$logic_not$/usr/local/bin/../share/yosys/ice40/cells_map.v:12$5009 ($logic_not).
+Mapping main.$techmap$techmap5094$auto$simplemap.cc:496:simplemap_adff$2073.$logic_not$/usr/local/bin/../share/yosys/ice40/cells_map.v:22$5013 ($logic_not).
+Mapping main.$techmap$techmap5095$auto$simplemap.cc:496:simplemap_adff$2074.$logic_not$/usr/local/bin/../share/yosys/ice40/cells_map.v:22$5013 ($logic_not).
+Mapping main.$techmap$techmap5096$auto$simplemap.cc:496:simplemap_adff$2075.$logic_not$/usr/local/bin/../share/yosys/ice40/cells_map.v:22$5013 ($logic_not).
+Mapping main.$techmap$techmap5097$auto$simplemap.cc:496:simplemap_adff$2076.$logic_not$/usr/local/bin/../share/yosys/ice40/cells_map.v:22$5013 ($logic_not).
+Mapping main.$techmap$techmap5098$auto$simplemap.cc:496:simplemap_adff$2077.$logic_not$/usr/local/bin/../share/yosys/ice40/cells_map.v:22$5013 ($logic_not).
+Mapping main.$techmap$techmap5099$auto$simplemap.cc:496:simplemap_adff$2078.$logic_not$/usr/local/bin/../share/yosys/ice40/cells_map.v:22$5013 ($logic_not).
+Mapping main.$techmap$techmap5100$auto$simplemap.cc:496:simplemap_adff$2079.$logic_not$/usr/local/bin/../share/yosys/ice40/cells_map.v:22$5013 ($logic_not).
+Mapping main.$techmap$techmap5026$auto$simplemap.cc:496:simplemap_adff$2072.$logic_not$/usr/local/bin/../share/yosys/ice40/cells_map.v:22$5013 ($logic_not).
+Mapping main.$techmap$techmap5101$auto$simplemap.cc:496:simplemap_adff$2080.$logic_not$/usr/local/bin/../share/yosys/ice40/cells_map.v:22$5013 ($logic_not).
+Mapping main.$techmap$techmap5102$auto$simplemap.cc:496:simplemap_adff$2082.$logic_not$/usr/local/bin/../share/yosys/ice40/cells_map.v:22$5013 ($logic_not).
+Mapping main.$techmap$techmap5103$auto$simplemap.cc:496:simplemap_adff$2083.$logic_not$/usr/local/bin/../share/yosys/ice40/cells_map.v:22$5013 ($logic_not).
+Mapping main.$techmap$techmap5027$auto$simplemap.cc:496:simplemap_adff$2081.$logic_not$/usr/local/bin/../share/yosys/ice40/cells_map.v:22$5013 ($logic_not).
+Mapping main.$techmap$techmap5104$auto$simplemap.cc:496:simplemap_adff$2084.$logic_not$/usr/local/bin/../share/yosys/ice40/cells_map.v:22$5013 ($logic_not).
+Mapping main.$techmap$techmap5105$auto$simplemap.cc:496:simplemap_adff$2086.$logic_not$/usr/local/bin/../share/yosys/ice40/cells_map.v:22$5013 ($logic_not).
+Mapping main.$techmap$techmap5028$auto$simplemap.cc:496:simplemap_adff$2085.$logic_not$/usr/local/bin/../share/yosys/ice40/cells_map.v:22$5013 ($logic_not).
+Mapping main.$techmap$techmap5106$auto$simplemap.cc:496:simplemap_adff$2087.$logic_not$/usr/local/bin/../share/yosys/ice40/cells_map.v:22$5013 ($logic_not).
+Mapping main.$techmap$techmap5107$auto$simplemap.cc:496:simplemap_adff$2090.$logic_not$/usr/local/bin/../share/yosys/ice40/cells_map.v:22$5013 ($logic_not).
+Mapping main.$techmap$techmap5108$auto$simplemap.cc:496:simplemap_adff$2091.$logic_not$/usr/local/bin/../share/yosys/ice40/cells_map.v:22$5013 ($logic_not).
+Mapping main.$techmap$techmap5109$auto$simplemap.cc:496:simplemap_adff$2092.$logic_not$/usr/local/bin/../share/yosys/ice40/cells_map.v:22$5013 ($logic_not).
+Mapping main.$techmap$techmap5110$auto$simplemap.cc:496:simplemap_adff$2093.$logic_not$/usr/local/bin/../share/yosys/ice40/cells_map.v:22$5013 ($logic_not).
+Mapping main.$techmap$techmap5111$auto$simplemap.cc:496:simplemap_adff$2094.$logic_not$/usr/local/bin/../share/yosys/ice40/cells_map.v:22$5013 ($logic_not).
+Mapping main.$techmap$techmap5112$auto$simplemap.cc:496:simplemap_adff$2095.$logic_not$/usr/local/bin/../share/yosys/ice40/cells_map.v:22$5013 ($logic_not).
+Mapping main.$techmap$techmap5113$auto$simplemap.cc:496:simplemap_adff$2096.$logic_not$/usr/local/bin/../share/yosys/ice40/cells_map.v:22$5013 ($logic_not).
+Mapping main.$techmap$techmap5114$auto$simplemap.cc:496:simplemap_adff$2097.$logic_not$/usr/local/bin/../share/yosys/ice40/cells_map.v:22$5013 ($logic_not).
+Mapping main.$techmap$techmap5029$auto$simplemap.cc:496:simplemap_adff$2089.$logic_not$/usr/local/bin/../share/yosys/ice40/cells_map.v:22$5013 ($logic_not).
+Mapping main.$techmap$techmap5115$auto$simplemap.cc:496:simplemap_adff$2098.$logic_not$/usr/local/bin/../share/yosys/ice40/cells_map.v:22$5013 ($logic_not).
+Mapping main.$techmap$techmap5116$auto$simplemap.cc:496:simplemap_adff$2100.$logic_not$/usr/local/bin/../share/yosys/ice40/cells_map.v:22$5013 ($logic_not).
+Mapping main.$techmap$techmap5016$auto$simplemap.cc:496:simplemap_adff$990.$logic_not$/usr/local/bin/../share/yosys/ice40/cells_map.v:13$5010 ($logic_not).
+
+2.39. Executing ICE40_FFINIT pass (implement FF init values).
+Handling FF init values in main.
+
+2.40. Executing ICE40_FFSSR pass (merge synchronous set/reset into FF cells).
+Merging set/reset $_MUX_ cells into SB_FFs in main.
+  Merging $auto$simplemap.cc:277:simplemap_mux$1400 (A=$add$main.v:301$98_Y [1], B=1'0, S=$auto$rtlil.cc:1894:Or$868) into $auto$simplemap.cc:420:simplemap_dff$2033 (SB_DFFE).
+  Merging $auto$simplemap.cc:277:simplemap_mux$1401 (A=$add$main.v:301$98_Y [2], B=1'0, S=$auto$rtlil.cc:1894:Or$868) into $auto$simplemap.cc:420:simplemap_dff$2034 (SB_DFFE).
+  Merging $auto$simplemap.cc:277:simplemap_mux$1402 (A=$add$main.v:301$98_Y [3], B=1'0, S=$auto$rtlil.cc:1894:Or$868) into $auto$simplemap.cc:420:simplemap_dff$2035 (SB_DFFE).
+  Merging $auto$simplemap.cc:277:simplemap_mux$1403 (A=$add$main.v:301$98_Y [4], B=1'0, S=$auto$rtlil.cc:1894:Or$868) into $auto$simplemap.cc:420:simplemap_dff$2036 (SB_DFFE).
+  Merging $auto$simplemap.cc:277:simplemap_mux$1404 (A=$add$main.v:301$98_Y [5], B=1'0, S=$auto$rtlil.cc:1894:Or$868) into $auto$simplemap.cc:420:simplemap_dff$2037 (SB_DFFE).
+  Merging $auto$simplemap.cc:277:simplemap_mux$1405 (A=$add$main.v:301$98_Y [6], B=1'0, S=$auto$rtlil.cc:1894:Or$868) into $auto$simplemap.cc:420:simplemap_dff$2038 (SB_DFFE).
+  Merging $auto$simplemap.cc:277:simplemap_mux$1406 (A=$add$main.v:301$98_Y [7], B=1'0, S=$auto$rtlil.cc:1894:Or$868) into $auto$simplemap.cc:420:simplemap_dff$2039 (SB_DFFE).
+  Merging $auto$simplemap.cc:277:simplemap_mux$1407 (A=$add$main.v:301$98_Y [8], B=1'0, S=$auto$rtlil.cc:1894:Or$868) into $auto$simplemap.cc:420:simplemap_dff$2040 (SB_DFFE).
+  Merging $auto$simplemap.cc:277:simplemap_mux$1408 (A=$add$main.v:301$98_Y [9], B=1'0, S=$auto$rtlil.cc:1894:Or$868) into $auto$simplemap.cc:420:simplemap_dff$2041 (SB_DFFE).
+  Merging $auto$simplemap.cc:277:simplemap_mux$1409 (A=$add$main.v:301$98_Y [10], B=1'0, S=$auto$rtlil.cc:1894:Or$868) into $auto$simplemap.cc:420:simplemap_dff$2042 (SB_DFFE).
+  Merging $auto$simplemap.cc:277:simplemap_mux$1410 (A=$add$main.v:301$98_Y [11], B=1'0, S=$auto$rtlil.cc:1894:Or$868) into $auto$simplemap.cc:420:simplemap_dff$2043 (SB_DFFE).
+  Merging $auto$simplemap.cc:277:simplemap_mux$1411 (A=$add$main.v:301$98_Y [12], B=1'0, S=$auto$rtlil.cc:1894:Or$868) into $auto$simplemap.cc:420:simplemap_dff$2044 (SB_DFFE).
+  Merging $auto$simplemap.cc:277:simplemap_mux$1412 (A=$add$main.v:301$98_Y [13], B=1'0, S=$auto$rtlil.cc:1894:Or$868) into $auto$simplemap.cc:420:simplemap_dff$2045 (SB_DFFE).
+  Merging $auto$simplemap.cc:277:simplemap_mux$1413 (A=$add$main.v:301$98_Y [14], B=1'0, S=$auto$rtlil.cc:1894:Or$868) into $auto$simplemap.cc:420:simplemap_dff$2046 (SB_DFFE).
+  Merging $auto$simplemap.cc:277:simplemap_mux$1414 (A=$add$main.v:301$98_Y [15], B=1'0, S=$auto$rtlil.cc:1894:Or$868) into $auto$simplemap.cc:420:simplemap_dff$2047 (SB_DFFE).
+  Merging $auto$simplemap.cc:277:simplemap_mux$1415 (A=$add$main.v:301$98_Y [16], B=1'0, S=$auto$rtlil.cc:1894:Or$868) into $auto$simplemap.cc:420:simplemap_dff$2048 (SB_DFFE).
+  Merging $auto$simplemap.cc:277:simplemap_mux$1416 (A=$add$main.v:301$98_Y [17], B=1'0, S=$auto$rtlil.cc:1894:Or$868) into $auto$simplemap.cc:420:simplemap_dff$2049 (SB_DFFE).
+  Merging $auto$simplemap.cc:277:simplemap_mux$1417 (A=$add$main.v:301$98_Y [18], B=1'0, S=$auto$rtlil.cc:1894:Or$868) into $auto$simplemap.cc:420:simplemap_dff$2050 (SB_DFFE).
+  Merging $auto$simplemap.cc:277:simplemap_mux$1418 (A=$add$main.v:301$98_Y [19], B=1'0, S=$auto$rtlil.cc:1894:Or$868) into $auto$simplemap.cc:420:simplemap_dff$2051 (SB_DFFE).
+  Merging $auto$simplemap.cc:277:simplemap_mux$1419 (A=$add$main.v:301$98_Y [20], B=1'0, S=$auto$rtlil.cc:1894:Or$868) into $auto$simplemap.cc:420:simplemap_dff$2052 (SB_DFFE).
+  Merging $auto$simplemap.cc:277:simplemap_mux$1420 (A=$add$main.v:301$98_Y [21], B=1'0, S=$auto$rtlil.cc:1894:Or$868) into $auto$simplemap.cc:420:simplemap_dff$2053 (SB_DFFE).
+  Merging $auto$simplemap.cc:277:simplemap_mux$1421 (A=$add$main.v:301$98_Y [22], B=1'0, S=$auto$rtlil.cc:1894:Or$868) into $auto$simplemap.cc:420:simplemap_dff$2054 (SB_DFFE).
+  Merging $auto$simplemap.cc:277:simplemap_mux$1422 (A=$add$main.v:301$98_Y [23], B=1'0, S=$auto$rtlil.cc:1894:Or$868) into $auto$simplemap.cc:420:simplemap_dff$2055 (SB_DFFE).
+  Merging $auto$simplemap.cc:277:simplemap_mux$1423 (A=$add$main.v:301$98_Y [24], B=1'0, S=$auto$rtlil.cc:1894:Or$868) into $auto$simplemap.cc:420:simplemap_dff$2056 (SB_DFFE).
+  Merging $auto$simplemap.cc:277:simplemap_mux$1424 (A=$add$main.v:301$98_Y [25], B=1'0, S=$auto$rtlil.cc:1894:Or$868) into $auto$simplemap.cc:420:simplemap_dff$2057 (SB_DFFE).
+  Merging $auto$simplemap.cc:277:simplemap_mux$1425 (A=$add$main.v:301$98_Y [26], B=1'0, S=$auto$rtlil.cc:1894:Or$868) into $auto$simplemap.cc:420:simplemap_dff$2058 (SB_DFFE).
+  Merging $auto$simplemap.cc:277:simplemap_mux$1426 (A=$add$main.v:301$98_Y [27], B=1'0, S=$auto$rtlil.cc:1894:Or$868) into $auto$simplemap.cc:420:simplemap_dff$2059 (SB_DFFE).
+  Merging $auto$simplemap.cc:277:simplemap_mux$1427 (A=$add$main.v:301$98_Y [28], B=1'0, S=$auto$rtlil.cc:1894:Or$868) into $auto$simplemap.cc:420:simplemap_dff$2060 (SB_DFFE).
+  Merging $auto$simplemap.cc:277:simplemap_mux$1428 (A=$add$main.v:301$98_Y [29], B=1'0, S=$auto$rtlil.cc:1894:Or$868) into $auto$simplemap.cc:420:simplemap_dff$2061 (SB_DFFE).
+  Merging $auto$simplemap.cc:277:simplemap_mux$1429 (A=$add$main.v:301$98_Y [30], B=1'0, S=$auto$rtlil.cc:1894:Or$868) into $auto$simplemap.cc:420:simplemap_dff$2062 (SB_DFFE).
+  Merging $auto$simplemap.cc:277:simplemap_mux$1399 (A=$auto$simplemap.cc:309:simplemap_lut$5286, B=1'0, S=$auto$rtlil.cc:1894:Or$868) into $auto$simplemap.cc:420:simplemap_dff$2032 (SB_DFFE).
+  Merging $auto$simplemap.cc:277:simplemap_mux$1430 (A=$add$main.v:301$98_Y [31], B=1'0, S=$auto$rtlil.cc:1894:Or$868) into $auto$simplemap.cc:420:simplemap_dff$2063 (SB_DFFE).
+  Merging $auto$simplemap.cc:277:simplemap_mux$1987 (A=1'1, B=$shiftx$main.v:228$81.buffer [0], S=\RS232_Module0_tx_State [1]) into $auto$simplemap.cc:420:simplemap_dff$2071 (SB_DFF).
+
+2.41. Executing ICE40_OPT pass (performing simple optimizations).
+
+2.41.1. Running ICE40 specific optimizations.
+
+2.41.2. Executing OPT_EXPR pass (perform const folding).
+Optimizing module main.
+<suppressed ~118 debug messages>
+
+2.41.3. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\main'.
+<suppressed ~1203 debug messages>
+Removed a total of 401 cells.
+
+2.41.4. Executing OPT_RMDFF pass (remove dff with constant values).
+
+2.41.5. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \main..
+Removed 33 unused cells and 1527 unused wires.
+<suppressed ~34 debug messages>
+
+2.41.6. Rerunning OPT passes. (Removed registers in this run.)
+
+2.41.7. Running ICE40 specific optimizations.
+
+2.41.8. Executing OPT_EXPR pass (perform const folding).
+Optimizing module main.
+
+2.41.9. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\main'.
+Removed a total of 0 cells.
+
+2.41.10. Executing OPT_RMDFF pass (remove dff with constant values).
+
+2.41.11. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \main..
+
+2.41.12. Finished OPT passes. (There is nothing left to do.)
+
+2.42. Executing TECHMAP pass (map to technology primitives).
+
+2.42.1. Executing Verilog-2005 frontend: /usr/local/bin/../share/yosys/ice40/latches_map.v
+Parsing Verilog input from `/usr/local/bin/../share/yosys/ice40/latches_map.v' to AST representation.
+Generating RTLIL representation for module `\$_DLATCH_N_'.
+Generating RTLIL representation for module `\$_DLATCH_P_'.
+Successfully finished Verilog frontend.
+
+2.42.2. Continuing TECHMAP pass.
+No more expansions possible.
+
+2.43. Executing ABC pass (technology mapping using ABC).
+
+2.43.1. Extracting gate netlist of module `\main' to `<abc-temp-dir>/input.blif'..
+Extracted 528 gates and 690 wires to a netlist network with 160 inputs and 100 outputs.
+
+2.43.1.1. Executing ABC.
+Running ABC command: <yosys-exe-dir>/yosys-abc -s -f <abc-temp-dir>/abc.script 2>&1
+ABC: ABC command line: "source <abc-temp-dir>/abc.script".
+ABC: 
+ABC: + read_blif <abc-temp-dir>/input.blif 
+ABC: + read_lut <abc-temp-dir>/lutdefs.txt 
+ABC: + strash 
+ABC: + ifraig 
+ABC: + scorr 
+ABC: Warning: The network is combinational (run "fraig" or "fraig_sweep").
+ABC: + dc2 
+ABC: + dretime 
+ABC: + strash 
+ABC: + dch -f 
+ABC: + if 
+ABC: + mfs2 
+ABC: + lutpack -S 1 
+ABC: + dress 
+ABC: Total number of equiv classes                =     120.
+ABC: Participating nodes from both networks       =     284.
+ABC: Participating nodes from the first network   =     120. (  67.42 % of nodes)
+ABC: Participating nodes from the second network  =     164. (  92.13 % of nodes)
+ABC: Node pairs (any polarity)                    =     120. (  67.42 % of names can be moved)
+ABC: Node pairs (same polarity)                   =     114. (  64.04 % of names can be moved)
+ABC: Total runtime =     0.02 sec
+ABC: + write_blif <abc-temp-dir>/output.blif 
+
+2.43.1.2. Re-integrating ABC results.
+ABC RESULTS:              $lut cells:      177
+ABC RESULTS:        internal signals:      430
+ABC RESULTS:           input signals:      160
+ABC RESULTS:          output signals:      100
+Removing temp directory.
+
+2.44. Executing ICE40_WRAPCARRY pass (wrap carries).
+
+2.45. Executing TECHMAP pass (map to technology primitives).
+
+2.45.1. Executing Verilog-2005 frontend: /usr/local/bin/../share/yosys/ice40/cells_map.v
+Parsing Verilog input from `/usr/local/bin/../share/yosys/ice40/cells_map.v' to AST representation.
+Generating RTLIL representation for module `\$_DFF_N_'.
+Generating RTLIL representation for module `\$_DFF_P_'.
+Generating RTLIL representation for module `\$_DFFE_NN_'.
+Generating RTLIL representation for module `\$_DFFE_PN_'.
+Generating RTLIL representation for module `\$_DFFE_NP_'.
+Generating RTLIL representation for module `\$_DFFE_PP_'.
+Generating RTLIL representation for module `\$_DFF_NN0_'.
+Generating RTLIL representation for module `\$_DFF_NN1_'.
+Generating RTLIL representation for module `\$_DFF_PN0_'.
+Generating RTLIL representation for module `\$_DFF_PN1_'.
+Generating RTLIL representation for module `\$_DFF_NP0_'.
+Generating RTLIL representation for module `\$_DFF_NP1_'.
+Generating RTLIL representation for module `\$_DFF_PP0_'.
+Generating RTLIL representation for module `\$_DFF_PP1_'.
+Generating RTLIL representation for module `\$__DFFE_NN0'.
+Generating RTLIL representation for module `\$__DFFE_NN1'.
+Generating RTLIL representation for module `\$__DFFE_PN0'.
+Generating RTLIL representation for module `\$__DFFE_PN1'.
+Generating RTLIL representation for module `\$__DFFE_NP0'.
+Generating RTLIL representation for module `\$__DFFE_NP1'.
+Generating RTLIL representation for module `\$__DFFE_PP0'.
+Generating RTLIL representation for module `\$__DFFE_PP1'.
+Successfully finished Verilog frontend.
+
+2.45.2. Continuing TECHMAP pass.
+No more expansions possible.
+Removed 43 unused cells and 432 unused wires.
+
+2.46. Executing OPT_LUT pass (optimize LUTs).
+Discovering LUTs.
+Number of LUTs:      230
+  1-LUT               42
+  2-LUT               69
+  3-LUT               27
+  4-LUT               92
+
+Eliminating LUTs.
+Number of LUTs:      230
+  1-LUT               42
+  2-LUT               69
+  3-LUT               27
+  4-LUT               92
+
+Combining LUTs.
+Number of LUTs:      216
+  1-LUT               42
+  2-LUT               52
+  3-LUT               30
+  4-LUT               92
+
+Eliminated 0 LUTs.
+Combined 14 LUTs.
+<suppressed ~1101 debug messages>
+
+2.47. Executing TECHMAP pass (map to technology primitives).
+
+2.47.1. Executing Verilog-2005 frontend: /usr/local/bin/../share/yosys/ice40/cells_map.v
+Parsing Verilog input from `/usr/local/bin/../share/yosys/ice40/cells_map.v' to AST representation.
+Generating RTLIL representation for module `\$_DFF_N_'.
+Generating RTLIL representation for module `\$_DFF_P_'.
+Generating RTLIL representation for module `\$_DFFE_NN_'.
+Generating RTLIL representation for module `\$_DFFE_PN_'.
+Generating RTLIL representation for module `\$_DFFE_NP_'.
+Generating RTLIL representation for module `\$_DFFE_PP_'.
+Generating RTLIL representation for module `\$_DFF_NN0_'.
+Generating RTLIL representation for module `\$_DFF_NN1_'.
+Generating RTLIL representation for module `\$_DFF_PN0_'.
+Generating RTLIL representation for module `\$_DFF_PN1_'.
+Generating RTLIL representation for module `\$_DFF_NP0_'.
+Generating RTLIL representation for module `\$_DFF_NP1_'.
+Generating RTLIL representation for module `\$_DFF_PP0_'.
+Generating RTLIL representation for module `\$_DFF_PP1_'.
+Generating RTLIL representation for module `\$__DFFE_NN0'.
+Generating RTLIL representation for module `\$__DFFE_NN1'.
+Generating RTLIL representation for module `\$__DFFE_PN0'.
+Generating RTLIL representation for module `\$__DFFE_PN1'.
+Generating RTLIL representation for module `\$__DFFE_NP0'.
+Generating RTLIL representation for module `\$__DFFE_NP1'.
+Generating RTLIL representation for module `\$__DFFE_PP0'.
+Generating RTLIL representation for module `\$__DFFE_PP1'.
+Generating RTLIL representation for module `\$lut'.
+Successfully finished Verilog frontend.
+
+2.47.2. Continuing TECHMAP pass.
+Using template $paramod\$lut\WIDTH=4\LUT=16'0110100110010110 for cells of type $lut.
+Using template $paramod\$lut\WIDTH=3\LUT=8'00010000 for cells of type $lut.
+Using template $paramod\$lut\WIDTH=4\LUT=16'0000011101110111 for cells of type $lut.
+Using template $paramod\$lut\WIDTH=4\LUT=16'1001000000001001 for cells of type $lut.
+Using template $paramod\$lut\WIDTH=4\LUT=16'1001000000000000 for cells of type $lut.
+Using template $paramod\$lut\WIDTH=3\LUT=8'10000000 for cells of type $lut.
+Using template $paramod\$lut\WIDTH=2\LUT=4'0001 for cells of type $lut.
+Using template $paramod\$lut\WIDTH=4\LUT=16'0001000000000000 for cells of type $lut.
+Using template $paramod\$lut\WIDTH=4\LUT=16'0111111100000000 for cells of type $lut.
+Using template $paramod\$lut\WIDTH=4\LUT=16'1100101011100000 for cells of type $lut.
+Using template $paramod\$lut\WIDTH=1\LUT=2'01 for cells of type $lut.
+Using template $paramod\$lut\WIDTH=3\LUT=8'01000000 for cells of type $lut.
+Using template $paramod\$lut\WIDTH=3\LUT=8'11101011 for cells of type $lut.
+Using template $paramod\$lut\WIDTH=2\LUT=4'1011 for cells of type $lut.
+Using template $paramod\$lut\WIDTH=2\LUT=4'1110 for cells of type $lut.
+Using template $paramod\$lut\WIDTH=4\LUT=16'0100000110000010 for cells of type $lut.
+Using template $paramod\$lut\WIDTH=3\LUT=8'10010000 for cells of type $lut.
+Using template $paramod\$lut\WIDTH=2\LUT=4'0100 for cells of type $lut.
+Using template $paramod\$lut\WIDTH=4\LUT=16'0100000000000000 for cells of type $lut.
+Using template $paramod\$lut\WIDTH=4\LUT=16'0000000000000001 for cells of type $lut.
+Using template $paramod\$lut\WIDTH=4\LUT=16'1000000000000000 for cells of type $lut.
+Using template $paramod\$lut\WIDTH=4\LUT=16'0000000100000000 for cells of type $lut.
+Using template $paramod\$lut\WIDTH=3\LUT=8'10001111 for cells of type $lut.
+Using template $paramod\$lut\WIDTH=3\LUT=8'00011111 for cells of type $lut.
+Using template $paramod\$lut\WIDTH=3\LUT=8'00001110 for cells of type $lut.
+Using template $paramod\$lut\WIDTH=4\LUT=16'1100101011111111 for cells of type $lut.
+Using template $paramod\$lut\WIDTH=4\LUT=16'0000001110110000 for cells of type $lut.
+Using template $paramod\$lut\WIDTH=3\LUT=8'00000001 for cells of type $lut.
+Using template $paramod\$lut\WIDTH=4\LUT=16'0111111111111111 for cells of type $lut.
+Using template $paramod\$lut\WIDTH=2\LUT=4'1000 for cells of type $lut.
+Using template $paramod\$lut\WIDTH=4\LUT=16'0000101011111100 for cells of type $lut.
+Using template $paramod\$lut\WIDTH=4\LUT=16'1100111110100000 for cells of type $lut.
+Using template $paramod\$lut\WIDTH=4\LUT=16'0000010111110011 for cells of type $lut.
+Using template $paramod\$lut\WIDTH=4\LUT=16'1011110011111111 for cells of type $lut.
+Using template $paramod\$lut\WIDTH=4\LUT=16'1111110000001010 for cells of type $lut.
+Using template $paramod\$lut\WIDTH=3\LUT=8'11001010 for cells of type $lut.
+Using template $paramod\$lut\WIDTH=4\LUT=16'1011111111000000 for cells of type $lut.
+Using template $paramod\$lut\WIDTH=4\LUT=16'1110001100000000 for cells of type $lut.
+Using template $paramod\$lut\WIDTH=3\LUT=8'10101100 for cells of type $lut.
+Using template $paramod\$lut\WIDTH=4\LUT=16'0011101010110000 for cells of type $lut.
+Using template $paramod\$lut\WIDTH=4\LUT=16'0000010101010000 for cells of type $lut.
+Using template $paramod\$lut\WIDTH=4\LUT=16'0111110100000000 for cells of type $lut.
+Using template $paramod\$lut\WIDTH=4\LUT=16'1111111101110000 for cells of type $lut.
+Using template $paramod\$lut\WIDTH=4\LUT=16'1111111110000000 for cells of type $lut.
+Using template $paramod\$lut\WIDTH=3\LUT=8'00111010 for cells of type $lut.
+Using template $paramod\$lut\WIDTH=4\LUT=16'0000010000111010 for cells of type $lut.
+Using template $paramod\$lut\WIDTH=4\LUT=16'0001011101110110 for cells of type $lut.
+Using template $paramod\$lut\WIDTH=4\LUT=16'1111001011111111 for cells of type $lut.
+Using template $paramod\$lut\WIDTH=4\LUT=16'0000010011110000 for cells of type $lut.
+Using template $paramod\$lut\WIDTH=4\LUT=16'0000011100000000 for cells of type $lut.
+Using template $paramod\$lut\WIDTH=3\LUT=8'01111111 for cells of type $lut.
+Using template $paramod\$lut\WIDTH=4\LUT=16'0111110011111111 for cells of type $lut.
+Using template $paramod\$lut\WIDTH=4\LUT=16'1000111111111111 for cells of type $lut.
+No more expansions possible.
+<suppressed ~905 debug messages>
+Removed 0 unused cells and 446 unused wires.
+
+2.48. Executing AUTONAME pass.
+Renamed 6132 objects in module main (36 iterations).
+<suppressed ~617 debug messages>
+
+2.49. Executing HIERARCHY pass (managing design hierarchy).
+
+2.49.1. Analyzing design hierarchy..
+Top module:  \main
+
+2.49.2. Analyzing design hierarchy..
+Top module:  \main
+Removed 0 unused modules.
+
+2.50. Printing statistics.
+
+=== main ===
+
+   Number of wires:                186
+   Number of wire bits:            484
+   Number of public wires:         186
+   Number of public wire bits:     484
+   Number of memories:               0
+   Number of memory bits:            0
+   Number of processes:              0
+   Number of cells:                458
+     SB_CARRY                       83
+     SB_DFFE                        71
+     SB_DFFER                       50
+     SB_DFFESR                      32
+     SB_DFFR                         4
+     SB_DFFS                         1
+     SB_DFFSS                        1
+     SB_LUT4                       216
+
+2.51. Executing CHECK pass (checking for obvious problems).
+checking module main..
+found and reported 0 problems.
+
+2.52. Executing BLIF backend.
+
+2.53. Executing JSON backend.
+
+Warnings: 3 unique messages, 4 total
+End of script. Logfile hash: 11947cc294, CPU: user 4.07s system 0.19s, MEM: 36.42 MB peak
+Yosys 0.9+1706 (git sha1 7cc9d487, clang 7.0.1-8+rpi3+deb10u2 -fPIC -Os)
+Time spent: 20% 20x opt_expr (0 sec), 15% 20x opt_clean (0 sec), ...

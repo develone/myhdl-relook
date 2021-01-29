@@ -4,12 +4,21 @@ import RS232Programmer
 #from RS232Programmer import RS232Programmer
 from pwruprst import pwruprst
 from rs232sig import *
+from updatebuff import updatebuff
+ 
+
+from pps import pps
+from rom import rom
+
 t_State = enum('IDLE','READ_INFO_DATA', 'INFO_DATA_HERE','WAIT_ONE_CLK', 'RECEIVE_IT')
+t_state1 = enum('IDLE','DEL0','DEL1','DEL2','DEL3','DEL4','DEL5')
+state1 = Signal(t_state1.IDLE)
 
 """
 yosys -l simple.log -p 'synth_ice40 -blif main.blif -json main.json' main.v
-
-
+nextpnr-ice40 --hx8k --pcf main.pcf --json main.json --asc main.asc
+icetime -d hx8k -c 100 main.asc
+icepack main.asc main.bin
 """
 
 
@@ -17,6 +26,16 @@ yosys -l simple.log -p 'synth_ice40 -blif main.blif -json main.json' main.v
 def main(iClk,iRX,oTX):
 
     pwruprst_inst = pwruprst(iClk,iRst,pwrup)
+    
+    #pps0_inst=pps(iClk,ppscounter,sig)
+    
+    rom0_inst=rom(rom_dout,rom_addr,CONTENT)
+    
+     
+    
+    updatebuff0_inst=updatebuff(iClk,iRst,iData, WriteEnable,ldData,oWrBuffer_full,obusy,rom_dout,rom_addr,CONTENT)
+    
+    #transbuff0_inst = transbuff(iClk,iRst,WriteEnable,ldData,sig,rom_dout,rom_addr,CONTENT,oldData)
 
     rs232_module_inst=RS232_Norbo.RS232_Module(iClk,iRst,iRX,oTX, \
         iData,WriteEnable, oWrBuffer_full,oData,read_addr, \
@@ -105,46 +124,11 @@ def test_bench():
             yield iClk.posedge
     @instance
     def stimulus():
-        #### Reseting #####
-        """
-        iRst.next=1
-        yield delay(50)
-        iRst.next=0
-        yield delay(50)
-        iRst.next=1
-        yield delay(50)
-        """
 
-        #### Some Test Data ####
-        testARRAY=[0x09]+range(256)+range(256)+[0x12]+range(256)+range(256)+range(256)+range(256)
-        print
-        print "Running Test Array:",testARRAY
-        print "#"*50
-        yield TestTransmitReceive(testARRAY)
-
-
-
-        #### Reseting #####
-        print "Assert the reset"
-        iRst.next=1
-        yield delay(50)
-        iRst.next=0
-        yield delay(50)
-        iRst.next=1
-        yield delay(50)
-
-        ### artificial reset of read_addr ####
-        read_addr.next=0
-
-        #### Some Test Data ####
-        testARRAY=[0x09]+range(256)+range(256)+[0x09]+range(256)+range(256)
-        print
-        print "Running Test Array:",testARRAY
-        print "#"*50
-        yield TestTransmitReceive(testARRAY)
-
-        print
-        print "End of Simulation, simulation done!"
+        state1.next = t_state1.IDLE
+        
+        for i in range(1000000):
+            yield iClk.posedge
         raise StopSimulation
 
     #return  clk_gen,Monitor,stimulus,rs232_instance,programmer_inst,rs232loopback,Monitor2#,Monitor_oTX
@@ -152,8 +136,8 @@ def test_bench():
 
 
 #convert_main(hdl='Verilog')
-
+"""
 tb = test_bench()
 tb.config_sim(trace=True)
-tb.run_sim()
+tb.run_sim()"""
 

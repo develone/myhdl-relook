@@ -26,3 +26,14 @@ oprog_WriteEnable_RS232=Signal(bool(0))
 iprog_WrBuffer_full_RS232=Signal(bool(0))
 programmer_enable=Signal(bool(1))
 
+ldData=Signal(intbv(0)[8:])
+oldData=Signal(intbv(0)[8:])
+obusy=Signal(bool(0))
+
+CONTENT = (72,69,76,76,79,87,79,82,76,68,13,10)
+rom_dout=Signal(intbv(0)[8:])
+rom_addr=Signal(intbv(0)[4:])
+
+sig=Signal(bool(0))
+ppscounter=Signal(intbv(0)[32:])
+

@@ -36,4 +36,6 @@ rom_addr=Signal(intbv(0)[4:])
 
 sig=Signal(bool(0))
 ppscounter=Signal(intbv(0)[32:])
+ppsdel = 50000000
+sighictn=20*50
 

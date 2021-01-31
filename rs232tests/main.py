@@ -27,7 +27,7 @@ def main(iClk,iRX,oTX):
 
     pwruprst_inst = pwruprst(iClk,iRst,pwrup)
     
-    #pps0_inst=pps(iClk,ppscounter,sig)
+    pps0_inst=pps(iClk,ppscounter,sig)
     
     rom0_inst=rom(rom_dout,rom_addr,CONTENT)
     

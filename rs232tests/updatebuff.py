@@ -45,8 +45,8 @@ def updatebuff(iClk,iRst,iData, WriteEnable,ldData,oWrBuffer_full,obusy,rom_dout
                 state1.next = t_state1.DEL2
             elif(state1 == t_state1.DEL2):
                 WriteEnable.next=0
-                
-                if(rom_addr < 18):
+                if(rom_addr < 11):
+                #if(rom_addr < 18):
                     rom_addr.next=(rom_addr+1)
                     state1.next = t_state1.DEL3
                 else:

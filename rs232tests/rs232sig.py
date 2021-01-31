@@ -30,7 +30,8 @@ ldData=Signal(intbv(0)[8:])
 oldData=Signal(intbv(0)[8:])
 obusy=Signal(bool(0))
 
-CONTENT = (72,69,76,76,79,87,79,82,76,68,32,72,69,76,76,13,10)
+CONTENT = (72,69,76,76,79,87,79,82,76,68,13,10)
+#CONTENT = (72,69,76,76,79,87,79,82,76,68,32,72,69,76,76,13,10)
 rom_dout=Signal(intbv(0)[8:])
 rom_addr=Signal(intbv(0)[4:])
 

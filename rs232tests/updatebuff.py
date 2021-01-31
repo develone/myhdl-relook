@@ -46,7 +46,7 @@ def updatebuff(iClk,iRst,iData, WriteEnable,ldData,oWrBuffer_full,obusy,rom_dout
             elif(state1 == t_state1.DEL2):
                 WriteEnable.next=0
                 
-                if(rom_addr < 11):
+                if(rom_addr < 18):
                     rom_addr.next=(rom_addr+1)
                     state1.next = t_state1.DEL3
                 else:
@@ -61,7 +61,7 @@ def updatebuff(iClk,iRst,iData, WriteEnable,ldData,oWrBuffer_full,obusy,rom_dout
                 state1.next = t_state1.DEL4
             
             elif (state1 == t_state1.DEL4):
-                if(ppscounter < 4774):
+                if(ppscounter < 5000):
                     ppscounter.next=(ppscounter+1)
                     state1.next = t_state1.DEL4
                 else:
@@ -138,7 +138,7 @@ def convert_updatebuff(hdl):
     updatebuff_1 = updatebuff(iClk,iRst,iData, WriteEnable,ldData,oWrBuffer_full,obusy,rom_dout,rom_addr,CONTENT)
     updatebuff_1.convert(hdl=hdl)
     
-convert_updatebuff(hdl='Verilog')
+#convert_updatebuff(hdl='Verilog')
 """
 tb=testbench()
 tb.config_sim(trace=True)

@@ -1,8 +1,8 @@
 from myhdl import *
 
 Clk_f=100e6 #100 Mhz
-BAUDRATE=230400
-RX_BUFF_LEN=8
+BAUDRATE=2e6
+RX_BUFF_LEN=20
 
 ##### Signal definitions #####
 iData=Signal(intbv(0)[8:])
@@ -13,7 +13,7 @@ iRX=Signal(bool(1))
 oTX=Signal(bool(0))
 WriteEnable=Signal(bool(0))
 oWrBuffer_full=Signal(bool(0))
-read_addr=Signal(intbv(0,min=0,max=8))
+read_addr=Signal(intbv(0,min=0,max=20))
 rx_addr=Signal(intbv(0,min=0,max=RX_BUFF_LEN))
 pwrup=Signal(intbv(0)[6:])
 dout=Signal(intbv(0)[32:])
@@ -30,7 +30,7 @@ ldData=Signal(intbv(0)[8:])
 oldData=Signal(intbv(0)[8:])
 obusy=Signal(bool(0))
 
-CONTENT = (72,69,76,76,79,87,79,82,76,68,13,10)
+CONTENT = (72,69,76,76,79,87,79,82,76,68,32,72,69,76,76,13,10)
 rom_dout=Signal(intbv(0)[8:])
 rom_addr=Signal(intbv(0)[4:])
 

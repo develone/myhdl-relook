@@ -29,7 +29,7 @@ def mainecho(iClk,iRX,oTX):
     
     pps0_inst=pps(iClk,ppscounter,sig)
     
-    rom0_inst=rom(rom_dout,rom_addr,CONTENT)
+    #rom0_inst=rom(rom_dout,rom_addr,CONTENT)
     
      
     
@@ -41,14 +41,14 @@ def mainecho(iClk,iRX,oTX):
         iData,WriteEnable, oWrBuffer_full,oData,read_addr, \
         rx_addr,Clkfrequenz=Clk_f, \
         Baudrate=BAUDRATE,RX_BUFFER_LENGTH=RX_BUFF_LEN)
-    
+    """
     programmer_inst=RS232Programmer.RS232Programmer(iClk,iRst, \
         programmer_enable,oInfobyte,dout,addr_out,we, \
         oprog_Data_RS232,oprog_WriteEnable_RS232, \
-        iprog_WrBuffer_full_RS232,oData,read_addr,rx_addr)
+        iprog_WrBuffer_full_RS232,oData,read_addr,rx_addr)"""
     return instances()
 
-def convert_main(hdl):
+def convert_mainecho(hdl):
 
     mainecho_0 = mainecho(iClk,iRX,oTX)
     mainecho_0.convert(hdl=hdl)
@@ -135,7 +135,7 @@ def test_bench():
     return  clk_gen,Monitor,stimulus,main_0,rs232loopback,Monitor2#,Monitor_oTX
 
 
-convert_main(hdl='Verilog')
+#convert_mainecho(hdl='Verilog')
 """
 tb = test_bench()
 tb.config_sim(trace=True)

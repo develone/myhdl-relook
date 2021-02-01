@@ -35,6 +35,7 @@ def updateecho(iClk,iRst,iData, WriteEnable,ldData,oWrBuffer_full,obusy):
                     if (oData != 0):
                          
                         ldData.next=oData
+                        read_addr.next=(read_addr+1)%RX_BUFF_LEN
                         obusy.next=1
                         state1.next = t_state1.DEL0
                     else:

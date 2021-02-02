@@ -35,14 +35,15 @@ def updateecho(iClk,iRst,iData, WriteEnable,ldData,oWrBuffer_full,obusy):
                     if (oData != 0):
                          
                         ldData.next=oData
-                        read_addr.next=(read_addr+1)%RX_BUFF_LEN
+                        
+                        
                         obusy.next=1
                         state1.next = t_state1.DEL0
                     else:
                         state1.next = t_state1.IDLE
                     
             elif (state1 == t_state1.DEL0):
-                 
+                read_addr.next=(read_addr+1)%RX_BUFF_LEN 
                 state1.next = t_state1.DEL1
             elif (state1 == t_state1.DEL1):
                 iData.next = ldData
@@ -88,8 +89,8 @@ def updateecho(iClk,iRst,iData, WriteEnable,ldData,oWrBuffer_full,obusy):
 @block
 def testbench():
   
-  updatebuff0_inst = updatebuff(iClk,iRst,iData, WriteEnable,ldData,oWrBuffer_full,obusy,rom_dout,rom_addr,CONTENT)
-  rom0_inst=rom(rom_dout,rom_addr,CONTENT) 
+  updateecho0_inst = updatebuff(iClk,iRst,iData, WriteEnable,ldData,oWrBuffer_full,obusy)
+  rom0_inst=rom(rom_dout) 
   
   @always(delay(10))
   def clkgen():
@@ -139,11 +140,11 @@ def testbench():
     raise StopSimulation
   return instances()
 
-def convert_updatebuff(hdl):
-    updatebuff_1 = updatebuff(iClk,iRst,iData, WriteEnable,ldData,oWrBuffer_full,obusy,rom_dout,rom_addr,CONTENT)
-    updatebuff_1.convert(hdl=hdl)
+def convert_updateecho(hdl):
+    updateecho_1 = updatebuff(iClk,iRst,iData, WriteEnable,ldData,oWrBuffer_full,obusy)
+    updateecho_1.convert(hdl=hdl)
     
-#onvert_updatebuff(hdl='Verilog')
+#convert_updateecho(hdl='Verilog')
 """
 tb=testbench()
 tb.config_sim(trace=True)

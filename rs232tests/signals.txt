@@ -17,18 +17,24 @@ input WriteEnable;
 output oWrBuffer_full;	wire
 input [2:0] read_addr;
 output [2:0] oRx_addr;
-
-			iRX
-	WriteEnable
-		iData
-	read_addr	
-										oTX
-										oWrBuffer_full
-										oRx_addr
-										oData
-					RS232_Module
-			iClk
-			iRst
+    iData_RS232,
+    WriteEnable_RS232,
+    oWrBuffer_full_RS232,
+    oData_RS232,
+    read_addr_RS232,
+    rx_addr_RS232
+    
+from RPi FPGA	-->		iRX
+WriteEnable_RS232-->	WriteEnable
+iData_RS232 -->			iData
+read_addr_RS232	-->		read_addr	
+													oTX	     	-->	to 	RPi FPGA
+													oWrBuffer_full -->	oWrBuffer_full_RS232
+													oRx_addr		
+													oData		   --> 	oData_RS232
+								RS232_Module				
+						iClk
+						iRst
 			
 input clk;
 input rst;

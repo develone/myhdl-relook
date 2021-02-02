@@ -30,7 +30,7 @@ def updatebuff(iClk,iRst,iData, WriteEnable,ldData,oWrBuffer_full,obusy,rom_dout
             #obusy.next=0
             state1.next = t_state1.IDLE
             if (state1 == t_state1.IDLE):
-                obusy.next=1
+                 
                 if((not WriteEnable) and (not oWrBuffer_full)):
                     #if (ldData != 0):
                     ldData.next=rom_dout

@@ -135,7 +135,7 @@ def test_bench():
     return  clk_gen,Monitor,stimulus,main_0,rs232loopback,Monitor2#,Monitor_oTX
 
 
-convert_main(hdl='Verilog')
+#convert_main(hdl='Verilog')
 """
 tb = test_bench()
 tb.config_sim(trace=True)

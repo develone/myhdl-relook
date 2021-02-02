@@ -43,7 +43,7 @@ def test_bench():
 def convert_pps(hdl):
 	pps0_inst=pps(iClk,ppscounter,sig)
 	pps0_inst.convert(hdl=hdl)
-convert_pps(hdl='Verilog')
+#convert_pps(hdl='Verilog')
 """
 tb = test_bench()
 tb.config_sim(trace=True)

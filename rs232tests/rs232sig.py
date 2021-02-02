@@ -3,6 +3,7 @@ from myhdl import *
 Clk_f=100e6 #100 Mhz
 BAUDRATE=2e6
 RX_BUFF_LEN=20
+TX_BUFF_LEN=20
 
 ##### Signal definitions #####
 iData=Signal(intbv(0)[8:])

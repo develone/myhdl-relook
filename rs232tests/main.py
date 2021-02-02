@@ -40,7 +40,7 @@ def main(iClk,iRX,oTX):
     rs232_module_inst=RS232_Norbo.RS232_Module(iClk,iRst,iRX,oTX, \
         iData,WriteEnable, oWrBuffer_full,oData,read_addr, \
         rx_addr,Clkfrequenz=Clk_f, \
-        Baudrate=BAUDRATE,RX_BUFFER_LENGTH=RX_BUFF_LEN)
+        Baudrate=BAUDRATE,RX_BUFFER_LENGTH=RX_BUFF_LEN,TX_BUFFER_LENGTH=TX_BUFF_LEN)
     """
     programmer_inst=RS232Programmer.RS232Programmer(iClk,iRst, \
         programmer_enable,oInfobyte,dout,addr_out,we, \
@@ -135,7 +135,7 @@ def test_bench():
     return  clk_gen,Monitor,stimulus,main_0,rs232loopback,Monitor2#,Monitor_oTX
 
 
-#convert_main(hdl='Verilog')
+convert_main(hdl='Verilog')
 """
 tb = test_bench()
 tb.config_sim(trace=True)

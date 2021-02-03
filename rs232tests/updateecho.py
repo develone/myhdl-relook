@@ -20,7 +20,7 @@ def updateecho(iClk,iRst,iData, WriteEnable,ldData,oWrBuffer_full,obusy):
             iData.next=0
             ldData.next=0
             WriteEnable.next=0
-            rom_addr.next=0
+            read_addr.next=0
             obusy.next=0
             state1.next = t_state1.IDLE
         else:

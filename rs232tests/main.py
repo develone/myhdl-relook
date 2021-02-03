@@ -33,7 +33,7 @@ def main(iClk,iRX,oTX):
     
      
     
-    updatebuff0_inst=updatebuff(iClk,iRst,iData, WriteEnable,ldData,oWrBuffer_full,obusy,rom_dout,rom_addr,CONTENT)
+    updatebuff0_inst=updatebuff(iClk,iRst,iData_RS232, WriteEnable_RS232,ldData,oWrBuffer_full_RS232,obusy,rom_dout,rom_addr,CONTENT)
     
     #transbuff0_inst = transbuff(iClk,iRst,WriteEnable,ldData,sig,rom_dout,rom_addr,CONTENT,oldData)
 

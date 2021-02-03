@@ -11,15 +11,15 @@ from rom import rom
     
     
 @block
-def updatebuff(iClk,iRst,iData, WriteEnable,ldData,oWrBuffer_full,obusy,rom_dout,rom_addr,CONTEN):
+def updatebuff(iClk,iRst,iData_RS232, WriteEnable_RS232,ldData,oWrBuffer_full_RS232,obusy,rom_dout,rom_addr,CONTEN):
  
 
     @always(iClk.posedge,iRst.negedge)
     def rtl ():
         if(iRst==0):
-            iData.next=0
+            iData_RS232.next=0
             ldData.next=0
-            WriteEnable.next=0
+            WriteEnable_RS232.next=0
             rom_addr.next=0
             obusy.next=0
             state1.next = t_state1.IDLE
@@ -31,7 +31,7 @@ def updatebuff(iClk,iRst,iData, WriteEnable,ldData,oWrBuffer_full,obusy,rom_dout
             state1.next = t_state1.IDLE
             if (state1 == t_state1.IDLE):
                  
-                if((not WriteEnable) and (not oWrBuffer_full)):
+                if((not WriteEnable_RS232) and (not oWrBuffer_full_RS232)):
                     #if (ldData != 0):
                     ldData.next=rom_dout
                     obusy.next=1
@@ -41,11 +41,11 @@ def updatebuff(iClk,iRst,iData, WriteEnable,ldData,oWrBuffer_full,obusy,rom_dout
                  
                 state1.next = t_state1.DEL1
             elif (state1 == t_state1.DEL1):
-                iData.next = ldData
-                WriteEnable.next=1
+                iData_RS232.next = ldData
+                WriteEnable_RS232.next=1
                 state1.next = t_state1.DEL2
             elif(state1 == t_state1.DEL2):
-                WriteEnable.next=0
+                WriteEnable_RS232.next=0
                 if(rom_addr < 11):
                 #if(rom_addr < 18):
                     rom_addr.next=(rom_addr+1)
@@ -55,7 +55,7 @@ def updatebuff(iClk,iRst,iData, WriteEnable,ldData,oWrBuffer_full,obusy,rom_dout
                     state1.next = t_state1.IDLE
             
             elif (state1 == t_state1.DEL3):
-                WriteEnable.next=0
+                WriteEnable_RS232.next=0
                 #state1.next = t_state1.DEL2
                 #obusy.next=1
                 #ldData.next=0
@@ -136,7 +136,7 @@ def testbench():
   return instances()
 
 def convert_updatebuff(hdl):
-    updatebuff_1 = updatebuff(iClk,iRst,iData, WriteEnable,ldData,oWrBuffer_full,obusy,rom_dout,rom_addr,CONTENT)
+    updatebuff_1 = updatebuff(iClk,iRst,iData_RS232, WriteEnable_RS232,ldData,oWrBuffer_full_RS232,obusy,rom_dout,rom_addr,CONTENT)
     updatebuff_1.convert(hdl=hdl)
     
 #convert_updatebuff(hdl='Verilog')

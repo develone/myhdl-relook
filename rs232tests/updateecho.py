@@ -41,6 +41,8 @@ def updateecho(iClk,iRst,iData, WriteEnable,ldData,oWrBuffer_full,obusy):
                         state1.next = t_state1.DEL0
                     else:
                         state1.next = t_state1.IDLE
+                else:
+                    state1.next = t_state1.IDLE
                     
             elif (state1 == t_state1.DEL0):
                 read_addr.next=(read_addr+1)%RX_BUFF_LEN 
@@ -141,7 +143,7 @@ def testbench():
   return instances()
 
 def convert_updateecho(hdl):
-    updateecho_1 = updatebuff(iClk,iRst,iData, WriteEnable,ldData,oWrBuffer_full,obusy)
+    updateecho_1 = updateecho(iClk,iRst,iData, WriteEnable,ldData,oWrBuffer_full,obusy)
     updateecho_1.convert(hdl=hdl)
     
 #convert_updateecho(hdl='Verilog')

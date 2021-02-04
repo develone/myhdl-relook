@@ -45,8 +45,8 @@ def main(iClk,iRX,oTX):
 
 def convert_main(hdl):
 
-    main_0 = main(iClk,iRX,oTX)
-    main_0.convert(hdl=hdl)
+    main0=main(iClk,iRX,oTX)
+    main0.convert(hdl=hdl)
 
 @block
 def test_bench():
@@ -54,7 +54,7 @@ def test_bench():
     ##### Signal definitions #####
 
     ##### Instanziate RS232 Module #####
-    main_0 = main(iClk,iRX,oTX)
+    main0=main(iClk,iRX,oTX)
 
     interval = delay(10)
     @always(interval)

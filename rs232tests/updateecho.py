@@ -11,7 +11,7 @@ from rom import rom
     
     
 @block
-def updateecho(iClk,iRst,iData, WriteEnable,ldData,oWrBuffer_full,obusy):
+def updateecho(iClk,iRst,iData, WriteEnable,ldData,oWrBuffer_full,obusy,oData,read_addr):
  
 
     @always(iClk.posedge,iRst.negedge)
@@ -24,10 +24,7 @@ def updateecho(iClk,iRst,iData, WriteEnable,ldData,oWrBuffer_full,obusy):
             obusy.next=0
             state1.next = t_state1.IDLE
         else:
-            #WriteEnable.next=0
-            #iData.next=0
-            #ldData.next=0
-            #obusy.next=0
+
             state1.next = t_state1.IDLE
             if (state1 == t_state1.IDLE):
                 
@@ -53,19 +50,12 @@ def updateecho(iClk,iRst,iData, WriteEnable,ldData,oWrBuffer_full,obusy):
                 state1.next = t_state1.DEL2
             elif(state1 == t_state1.DEL2):
                 WriteEnable.next=0
-                #if(rom_addr < 11):
-                #if(rom_addr < 18):
-                    #rom_addr.next=(rom_addr+1)
+
                 state1.next = t_state1.DEL3
-                #else:
-                    #rom_addr.next=0
-                    #state1.next = t_state1.IDLE
+
             
             elif (state1 == t_state1.DEL3):
-                WriteEnable.next=0
-                #state1.next = t_state1.DEL2
-                #obusy.next=1
-                #ldData.next=0
+
                 state1.next = t_state1.DEL4
             
             elif (state1 == t_state1.DEL4):
@@ -80,7 +70,7 @@ def updateecho(iClk,iRst,iData, WriteEnable,ldData,oWrBuffer_full,obusy):
             else:
                 if(state1 == t_state1.DEL5):
                     
-                    #WriteEnable.next=0
+                    
                     obusy.next=0
                     state1.next = t_state1.IDLE
                 
@@ -91,8 +81,8 @@ def updateecho(iClk,iRst,iData, WriteEnable,ldData,oWrBuffer_full,obusy):
 @block
 def testbench():
   
-  updateecho0_inst = updatebuff(iClk,iRst,iData, WriteEnable,ldData,oWrBuffer_full,obusy)
-  rom0_inst=rom(rom_dout) 
+  updateecho0=updatebuff(iClk,iRst,iData, WriteEnable,ldData,oWrBuffer_full,obusy,oData,read_addr)
+  rom0=rom(rom_dout) 
   
   @always(delay(10))
   def clkgen():
@@ -143,8 +133,8 @@ def testbench():
   return instances()
 
 def convert_updateecho(hdl):
-    updateecho_1 = updateecho(iClk,iRst,iData, WriteEnable,ldData,oWrBuffer_full,obusy)
-    updateecho_1.convert(hdl=hdl)
+    updateecho0=updateecho(iClk,iRst,iData, WriteEnable,ldData,oWrBuffer_full,obusy,oData,read_addr)
+    updateecho0.convert(hdl=hdl)
     
 #convert_updateecho(hdl='Verilog')
 """

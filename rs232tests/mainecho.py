@@ -25,33 +25,28 @@ icepack mainecho.asc mainecho.bin
 @block
 def mainecho(iClk,iRX,oTX):
 
-    pwruprst_inst = pwruprst(iClk,iRst,pwrup)
+    pwruprst0=pwruprst(iClk,iRst,pwrup)
     
-    pps0_inst=pps(iClk,ppscounter,sig)
-    
-    #rom0_inst=rom(rom_dout,rom_addr,CONTENT)
+    pps0=pps(iClk,ppscounter,sig)
     
      
     
-    updateecho0_inst=updateecho(iClk,iRst,iData, WriteEnable,ldData,oWrBuffer_full,obusy)
+     
     
-    #transbuff0_inst = transbuff(iClk,iRst,WriteEnable,ldData,sig,rom_dout,rom_addr,CONTENT,oldData)
-
-    rs232_module_inst=RS232_Norbo.RS232_Module(iClk,iRst,iRX,oTX, \
+    updateecho0=updateecho(iClk,iRst,iData, WriteEnable,ldData,oWrBuffer_full,obusy,oData,read_addr)
+    
+     
+    rs232_module0=RS232_Norbo.RS232_Module(iClk,iRst,iRX,oTX, \
         iData,WriteEnable, oWrBuffer_full,oData,read_addr, \
         rx_addr,Clkfrequenz=Clk_f, \
         Baudrate=BAUDRATE,RX_BUFFER_LENGTH=RX_BUFF_LEN,TX_BUFFER_LENGTH=TX_BUFF_LEN)
-    """
-    programmer_inst=RS232Programmer.RS232Programmer(iClk,iRst, \
-        programmer_enable,oInfobyte,dout,addr_out,we, \
-        oprog_Data_RS232,oprog_WriteEnable_RS232, \
-        iprog_WrBuffer_full_RS232,oData,read_addr,rx_addr)"""
+     
     return instances()
 
 def convert_mainecho(hdl):
 
-    mainecho_0 = mainecho(iClk,iRX,oTX)
-    mainecho_0.convert(hdl=hdl)
+    mainecho0 = mainecho(iClk,iRX,oTX)
+    mainecho0.convert(hdl=hdl)
 
 @block
 def test_bench():
@@ -59,7 +54,7 @@ def test_bench():
     ##### Signal definitions #####
 
     ##### Instanziate RS232 Module #####
-    main_0 = main(iClk,iRX,oTX)
+    main0=main(iClk,iRX,oTX)
 
     interval = delay(10)
     @always(interval)
@@ -131,7 +126,7 @@ def test_bench():
             yield iClk.posedge
         raise StopSimulation
 
-    #return  clk_gen,Monitor,stimulus,rs232_instance,programmer_inst,rs232loopback,Monitor2#,Monitor_oTX
+    
     return  clk_gen,Monitor,stimulus,main_0,rs232loopback,Monitor2#,Monitor_oTX
 
 

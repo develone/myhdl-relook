@@ -33,19 +33,14 @@ def main(iClk,iRX,oTX):
     
      
     
-    updatebuff0_inst=updatebuff(iClk,iRst,iData_RS232, WriteEnable_RS232,ldData,oWrBuffer_full_RS232,obusy,rom_dout,rom_addr,CONTENT)
+    updatebuff0_inst=updatebuff(iClk,iRst,iData, WriteEnable,ldData,oWrBuffer_full,obusy,rom_dout,rom_addr,CONTENT)
     
-    #transbuff0_inst = transbuff(iClk,iRst,WriteEnable,ldData,sig,rom_dout,rom_addr,CONTENT,oldData)
+    
 
     rs232_module_inst=RS232_Norbo.RS232_Module(iClk,iRst,iRX,oTX, \
         iData,WriteEnable, oWrBuffer_full,oData,read_addr, \
         rx_addr,Clkfrequenz=Clk_f, \
         Baudrate=BAUDRATE,RX_BUFFER_LENGTH=RX_BUFF_LEN,TX_BUFFER_LENGTH=TX_BUFF_LEN)
-    """
-    programmer_inst=RS232Programmer.RS232Programmer(iClk,iRst, \
-        programmer_enable,oInfobyte,dout,addr_out,we, \
-        oprog_Data_RS232,oprog_WriteEnable_RS232, \
-        iprog_WrBuffer_full_RS232,oData,read_addr,rx_addr)"""
     return instances()
 
 def convert_main(hdl):
@@ -131,7 +126,7 @@ def test_bench():
             yield iClk.posedge
         raise StopSimulation
 
-    #return  clk_gen,Monitor,stimulus,rs232_instance,programmer_inst,rs232loopback,Monitor2#,Monitor_oTX
+     
     return  clk_gen,Monitor,stimulus,main_0,rs232loopback,Monitor2#,Monitor_oTX
 
 

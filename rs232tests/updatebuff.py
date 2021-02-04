@@ -11,7 +11,7 @@ from rom import rom
     
     
 @block
-def updatebuff(iClk,iRst,iData_UPDATE, WriteEnable_UPDATE,ldData,oWrBuffer_full_UPDATE,obusy,rom_dout,rom_addr,CONTENT):
+def updatebuff(iClk,iRst,iData,WriteEnable,ldData,oWrBuffer_full,obusy,rom_dout,rom_addr,CONTENT):
 
     @always(iClk.posedge,iRst.negedge)
     def rtl ():
@@ -78,8 +78,8 @@ def updatebuff(iClk,iRst,iData_UPDATE, WriteEnable_UPDATE,ldData,oWrBuffer_full_
 @block
 def testbench():
   
-  updatebuff0_inst = updatebuff(iClk,iRst,iData, WriteEnable,ldData,oWrBuffer_full,obusy,rom_dout,rom_addr,CONTENT)
-  rom0_inst=rom(rom_dout,rom_addr,CONTENT) 
+  updatebuff0=updatebuff(iClk,iRst,iData,WriteEnable,ldData,oWrBuffer_full,obusy,rom_dout,rom_addr,CONTENT)
+  rom0t=rom(rom_dout,rom_addr,CONTENT) 
   
   @always(delay(10))
   def clkgen():
@@ -130,8 +130,8 @@ def testbench():
   return instances()
 
 def convert_updatebuff(hdl):
-    updatebuff_1 = updatebuff(iClk,iRst,iData, WriteEnable,ldData,oWrBuffer_full,obusy,rom_dout,rom_addr,CONTENT)
-    updatebuff_1.convert(hdl=hdl)
+    updatebuff0 = updatebuff(iClk,iRst,iData,WriteEnable,ldData,oWrBuffer_full,obusy,rom_dout,rom_addr,CONTENT)
+    updatebuff0.convert(hdl=hdl)
     
 #convert_updatebuff(hdl='Verilog')
 """

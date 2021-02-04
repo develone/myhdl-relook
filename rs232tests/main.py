@@ -25,19 +25,19 @@ icepack main.asc main.bin
 @block
 def main(iClk,iRX,oTX):
 
-    pwruprst_inst = pwruprst(iClk,iRst,pwrup)
+    pwruprst0 = pwruprst(iClk,iRst,pwrup)
     
-    pps0_inst=pps(iClk,ppscounter,sig)
+    pps0=pps(iClk,ppscounter,sig)
     
-    rom0_inst=rom(rom_dout,rom_addr,CONTENT)
+    rom0=rom(rom_dout,rom_addr,CONTENT)
     
      
     
-    updatebuff0_inst=updatebuff(iClk,iRst,iData, WriteEnable,ldData,oWrBuffer_full,obusy,rom_dout,rom_addr,CONTENT)
+    updatebuff0=updatebuff(iClk,iRst,iData, WriteEnable,ldData,oWrBuffer_full,obusy,rom_dout,rom_addr,CONTENT)
     
     
 
-    rs232_module_inst=RS232_Norbo.RS232_Module(iClk,iRst,iRX,oTX, \
+    rs232_module0=RS232_Norbo.RS232_Module(iClk,iRst,iRX,oTX, \
         iData,WriteEnable, oWrBuffer_full,oData,read_addr, \
         rx_addr,Clkfrequenz=Clk_f, \
         Baudrate=BAUDRATE,RX_BUFFER_LENGTH=RX_BUFF_LEN,TX_BUFFER_LENGTH=TX_BUFF_LEN)

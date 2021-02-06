@@ -33,12 +33,12 @@ def mainecho(iClk,iRX,oTX):
     
      
     
-    updateecho0=updateecho(iClk,iRst,iData, WriteEnable,ldData,oWrBuffer_full,obusy,oData,read_addr)
+    updateecho0=updateecho(iClk,iRst,iData, WriteEnable,ldData,oWrBuffer_full,obusy,oData,read_addr,oRx_addr)
     
      
     rs232_module0=RS232_Norbo.RS232_Module(iClk,iRst,iRX,oTX, \
         iData,WriteEnable, oWrBuffer_full,oData,read_addr, \
-        rx_addr,Clkfrequenz=Clk_f, \
+        oRx_addr,Clkfrequenz=Clk_f, \
         Baudrate=BAUDRATE,RX_BUFFER_LENGTH=RX_BUFF_LEN,TX_BUFFER_LENGTH=TX_BUFF_LEN)
      
     return instances()

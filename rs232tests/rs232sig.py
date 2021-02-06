@@ -2,8 +2,8 @@ from myhdl import *
 
 Clk_f=100e6 #100 Mhz
 BAUDRATE=2e6
-RX_BUFF_LEN=20
-TX_BUFF_LEN=20
+RX_BUFF_LEN=8
+TX_BUFF_LEN=8
 
 ##### Signal definitions #####
 iData=Signal(intbv(0)[8:])
@@ -14,7 +14,7 @@ iRX=Signal(bool(1))
 oTX=Signal(bool(0))
 WriteEnable=Signal(bool(0))
 oWrBuffer_full=Signal(bool(0))
-read_addr=Signal(intbv(0,min=0,max=20))
+read_addr=Signal(intbv(0,min=0,max=RX_BUFF_LEN))
 rx_addr=Signal(intbv(0,min=0,max=RX_BUFF_LEN))
 pwrup=Signal(intbv(0)[6:])
 dout=Signal(intbv(0)[32:])
@@ -40,4 +40,5 @@ sig=Signal(bool(0))
 ppscounter=Signal(intbv(0)[32:])
 ppsdel = 50000000
 sighictn=20*50
+oRx_addr=Signal(intbv(0,min=0,max=RX_BUFF_LEN))
 

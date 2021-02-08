@@ -1,0 +1,10 @@
+We normally have to reset flip-flops, thus every time the clock makes the transition 
+from 0 to 1 (posedge), we check if reset is asserted (synchronous reset), then we go on with normal logic.
+
+If we look closely we see that in the case of combinational logic we had "=" for assignment, 
+and for the sequential block we had the "<=" operator. Well, "=" is blocking assignment 
+and "<=" is nonblocking assignment. "=" executes code sequentially inside a begin / end, 
+whereas nonblocking "<=" executes in parallel. 
+
+ZipCPU In the thruwire example both i_sw & o_led are wires. Only o_led needs to be a wire? i_sw could be a reg?
+ZipCPU The assign makes it a blocking statement. 
